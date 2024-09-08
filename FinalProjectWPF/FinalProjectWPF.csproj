@@ -9,7 +9,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Assets\Basket.png" />
+    <None Remove="Assets\BattleShip.png" />
     <None Remove="Assets\ergerg.png" />
+    <None Remove="Assets\Snake.png" />
+    <None Remove="Assets\User.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -28,7 +32,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Assets\Basket.png" />
+    <Resource Include="Assets\BattleShip.png" />
     <Resource Include="Assets\ergerg.png" />
+    <Resource Include="Assets\Snake.png" />
+    <Resource Include="Assets\User.png" />
   </ItemGroup>
 
 </Project>

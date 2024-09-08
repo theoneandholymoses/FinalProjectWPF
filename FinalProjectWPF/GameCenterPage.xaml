@@ -41,20 +41,20 @@
     </Viewbox>
     <Viewbox VerticalAlignment="Center" Grid.Column="0" Grid.Row="0">
         <WrapPanel HorizontalAlignment="Left" Width="250">
-            <Image Cursor="Hand" Source="/Assets/ergerg.png" Height="99" Width="64" MouseEnter="Image_MouseEnter" MouseLeave="Image_MouseLeave" MouseLeftButtonUp="Image_MouseLeftButtonUp" />
+            <Image Cursor="Hand" Source="/Assets/User.png" Height="99" Width="64" MouseEnter="Image_MouseEnter" MouseLeave="Image_MouseLeave" MouseLeftButtonUp="Image_MouseLeftButtonUp" />
         </WrapPanel>
     </Viewbox>
 
     <Viewbox Grid.Row="2" Grid.Column="1">
         <WrapPanel Width="700" Height="500">
                 <Border CornerRadius="50" Background="{StaticResource IconsBackground}" BorderThickness="20" Height="220" Width="220" Margin="1 0" MouseEnter="Border_MouseEnter" MouseLeave="Border_MouseLeave" MouseLeftButtonUp="SnakeGame_Click">
-                    <Image Cursor="Hand"  ToolTip="Snake" Source="/Assets/ergerg.png" Style="{StaticResource GamesIcons}"  Height="150"/>
+                    <Image Cursor="Hand"  ToolTip="Snake" Source="/Assets/Snake.png" Style="{StaticResource GamesIcons}"  Height="150"/>
                 </Border>
                 <Border CornerRadius="50" Background="{StaticResource IconsBackground}" BorderThickness="20" Height="220" Width="220" Margin="1 0" MouseEnter="Border_MouseEnter" MouseLeave="Border_MouseLeave">
-                        <Image Cursor="Hand"  ToolTip="Catch The Egg" Source="/Assets/ergerg.png" Style="{StaticResource GamesIcons}"  Height="150"/>
+                        <Image Cursor="Hand"  ToolTip="Catch The Egg" Source="/Assets/Basket.png" Style="{StaticResource GamesIcons}"  Height="150"/>
                 </Border>
             <Border CornerRadius="50" Background="#FF7C7373" BorderThickness="20" Height="220" Width="220" Margin="1 0" MouseEnter="Border_MouseEnter" MouseLeave="Border_MouseLeave">
-                        <Image Cursor="Hand"  ToolTip="Calculator" Source="/Assets/ergerg.png" Style="{StaticResource GamesIcons}"  Height="150"/>
+                        <Image Cursor="Hand"  ToolTip="Calculator" Source="/Assets/BattleShip.png" Style="{StaticResource GamesIcons}"  Height="150"/>
                 </Border>
             <Border CornerRadius="50" Background="{StaticResource IconsBackground}" BorderThickness="20" Height="220" Width="220" Margin="1 0" MouseLeave="Border_MouseLeave" MouseEnter="Border_MouseEnter">
                         <Image Cursor="Hand"  ToolTip="Calculator" Source="/Assets/ergerg.png" Style="{StaticResource GamesIcons}"  Height="150"/>
