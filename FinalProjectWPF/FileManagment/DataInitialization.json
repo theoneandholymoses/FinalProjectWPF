@@ -1,0 +1,47 @@
+﻿{
+  "users": [
+    {
+      "ID": 1,
+      "FullName": "Moshe",
+      "LastLogin": "2024-09-08T12:00:00"
+    },
+    {
+      "ID": 2,
+      "FullName": "Daniel",
+      "LastLogin": "2024-09-08T12:05:00"
+    },
+    {
+      "ID": 3,
+      "FullName": "Charlie",
+      "LastLogin": "2024-09-07T11:00:00"
+    },
+    {
+      "ID": 4,
+      "FullName": "David",
+      "LastLogin": "2024-09-06T10:00:00"
+    },
+    {
+      "ID": 5,
+      "FullName": "Ivy",
+      "LastLogin": "2024-09-02T05:00:00"
+    },
+    {
+      "ID": 6,
+      "FullName": "Jack",
+      "LastLogin": "2024-09-01T04:00:00"
+    }
+  ],
+  "highscoreSnake": {
+    "1": [ 4, 8, 7, 13, 18 ],
+    "2": [ 11, 12, 8, 14, 15 ]
+
+  },
+  "highscoreCatchTheEgg": {
+    "1": [ 12, 3, 18, 54, 14 ],
+    "2": [ 8, 11, 61, 17, 4]
+  },
+  "highscoreBattleShip": {
+    "1": [ 100, 90, 80, 70, 60 ],
+    "2": [ 110, 100, 90, 80, 70 ]
+  }
+}

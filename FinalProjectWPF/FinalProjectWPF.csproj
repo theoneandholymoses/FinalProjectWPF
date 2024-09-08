@@ -8,4 +8,27 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="Assets\ergerg.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Projects\CatchTheEgg\Assets\" />
+    <Folder Include="Projects\CatchTheEgg\Models\" />
+    <Folder Include="Projects\NewFolder1\Assets\" />
+    <Folder Include="Projects\NewFolder1\Models\" />
+    <Folder Include="Projects\NewFolder2\Assets\" />
+    <Folder Include="Projects\NewFolder2\Models\" />
+    <Folder Include="Projects\NewFolder3\Assets\" />
+    <Folder Include="Projects\NewFolder3\Models\" />
+    <Folder Include="Projects\NewFolder\Assets\" />
+    <Folder Include="Projects\NewFolder\Models\" />
+    <Folder Include="Projects\Snake\Assets\" />
+    <Folder Include="Projects\Snake\Models\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Assets\ergerg.png" />
+  </ItemGroup>
+
 </Project>
