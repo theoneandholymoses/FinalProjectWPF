@@ -6,14 +6,28 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <UseWPF>true</UseWPF>
+    <ApplicationIcon>Assets\GameCenterIcon.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Assets\addIcon.png" />
     <None Remove="Assets\Basket.png" />
     <None Remove="Assets\BattleShip.png" />
+    <None Remove="Assets\csharp.png" />
+    <None Remove="Assets\dotnet.png" />
+    <None Remove="Assets\editIcon.png" />
     <None Remove="Assets\ergerg.png" />
+    <None Remove="Assets\saveIcon.png" />
     <None Remove="Assets\Snake.png" />
+    <None Remove="Assets\switchIcon.png" />
+    <None Remove="Assets\tictactoe.png" />
     <None Remove="Assets\User.png" />
+    <None Remove="Assets\UserPanel.png" />
+    <None Remove="Assets\wpf.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Assets\GameCenterIcon.ico" />
   </ItemGroup>
 
   <ItemGroup>
@@ -32,11 +46,20 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Assets\addIcon.png" />
+    <Resource Include="Assets\editIcon.png" />
+    <Resource Include="Assets\saveIcon.png" />
+    <Resource Include="Assets\switchIcon.png" />
+    <Resource Include="Assets\UserPanel.png" />
     <Resource Include="Assets\Basket.png" />
     <Resource Include="Assets\BattleShip.png" />
+    <Resource Include="Assets\csharp.png" />
+    <Resource Include="Assets\dotnet.png" />
     <Resource Include="Assets\ergerg.png" />
     <Resource Include="Assets\Snake.png" />
+    <Resource Include="Assets\tictactoe.png" />
     <Resource Include="Assets\User.png" />
+    <Resource Include="Assets\wpf.png" />
   </ItemGroup>
 
 </Project>

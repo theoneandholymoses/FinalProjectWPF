@@ -1,17 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Diagnostics.Contracts;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace FinalProjectWPF.UserManagment
 {
-    internal class User
+    public class User : INotifyPropertyChanged
     {
         private int _id;
         private String _fullName;
         private DateTime _lastLogin;
+        private bool _isLogin;
+        public event PropertyChangedEventHandler? PropertyChanged;
+
         public string FullName
         {
             get
@@ -21,6 +26,7 @@ namespace FinalProjectWPF.UserManagment
             set
             {
                 _fullName = value;
+                OnPropertyChanged();
             }
         }
         public int ID
@@ -32,6 +38,17 @@ namespace FinalProjectWPF.UserManagment
             private set
             {
                 _id = value;
+            }
+        }
+        public bool IsLogin
+        {
+            get
+            {
+                return _isLogin;
+            }
+            set
+            {
+                _isLogin = value;
             }
         }
         public DateTime LastLogin
@@ -51,8 +68,13 @@ namespace FinalProjectWPF.UserManagment
             FullName = fullName;
             ID = id;
             LastLogin = DateTime.Now;
+            IsLogin = true;
         }
 
+        protected void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
 
     }
 }

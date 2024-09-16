@@ -7,114 +7,111 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="🎮 Moshe Game Center">
-    
+
     <Grid x:Name="AppGrid" Style="{StaticResource AppGrid}">
-    <Grid.ColumnDefinitions>
-        <ColumnDefinition Width="*" />
-        <ColumnDefinition Width="2*" />
-        <ColumnDefinition Width="*" />
-    </Grid.ColumnDefinitions>
-    <Grid.RowDefinitions>
-        <RowDefinition Height="0.3*" />
-        <RowDefinition Height="0.2*" />
-        <RowDefinition Height="*" />
-        <RowDefinition Height="0.3*" />
-    </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="2*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.3*" />
+            <RowDefinition Height="0.2*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="0.3*" />
+        </Grid.RowDefinitions>
 
 
-    <Viewbox VerticalAlignment="Center" Grid.Column="1" Grid.Row="0">
-        <WrapPanel >
-            <Label x:Name="TitleLabel" Content="Play Center" Style="{StaticResource TitleLabelStyle}" />
-        </WrapPanel>
-    </Viewbox>
-    <Viewbox HorizontalAlignment="Center" Margin="0 15" Grid.Column="1" Grid.Row="1">
-        <WrapPanel >
-            <TextBlock Text="Welcome to play center!" Foreground="#FFCEC9C9" FontSize="30" Width="340"/>
-        </WrapPanel>
+        <Viewbox VerticalAlignment="Center" Grid.Column="1" Grid.Row="0">
+            <WrapPanel >
+                <Label x:Name="TitleLabel" Content="Play Center" Style="{StaticResource TitleLabelStyle}" />
+            </WrapPanel>
+        </Viewbox>
+        <Viewbox HorizontalAlignment="Center" Margin="0 15" Grid.Column="1" Grid.Row="1">
+            <WrapPanel >
+                <TextBlock Text="Welcome to play center!" Foreground="#FFCEC9C9" FontSize="30" Width="340"/>
+            </WrapPanel>
 
-    </Viewbox>
-    <Viewbox Grid.Row="0" Grid.Column="2">
-        <StackPanel Width="179" >
-            <TextBlock x:Name="ClockText" Text="" FontSize="20" Foreground="#FFB5B36A" FontFamily="Segoe UI Black" Width="85" />
-            <TextBlock x:Name="ClockDate" Text="" FontSize="20" Foreground="#FFB5B36A" FontFamily="Segoe UI Black" Width="118" />
-        </StackPanel>
-    </Viewbox>
-    <Viewbox VerticalAlignment="Center" Grid.Column="0" Grid.Row="0">
-        <WrapPanel HorizontalAlignment="Left" Width="250">
-            <Image Cursor="Hand" Source="/Assets/User.png" Height="99" Width="64" MouseEnter="Image_MouseEnter" MouseLeave="Image_MouseLeave" MouseLeftButtonUp="Image_MouseLeftButtonUp" />
-        </WrapPanel>
-    </Viewbox>
+        </Viewbox>
+        <Viewbox Grid.Row="0" Grid.Column="2">
+            <StackPanel Width="179" >
+                <TextBlock x:Name="ClockText" Text="" FontSize="20" Foreground="#FFB5B36A" FontFamily="Segoe UI Black" Width="85" />
+                <TextBlock x:Name="ClockDate" Text="" FontSize="20" Foreground="#FFB5B36A" FontFamily="Segoe UI Black" Width="118" />
+            </StackPanel>
+        </Viewbox>
+        <!--<Viewbox VerticalAlignment="Center" Grid.Column="0" Grid.Row="0" Margin="10,0,0,0">
+            <WrapPanel HorizontalAlignment="Left" Width="350">
+                <Image Cursor="Hand" Source="/Assets/User.png" Height="99" Width="64" MouseEnter="Image_MouseEnter" MouseLeave="Image_MouseLeave" MouseLeftButtonUp="Image_MouseLeftButtonUp" />
+                <Label x:Name="UserName" ToolTip="Options" Content="{Binding FullName}" Style="{StaticResource TitleLabelStyle}"/>
+                <TextBox x:Name="EditUserInput" Visibility="Hidden" Width="120"/>
+            </WrapPanel>
+        </Viewbox>
+        <Viewbox x:Name="UserOptions" VerticalAlignment="Center" Grid.Column="0" Grid.Row="1" Visibility="Hidden">
+            <WrapPanel HorizontalAlignment="Left" Width="350">
+                <Image x:Name="EditUserButton" Cursor="Hand" ToolTip="Edit User Name" Source="/Assets/User.png" Margin="10,0,0,0" Height="80" Width="50" MouseEnter="Image_MouseEnter" MouseLeave="Image_MouseLeave" MouseLeftButtonUp="EditName_MouseLeftButtonUp"/>
+                <Image x:Name="SwitchUserButton" Cursor="Hand" ToolTip="Switch User" Source="/Assets/User.png" Margin="10,0,0,0" Height="80" Width="50" MouseEnter="Image_MouseEnter" MouseLeave="Image_MouseLeave" MouseLeftButtonUp="SwitchUser_MouseLeftButtonUp"/>
+            </WrapPanel>
+        </Viewbox>
+        <Viewbox x:Name="UserSelection" Visibility="Hidden" VerticalAlignment="Center" Grid.Column="0" Grid.Row="1" >
+            <WrapPanel HorizontalAlignment="Left" >
+                <ComboBox x:Name="SelectionList"  Margin="10,0,0,0" Width="120" SelectionChanged="SelectedUser"/>
+            </WrapPanel>
+        </Viewbox>-->
+        <Viewbox x:Name="UserPanel" VerticalAlignment="Top" Grid.Column="0" Margin="11,9,84,0" Grid.RowSpan="2">
+            <WrapPanel x:Name="TestColor" HorizontalAlignment="Left" Width="350">
+                <Image Cursor="Hand" ToolTip="{Binding FullName}" Source="/Assets/UserPanel.png" Height="99" Width="64" MouseEnter="Image_MouseEnter" MouseLeave="Image_MouseLeave" MouseLeftButtonUp="Image_MouseLeftButtonUp" />
+                <TextBox x:Name="EditUserInput" Visibility="Hidden" Width="0" Margin="0" FontSize="20"/>
+                <Image x:Name="SaveNewName" Visibility="Hidden" Cursor="Hand" ToolTip="Save" Source="/Assets/saveIcon.png" Height="0" Width="0" MouseEnter="Image_MouseEnter" MouseLeave="Image_MouseLeave" MouseLeftButtonUp="EditUserName" />
+                <Label x:Name="UserName" Content="{Binding FullName}" Style="{StaticResource TitleLabelStyle}" Margin="0,15,0,0"/>
+                <!--<Label x:Name="Subtitle" Content="" Visibility="Hidden" Width="0" Height="0" Style="{StaticResource TitleLabelStyle}" Margin="0,15,0,0"/>-->
 
-    <Viewbox Grid.Row="2" Grid.Column="1">
-        <WrapPanel Width="700" Height="500">
+                <Viewbox x:Name="UserOptions" VerticalAlignment="Center" Grid.Column="0" Grid.Row="1" Visibility="Hidden">
+                    <WrapPanel HorizontalAlignment="Left" Width="350">
+                        <Image x:Name="EditUserButton" Cursor="Hand" ToolTip="Edit User Name" Source="/Assets/editIcon.png" Margin="10,0,0,0" Height="80" Width="50" MouseEnter="Image_MouseEnter" MouseLeave="Image_MouseLeave" MouseLeftButtonUp="EditName_MouseLeftButtonUp"/>
+                        <Image x:Name="SwitchUserButton" Cursor="Hand" ToolTip="Switch User" Source="/Assets/switchIcon.png" Margin="10,0,0,0" Height="80" Width="50" MouseEnter="Image_MouseEnter" MouseLeave="Image_MouseLeave" MouseLeftButtonUp="SwitchUser_MouseLeftButtonUp"/>
+                        <Image x:Name="AddUserButton" Cursor="Hand" ToolTip="Add User" Source="/Assets/addIcon.png" Margin="10,0,0,0" Height="80" Width="50" MouseEnter="Image_MouseEnter" MouseLeave="Image_MouseLeave" MouseLeftButtonUp="NewUserPanel_MouseLeftButtonUp"/>
+                        <ComboBox x:Name="SelectionList" Width="0" Height="0" Visibility="Hidden" SelectionChanged="SelectedUser"/>
+                        <TextBox x:Name="NewUserInput" Visibility="Hidden" Width="0" Margin="0" FontSize="20"/>
+                        <Image x:Name="CreateUserButton" Cursor="Hand" Visibility="Hidden" ToolTip="Create User" Source="/Assets/addIcon.png" Margin="10,0,0,0" Height="0" Width="0" MouseEnter="Image_MouseEnter" MouseLeave="Image_MouseLeave" MouseLeftButtonUp="CreatUser_MouseLeftButtonUp"/>
+                    </WrapPanel>
+                </Viewbox>
+            </WrapPanel>
+        </Viewbox>
+        <Viewbox Grid.Row="2" Grid.Column="1">
+            <WrapPanel Width="700" Height="500">
                 <Border CornerRadius="50" Background="{StaticResource IconsBackground}" BorderThickness="20" Height="220" Width="220" Margin="1 0" MouseEnter="Border_MouseEnter" MouseLeave="Border_MouseLeave" MouseLeftButtonUp="SnakeGame_Click">
                     <Image Cursor="Hand"  ToolTip="Snake" Source="/Assets/Snake.png" Style="{StaticResource GamesIcons}"  Height="150"/>
                 </Border>
                 <Border CornerRadius="50" Background="{StaticResource IconsBackground}" BorderThickness="20" Height="220" Width="220" Margin="1 0" MouseEnter="Border_MouseEnter" MouseLeave="Border_MouseLeave">
-                        <Image Cursor="Hand"  ToolTip="Catch The Egg" Source="/Assets/Basket.png" Style="{StaticResource GamesIcons}"  Height="150"/>
+                    <Image Cursor="Hand"  ToolTip="Catch The Egg" Source="/Assets/Basket.png" Style="{StaticResource GamesIcons}"  Height="150"/>
                 </Border>
-            <Border CornerRadius="50" Background="#FF7C7373" BorderThickness="20" Height="220" Width="220" Margin="1 0" MouseEnter="Border_MouseEnter" MouseLeave="Border_MouseLeave">
-                        <Image Cursor="Hand"  ToolTip="Calculator" Source="/Assets/BattleShip.png" Style="{StaticResource GamesIcons}"  Height="150"/>
+                <Border CornerRadius="50" Background="#FF7C7373" BorderThickness="20" Height="220" Width="220" Margin="1 0" MouseEnter="Border_MouseEnter" MouseLeave="Border_MouseLeave">
+                    <Image Cursor="Hand"  ToolTip="BattleShip" Source="/Assets/BattleShip.png" Style="{StaticResource GamesIcons}"  Height="150"/>
                 </Border>
-            <Border CornerRadius="50" Background="{StaticResource IconsBackground}" BorderThickness="20" Height="220" Width="220" Margin="1 0" MouseLeave="Border_MouseLeave" MouseEnter="Border_MouseEnter">
-                        <Image Cursor="Hand"  ToolTip="Calculator" Source="/Assets/ergerg.png" Style="{StaticResource GamesIcons}"  Height="150"/>
+                <Border CornerRadius="50" Background="{StaticResource IconsBackground}" BorderThickness="20" Height="220" Width="220" Margin="1 0" MouseLeave="Border_MouseLeave" MouseEnter="Border_MouseEnter">
+                    <Image Cursor="Hand"  ToolTip="Tic Tac Toe" Source="/Assets/tictactoe.png" Style="{StaticResource GamesIcons}"  Height="150"/>
                 </Border>
-            <Border CornerRadius="50"  Background="{StaticResource IconsBackground}" BorderThickness="20" Height="220" Width="220" Margin="1 0" MouseEnter="Border_MouseEnter" MouseLeave="Border_MouseLeave">
-                        <Image Cursor="Hand"  ToolTip="Calculator" Source="/Assets/ergerg.png" Style="{StaticResource GamesIcons}"  Height="150"/>
+                <Border CornerRadius="50"  Background="{StaticResource IconsBackground}" BorderThickness="20" Height="220" Width="220" Margin="1 0" MouseEnter="Border_MouseEnter" MouseLeave="Border_MouseLeave">
+                    <Image Cursor="Hand"  ToolTip="Calculator" Source="/Assets/ergerg.png" Style="{StaticResource GamesIcons}"  Height="150"/>
                 </Border>
-            <Border CornerRadius="50"  Background="{StaticResource IconsBackground}" BorderThickness="20" Height="220" Width="220" Margin="1 0" MouseEnter="Border_MouseEnter" MouseLeave="Border_MouseLeave">
-                        <Image Cursor="Hand"  ToolTip="Calculator" Source="/Assets/ergerg.png" Style="{StaticResource GamesIcons}"  Height="150"/>
+                <Border CornerRadius="50"  Background="{StaticResource IconsBackground}" BorderThickness="20" Height="220" Width="220" Margin="1 0" MouseEnter="Border_MouseEnter" MouseLeave="Border_MouseLeave">
+                    <Image Cursor="Hand"  ToolTip="Calculator" Source="/Assets/ergerg.png" Style="{StaticResource GamesIcons}"  Height="150"/>
                 </Border>
-        </WrapPanel>
-    </Viewbox>
+            </WrapPanel>
+        </Viewbox>
 
-    <Viewbox Grid.Row="3" Grid.Column="1">
-        <WrapPanel Width="575" Height="285">
-            <Border CornerRadius="50" Background="{StaticResource IconsBackground}" BorderThickness="10" Height="180">
-                    <Image ToolTip=".NET" Source="/Assets/ergerg.png" Style="{StaticResource FooterIcons}" Width="100" Height="100" />
-            </Border>
-            <Border CornerRadius="50"  Background="{StaticResource IconsBackground}" BorderThickness="10" Height="180">
-                    <Image ToolTip="C#" Source="/Assets/ergerg.png" Style="{StaticResource FooterIcons}" Width="100" Height="100"/>
-            </Border>
-            <Border CornerRadius="50"  Background="{StaticResource IconsBackground}" BorderThickness="10" Height="180">
-                    <Image ToolTip="WPF" Source="/Assets/ergerg.png" Style="{StaticResource FooterIcons}" Width="100" Height="100"/>
-            </Border>
-        </WrapPanel>
-    </Viewbox>
-</Grid>
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-
-    <!--<WrapPanel Background="#FFFF">
-        <Button x:Name="SnakeGame" Background="Transparent" BorderBrush="Transparent" Click="SnakeGame_Click">
-            <Image Source="//Assets/ergerg.png" Width="120" Height="120"/>
-        </Button>
-        <Button Background="Transparent" BorderBrush="Transparent">
-            <Image Source="//Assets/ergerg.png" Width="120" Height="120"/>
-        </Button>
-        <Button Background="Transparent" BorderBrush="Transparent">
-            <Image Source="//Assets/ergerg.png" Width="120" Height="120"/>
-        </Button>
-        <Button Background="Transparent" BorderBrush="Transparent">
-            <Image Source="//Assets/ergerg.png" Width="120" Height="120"/>
-        </Button>
-        <Button Background="Transparent" BorderBrush="Transparent">
-            <Image Source="//Assets/ergerg.png" Width="120" Height="120"/>
-        </Button>
-        <Button Background="Transparent" BorderBrush="Transparent">
-            <Image Source="//Assets/ergerg.png" Width="120" Height="120"/>
-        </Button>
-    </WrapPanel>-->
+        <Viewbox Grid.Row="3" Grid.Column="1">
+            <WrapPanel Width="575" Height="285">
+                <Border CornerRadius="50" Background="{StaticResource IconsBackground}" BorderThickness="10" Height="180">
+                    <Image ToolTip="C#" Source="/Assets/csharp.png" Style="{StaticResource FooterIcons}" Width="100" Height="100" />
+                </Border>
+                <Border CornerRadius="50"  Background="{StaticResource IconsBackground}" BorderThickness="10" Height="180">
+                    <Image ToolTip="WPF" Source="/Assets/wpf.png" Style="{StaticResource FooterIcons}" Width="100" Height="100"/>
+                </Border>
+                <Border CornerRadius="50"  Background="{StaticResource IconsBackground}" BorderThickness="10" Height="180">
+                    <Image ToolTip=".NET" Source="/Assets/dotnet.png" Style="{StaticResource FooterIcons}" Width="100" Height="100"/>
+                </Border>
+            </WrapPanel>
+        </Viewbox>
+    </Grid>
 </Page>
