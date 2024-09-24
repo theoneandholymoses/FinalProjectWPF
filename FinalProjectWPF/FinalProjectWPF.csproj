@@ -24,6 +24,28 @@
     <None Remove="Assets\User.png" />
     <None Remove="Assets\UserPanel.png" />
     <None Remove="Assets\wpf.png" />
+    <None Remove="Projects\CatchTheEgg\Assets\Background.jpg" />
+    <None Remove="Projects\CatchTheEgg\Assets\Basket.png" />
+    <None Remove="Projects\CatchTheEgg\Assets\BrokenEgg.png" />
+    <None Remove="Projects\CatchTheEgg\Assets\Egg.png" />
+    <None Remove="Projects\CatchTheEgg\Assets\FreezEgg.png" />
+    <None Remove="Projects\CatchTheEgg\Assets\GoldenEgg.png" />
+    <None Remove="Projects\CatchTheEgg\Assets\Heart.png" />
+    <None Remove="Projects\CatchTheEgg\Assets\heartsImg\0.5.png" />
+    <None Remove="Projects\CatchTheEgg\Assets\heartsImg\1.0.png" />
+    <None Remove="Projects\CatchTheEgg\Assets\heartsImg\1.5.png" />
+    <None Remove="Projects\CatchTheEgg\Assets\heartsImg\2.0.png" />
+    <None Remove="Projects\CatchTheEgg\Assets\heartsImg\2.5.png" />
+    <None Remove="Projects\CatchTheEgg\Assets\heartsImg\3.0.png" />
+    <None Remove="Projects\CatchTheEgg\Assets\MultiplePointsEgg.png" />
+    <None Remove="Projects\CatchTheEgg\Assets\Poop.png" />
+    <None Remove="Projects\Snake\Assets\apple.png" />
+    <None Remove="Projects\Snake\Assets\background.png" />
+    <None Remove="Projects\Snake\Assets\body.png" />
+    <None Remove="Projects\Snake\Assets\snake_head_down.png" />
+    <None Remove="Projects\Snake\Assets\snake_head_left.png" />
+    <None Remove="Projects\Snake\Assets\snake_head_right.png" />
+    <None Remove="Projects\Snake\Assets\snake_head_up.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -31,8 +53,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Projects\CatchTheEgg\Assets\" />
-    <Folder Include="Projects\CatchTheEgg\Models\" />
     <Folder Include="Projects\NewFolder1\Assets\" />
     <Folder Include="Projects\NewFolder1\Models\" />
     <Folder Include="Projects\NewFolder2\Assets\" />
@@ -41,8 +61,6 @@
     <Folder Include="Projects\NewFolder3\Models\" />
     <Folder Include="Projects\NewFolder\Assets\" />
     <Folder Include="Projects\NewFolder\Models\" />
-    <Folder Include="Projects\Snake\Assets\" />
-    <Folder Include="Projects\Snake\Models\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -60,6 +78,28 @@
     <Resource Include="Assets\tictactoe.png" />
     <Resource Include="Assets\User.png" />
     <Resource Include="Assets\wpf.png" />
+    <Resource Include="Projects\CatchTheEgg\Assets\Background.jpg" />
+    <Resource Include="Projects\CatchTheEgg\Assets\Basket.png" />
+    <Resource Include="Projects\CatchTheEgg\Assets\BrokenEgg.png" />
+    <Resource Include="Projects\CatchTheEgg\Assets\Egg.png" />
+    <Resource Include="Projects\CatchTheEgg\Assets\FreezEgg.png" />
+    <Resource Include="Projects\CatchTheEgg\Assets\GoldenEgg.png" />
+    <Resource Include="Projects\CatchTheEgg\Assets\Heart.png" />
+    <Resource Include="Projects\CatchTheEgg\Assets\heartsImg\0.5.png" />
+    <Resource Include="Projects\CatchTheEgg\Assets\heartsImg\1.0.png" />
+    <Resource Include="Projects\CatchTheEgg\Assets\heartsImg\1.5.png" />
+    <Resource Include="Projects\CatchTheEgg\Assets\heartsImg\2.0.png" />
+    <Resource Include="Projects\CatchTheEgg\Assets\heartsImg\2.5.png" />
+    <Resource Include="Projects\CatchTheEgg\Assets\heartsImg\3.0.png" />
+    <Resource Include="Projects\CatchTheEgg\Assets\MultiplePointsEgg.png" />
+    <Resource Include="Projects\CatchTheEgg\Assets\Poop.png" />
+    <Resource Include="Projects\Snake\Assets\apple.png" />
+    <Resource Include="Projects\Snake\Assets\background.png" />
+    <Resource Include="Projects\Snake\Assets\body.png" />
+    <Resource Include="Projects\Snake\Assets\snake_head_down.png" />
+    <Resource Include="Projects\Snake\Assets\snake_head_left.png" />
+    <Resource Include="Projects\Snake\Assets\snake_head_right.png" />
+    <Resource Include="Projects\Snake\Assets\snake_head_up.png" />
   </ItemGroup>
 
 </Project>

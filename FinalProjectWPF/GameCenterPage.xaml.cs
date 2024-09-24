@@ -1,4 +1,5 @@
 ﻿using FinalProjectWPF.FileManagment;
+using FinalProjectWPF.Projects.CatchTheEgg;
 using FinalProjectWPF.Projects.Snake;
 using FinalProjectWPF.UserManagment;
 using System;
@@ -70,18 +71,6 @@ namespace FinalProjectWPF
         {
             (sender as Image)!.Opacity = 1;
         }
-
-        //private void Image_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
-        //{
-        //    if (UserOptions.Visibility == Visibility.Visible)
-        //    {
-        //        UserOptions.Visibility = Visibility.Hidden;
-        //    }
-        //    else
-        //    {
-        //        UserOptions.Visibility = Visibility.Visible;
-        //    }
-        //}
 
         private void Image_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
@@ -194,28 +183,10 @@ namespace FinalProjectWPF
             NavigationService.Navigate(new SnakeHomePage());
         }
 
-
-        //private void SwitchUser_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
-        //{
-        //    EditUserButton.Visibility = Visibility.Hidden;
-        //    SwitchUserButton.Visibility = Visibility.Hidden;
-        //    UserSelection.Visibility = Visibility.Visible;
-        //    DateTime date = new DateTime(2024, 1, 1);
-
-        //    List<User> users = fm.GetAllUsers() ?? new List<User>();
-        //    List<User> localUsers = users.Where(u => u.LastLogin > date).ToList();
-
-        //    if(SelectionList.Items.Count == 0) {
-        //        foreach (User User in localUsers)
-        //        {
-        //            ComboBoxItem ItemToSelect = new ComboBoxItem
-        //            {
-        //                Content = User.FullName
-        //            };
-        //            SelectionList.Items.Add(ItemToSelect);
-        //        }
-        //    }
-        //}
+        private void CatchTheEgg_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new CatchTheEggPreviewPage());
+        }
 
         private void SwitchUser_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
@@ -250,39 +221,6 @@ namespace FinalProjectWPF
 
         }
 
-        //private void CreateNewUser(string name)
-        //{
-        //    User CurrentUser = fm.CreateNewUser(name);
-        //    fm.LoginUser(CurrentUser.ID);
-        //    ComboBoxItem c = new ComboBoxItem();
-        //    c.Content = CurrentUser.FullName;
-        //    SelectionList.Items.Add(c);
-        //    ((App)Application.Current).LoggedInUserID = CurrentUser.ID;
-        //}
-
-        //private void SelectedUser(object sender, SelectionChangedEventArgs e)
-        //{
-        //    EditUserButton.Visibility = Visibility.Visible;
-        //    SwitchUserButton.Visibility = Visibility.Visible;
-        //    UserSelection.Visibility = Visibility.Hidden;
-        //    ComboBoxItem selectedItem = (ComboBoxItem)SelectionList.SelectedItem;
-        //    string selectedUserName = selectedItem.Content.ToString(); 
-
-        //    User CurrentUser = fm.CheckLastLoginUser();
-        //    fm.LogoutUser(CurrentUser.ID);
-
-        //    CurrentUser = fm.GetAllUsers().FirstOrDefault(user => user.FullName == selectedUserName);
-        //    fm.LoginUser(CurrentUser.ID);
-        //}
-
-        //private void EditName_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
-        //{
-        //    EditUserButton.Visibility = Visibility.Hidden;
-        //    SwitchUserButton.Visibility = Visibility.Hidden;
-        //    UserName.Visibility = Visibility.Hidden;
-        //    EditUserInput.Visibility = Visibility.Visible;
-        //}
-
         private void SelectedUser(object sender, SelectionChangedEventArgs e)
         {
             EditUserButton.Visibility = Visibility.Visible;
@@ -299,7 +237,6 @@ namespace FinalProjectWPF
             fm.LoginUser(CurrentUser.ID);
             CloseMenu();
         }
-        // modified
         private void NewUserPanel_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             EditUserButton.Visibility = Visibility.Hidden;
@@ -319,7 +256,6 @@ namespace FinalProjectWPF
             CreateUserButton.Width = 50;
             CreateUserButton.Height = 70;
         }
-        // modified
         private void CreatUser_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             User CurrentUser = fm.CheckLastLoginUser();
@@ -329,7 +265,6 @@ namespace FinalProjectWPF
             CloseMenu();
         }
 
-        // modified
         private User CreateNewUser(string name)
         {
             if (name != "")
@@ -348,7 +283,6 @@ namespace FinalProjectWPF
             User CurrentUser = fm.CheckLastLoginUser();
             return CurrentUser;
         }
-        // modified
         private void EditName_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             EditUserButton.Visibility = Visibility.Hidden;
@@ -364,28 +298,12 @@ namespace FinalProjectWPF
             SaveNewName.Width = 40;
             SaveNewName.Height = 70;
         }
-        // modified
         private void EditUserName(object sender, MouseButtonEventArgs e)
         {
             User CurrentUser = fm.CheckLastLoginUser();
             DataContext = fm.UpdateUser(CurrentUser.ID, EditUserInput.Text);
             CloseMenu();
         }
-        //private void UpdateUserNameOnScreen()
-        //{
-
-        //}
-
-        //private void HighScoresUpdateForAllGames()
-        //{
-
-        //}
-
-        //private void CreateUserButtonClicked()
-        //{
-
-        //}
-
         
     }
 }
