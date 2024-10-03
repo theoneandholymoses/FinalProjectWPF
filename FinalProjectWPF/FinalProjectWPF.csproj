@@ -10,19 +10,21 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Assets\3177440.png" />
     <None Remove="Assets\addIcon.png" />
-    <None Remove="Assets\Basket.png" />
-    <None Remove="Assets\BattleShip.png" />
+    <None Remove="Assets\CalenderIcon.png" />
+    <None Remove="Assets\CatchTheEggIcon.png" />
     <None Remove="Assets\csharp.png" />
     <None Remove="Assets\dotnet.png" />
+    <None Remove="Assets\DropTheMillionIcon.png" />
     <None Remove="Assets\editIcon.png" />
-    <None Remove="Assets\ergerg.png" />
+    <None Remove="Assets\GameCenterBackground.mp4" />
+    <None Remove="Assets\GameCenterIcon.ico" />
+    <None Remove="Assets\MyLittleBusinessIcon.png" />
     <None Remove="Assets\saveIcon.png" />
-    <None Remove="Assets\Snake.png" />
+    <None Remove="Assets\SnakeIcon.png" />
     <None Remove="Assets\switchIcon.png" />
-    <None Remove="Assets\tictactoe.png" />
-    <None Remove="Assets\User.png" />
-    <None Remove="Assets\UserPanel.png" />
+    <None Remove="Assets\TicTacToeIcon.png" />
     <None Remove="Assets\wpf.png" />
     <None Remove="Projects\CatchTheEgg\Assets\Background.jpg" />
     <None Remove="Projects\CatchTheEgg\Assets\Basket.png" />
@@ -39,6 +41,32 @@
     <None Remove="Projects\CatchTheEgg\Assets\heartsImg\3.0.png" />
     <None Remove="Projects\CatchTheEgg\Assets\MultiplePointsEgg.png" />
     <None Remove="Projects\CatchTheEgg\Assets\Poop.png" />
+    <None Remove="Projects\MyLittleBusiness\Assets\AddLineIcon.png" />
+    <None Remove="Projects\MyLittleBusiness\Assets\american_express.gif" />
+    <None Remove="Projects\MyLittleBusiness\Assets\APPLEpay.gif" />
+    <None Remove="Projects\MyLittleBusiness\Assets\billing1.png" />
+    <None Remove="Projects\MyLittleBusiness\Assets\CartIcon.png" />
+    <None Remove="Projects\MyLittleBusiness\Assets\CreditCardIcon.png" />
+    <None Remove="Projects\MyLittleBusiness\Assets\CustomerIcon.png" />
+    <None Remove="Projects\MyLittleBusiness\Assets\DeleteIcon.png" />
+    <None Remove="Projects\MyLittleBusiness\Assets\diners.gif" />
+    <None Remove="Projects\MyLittleBusiness\Assets\DownloadIcon.png" />
+    <None Remove="Projects\MyLittleBusiness\Assets\EditIcon.png" />
+    <None Remove="Projects\MyLittleBusiness\Assets\ExitIcon.png" />
+    <None Remove="Projects\MyLittleBusiness\Assets\Gpay_Logo.png" />
+    <None Remove="Projects\MyLittleBusiness\Assets\HomeIcon.png" />
+    <None Remove="Projects\MyLittleBusiness\Assets\Info_icon.svg.png" />
+    <None Remove="Projects\MyLittleBusiness\Assets\InvoiceIcon.png" />
+    <None Remove="Projects\MyLittleBusiness\Assets\isracard.gif" />
+    <None Remove="Projects\MyLittleBusiness\Assets\mastercard.gif" />
+    <None Remove="Projects\MyLittleBusiness\Assets\PCI DSS.png" />
+    <None Remove="Projects\MyLittleBusiness\Assets\pciLogo.png" />
+    <None Remove="Projects\MyLittleBusiness\Assets\PurpleLogoSmall.png" />
+    <None Remove="Projects\MyLittleBusiness\Assets\RefundIcon.png" />
+    <None Remove="Projects\MyLittleBusiness\Assets\SendIcon.png" />
+    <None Remove="Projects\MyLittleBusiness\Assets\SettingsIcon.png" />
+    <None Remove="Projects\MyLittleBusiness\Assets\ShowIcon.png" />
+    <None Remove="Projects\MyLittleBusiness\Assets\visa.gif" />
     <None Remove="Projects\Snake\Assets\apple.png" />
     <None Remove="Projects\Snake\Assets\background.png" />
     <None Remove="Projects\Snake\Assets\body.png" />
@@ -49,34 +77,35 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Assets\GameCenterIcon.ico" />
+    <Page Remove="Resources\CalendarResources\ButtonStyleResource.xaml" />
+    <Page Remove="Resources\GameCenterResources\GridResource.xaml" />
+    <Page Remove="Resources\GameCenterResources\IconsResource.xaml" />
+    <Page Remove="Resources\GameCenterResources\TitleLabelResource.xaml" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Projects\NewFolder1\Assets\" />
-    <Folder Include="Projects\NewFolder1\Models\" />
-    <Folder Include="Projects\NewFolder2\Assets\" />
-    <Folder Include="Projects\NewFolder2\Models\" />
-    <Folder Include="Projects\NewFolder3\Assets\" />
-    <Folder Include="Projects\NewFolder3\Models\" />
-    <Folder Include="Projects\NewFolder\Assets\" />
-    <Folder Include="Projects\NewFolder\Models\" />
+    <Folder Include="Projects\MyCalendar\Assets\" />
+    <Folder Include="Projects\TicTacToe\Assets\" />
+    <Folder Include="Projects\TicTacToe\Models\" />
+    <Folder Include="Projects\DontDropTheMillion\Assets\" />
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Assets\3177440.png" />
     <Resource Include="Assets\addIcon.png" />
-    <Resource Include="Assets\editIcon.png" />
-    <Resource Include="Assets\saveIcon.png" />
-    <Resource Include="Assets\switchIcon.png" />
-    <Resource Include="Assets\UserPanel.png" />
-    <Resource Include="Assets\Basket.png" />
-    <Resource Include="Assets\BattleShip.png" />
+    <Resource Include="Assets\CalenderIcon.png" />
+    <Resource Include="Assets\CatchTheEggIcon.png" />
     <Resource Include="Assets\csharp.png" />
     <Resource Include="Assets\dotnet.png" />
-    <Resource Include="Assets\ergerg.png" />
-    <Resource Include="Assets\Snake.png" />
-    <Resource Include="Assets\tictactoe.png" />
-    <Resource Include="Assets\User.png" />
+    <Resource Include="Assets\DropTheMillionIcon.png" />
+    <Resource Include="Assets\editIcon.png" />
+    <Resource Include="Assets\GameCenterBackground.mp4" />
+    <Resource Include="Assets\GameCenterIcon.ico" />
+    <Resource Include="Assets\MyLittleBusinessIcon.png" />
+    <Resource Include="Assets\saveIcon.png" />
+    <Resource Include="Assets\SnakeIcon.png" />
+    <Resource Include="Assets\switchIcon.png" />
+    <Resource Include="Assets\TicTacToeIcon.png" />
     <Resource Include="Assets\wpf.png" />
     <Resource Include="Projects\CatchTheEgg\Assets\Background.jpg" />
     <Resource Include="Projects\CatchTheEgg\Assets\Basket.png" />
@@ -93,6 +122,32 @@
     <Resource Include="Projects\CatchTheEgg\Assets\heartsImg\3.0.png" />
     <Resource Include="Projects\CatchTheEgg\Assets\MultiplePointsEgg.png" />
     <Resource Include="Projects\CatchTheEgg\Assets\Poop.png" />
+    <Resource Include="Projects\MyLittleBusiness\Assets\AddLineIcon.png" />
+    <Resource Include="Projects\MyLittleBusiness\Assets\american_express.gif" />
+    <Resource Include="Projects\MyLittleBusiness\Assets\APPLEpay.gif" />
+    <Resource Include="Projects\MyLittleBusiness\Assets\billing1.png" />
+    <Resource Include="Projects\MyLittleBusiness\Assets\CartIcon.png" />
+    <Resource Include="Projects\MyLittleBusiness\Assets\CreditCardIcon.png" />
+    <Resource Include="Projects\MyLittleBusiness\Assets\CustomerIcon.png" />
+    <Resource Include="Projects\MyLittleBusiness\Assets\DeleteIcon.png" />
+    <Resource Include="Projects\MyLittleBusiness\Assets\diners.gif" />
+    <Resource Include="Projects\MyLittleBusiness\Assets\DownloadIcon.png" />
+    <Resource Include="Projects\MyLittleBusiness\Assets\EditIcon.png" />
+    <Resource Include="Projects\MyLittleBusiness\Assets\ExitIcon.png" />
+    <Resource Include="Projects\MyLittleBusiness\Assets\Gpay_Logo.png" />
+    <Resource Include="Projects\MyLittleBusiness\Assets\HomeIcon.png" />
+    <Resource Include="Projects\MyLittleBusiness\Assets\Info_icon.svg.png" />
+    <Resource Include="Projects\MyLittleBusiness\Assets\InvoiceIcon.png" />
+    <Resource Include="Projects\MyLittleBusiness\Assets\isracard.gif" />
+    <Resource Include="Projects\MyLittleBusiness\Assets\mastercard.gif" />
+    <Resource Include="Projects\MyLittleBusiness\Assets\PCI DSS.png" />
+    <Resource Include="Projects\MyLittleBusiness\Assets\pciLogo.png" />
+    <Resource Include="Projects\MyLittleBusiness\Assets\PurpleLogoSmall.png" />
+    <Resource Include="Projects\MyLittleBusiness\Assets\RefundIcon.png" />
+    <Resource Include="Projects\MyLittleBusiness\Assets\SendIcon.png" />
+    <Resource Include="Projects\MyLittleBusiness\Assets\SettingsIcon.png" />
+    <Resource Include="Projects\MyLittleBusiness\Assets\ShowIcon.png" />
+    <Resource Include="Projects\MyLittleBusiness\Assets\visa.gif" />
     <Resource Include="Projects\Snake\Assets\apple.png" />
     <Resource Include="Projects\Snake\Assets\background.png" />
     <Resource Include="Projects\Snake\Assets\body.png" />
@@ -100,6 +155,10 @@
     <Resource Include="Projects\Snake\Assets\snake_head_left.png" />
     <Resource Include="Projects\Snake\Assets\snake_head_right.png" />
     <Resource Include="Projects\Snake\Assets\snake_head_up.png" />
+    <Resource Include="Resources\CalendarResources\ButtonStyleResource.xaml" />
+    <Resource Include="Resources\GameCenterResources\GridResource.xaml" />
+    <Resource Include="Resources\GameCenterResources\IconsResource.xaml" />
+    <Resource Include="Resources\GameCenterResources\TitleLabelResource.xaml" />
   </ItemGroup>
 
 </Project>

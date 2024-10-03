@@ -6,7 +6,11 @@
       xmlns:local="clr-namespace:FinalProjectWPF"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="🎮 Moshe Game Center">
+      Title="🎮 Moshe Game Center"
+      MouseLeftButtonDown="UserViewbox_MouseLeftButtonUp">
+    <Page.Background>
+        <ImageBrush/>
+    </Page.Background>
 
     <Grid x:Name="AppGrid" Style="{StaticResource AppGrid}">
         <Grid.ColumnDefinitions>
@@ -21,15 +25,23 @@
             <RowDefinition Height="0.3*" />
         </Grid.RowDefinitions>
 
+        <MediaElement Name="GifBackground"
+                      Source="Assets\GameCenterBackground.mp4"
+                      LoadedBehavior="Play"
+                      UnloadedBehavior="Stop"
+                      MediaEnded="BackgroundMedia_MediaEnded"
+                      Stretch="Fill"
+                      IsHitTestVisible="False"
+                      Grid.ColumnSpan="3" Grid.RowSpan="4"/>
 
         <Viewbox VerticalAlignment="Center" Grid.Column="1" Grid.Row="0">
             <WrapPanel >
-                <Label x:Name="TitleLabel" Content="Play Center" Style="{StaticResource TitleLabelStyle}" />
+                <Label x:Name="TitleLabel" Content="App Center" Style="{StaticResource TitleLabelStyle}" />
             </WrapPanel>
         </Viewbox>
         <Viewbox HorizontalAlignment="Center" Margin="0 15" Grid.Column="1" Grid.Row="1">
             <WrapPanel >
-                <TextBlock Text="Welcome to play center!" Foreground="#FFCEC9C9" FontSize="30" Width="340"/>
+                <TextBlock Text="Welcome to App center!" Foreground="#FFCEC9C9" FontSize="30" Width="340"/>
             </WrapPanel>
 
         </Viewbox>
@@ -39,45 +51,47 @@
                 <TextBlock x:Name="ClockDate" Text="" FontSize="20" Foreground="#FFB5B36A" FontFamily="Segoe UI Black" Width="118" />
             </StackPanel>
         </Viewbox>
+
         <Viewbox x:Name="UserPanel" VerticalAlignment="Top" Grid.Column="0" Margin="11,9,84,0" Grid.RowSpan="2">
-            <WrapPanel x:Name="TestColor" HorizontalAlignment="Left" Width="350">
-                <Image Cursor="Hand" ToolTip="{Binding FullName}" Source="/Assets/UserPanel.png" Height="99" Width="64" MouseEnter="Image_MouseEnter" MouseLeave="Image_MouseLeave" MouseLeftButtonUp="Image_MouseLeftButtonUp" />
-                <TextBox x:Name="EditUserInput" Visibility="Hidden" Width="0" Margin="0" FontSize="20"/>
+            <WrapPanel HorizontalAlignment="Left" Width="350">
+                <Image Cursor="Hand" ToolTip="{Binding FullName}" Source="/Assets/3177440.png" Height="99" Width="64" MouseEnter="Image_MouseEnter" MouseLeave="Image_MouseLeave" MouseLeftButtonUp="Image_MouseLeftButtonUp" />
+                <TextBox x:Name="EditUserInput" Visibility="Hidden" Width="0" Margin="0" FontSize="20" Style="{StaticResource TextBoxFilterBar}"/>
                 <Image x:Name="SaveNewName" Visibility="Hidden" Cursor="Hand" ToolTip="Save" Source="/Assets/saveIcon.png" Height="0" Width="0" MouseEnter="Image_MouseEnter" MouseLeave="Image_MouseLeave" MouseLeftButtonUp="EditUserName" />
                 <Label x:Name="UserName" Content="{Binding FullName}" Style="{StaticResource TitleLabelStyle}" Margin="0,15,0,0"/>
-                <!--<Label x:Name="Subtitle" Content="" Visibility="Hidden" Width="0" Height="0" Style="{StaticResource TitleLabelStyle}" Margin="0,15,0,0"/>-->
+                <Label x:Name="Subtitle" Content="" Visibility="Hidden" Width="0" Height="0" Style="{StaticResource TitleLabelStyle}" Margin="0,15,0,0"/>
 
                 <Viewbox x:Name="UserOptions" VerticalAlignment="Center" Grid.Column="0" Grid.Row="1" Visibility="Hidden">
                     <WrapPanel HorizontalAlignment="Left" Width="350">
                         <Image x:Name="EditUserButton" Cursor="Hand" ToolTip="Edit User Name" Source="/Assets/editIcon.png" Margin="10,0,0,0" Height="80" Width="50" MouseEnter="Image_MouseEnter" MouseLeave="Image_MouseLeave" MouseLeftButtonUp="EditName_MouseLeftButtonUp"/>
                         <Image x:Name="SwitchUserButton" Cursor="Hand" ToolTip="Switch User" Source="/Assets/switchIcon.png" Margin="10,0,0,0" Height="80" Width="50" MouseEnter="Image_MouseEnter" MouseLeave="Image_MouseLeave" MouseLeftButtonUp="SwitchUser_MouseLeftButtonUp"/>
                         <Image x:Name="AddUserButton" Cursor="Hand" ToolTip="Add User" Source="/Assets/addIcon.png" Margin="10,0,0,0" Height="80" Width="50" MouseEnter="Image_MouseEnter" MouseLeave="Image_MouseLeave" MouseLeftButtonUp="NewUserPanel_MouseLeftButtonUp"/>
-                        <ComboBox x:Name="SelectionList" Width="0" Height="0" Visibility="Hidden" SelectionChanged="SelectedUser"/>
-                        <TextBox x:Name="NewUserInput" Visibility="Hidden" Width="0" Margin="0" FontSize="20"/>
+                        <ComboBox x:Name="SelectionList" Width="0" Height="0" Visibility="Hidden" SelectionChanged="SelectedUser" Style="{StaticResource ComboBoxStyle}"/>
+                        <TextBox x:Name="NewUserInput" Visibility="Hidden" Width="0" Margin="0" FontSize="20" Style="{StaticResource TextBoxFilterBar}"/>
                         <Image x:Name="CreateUserButton" Cursor="Hand" Visibility="Hidden" ToolTip="Create User" Source="/Assets/addIcon.png" Margin="10,0,0,0" Height="0" Width="0" MouseEnter="Image_MouseEnter" MouseLeave="Image_MouseLeave" MouseLeftButtonUp="CreatUser_MouseLeftButtonUp"/>
                     </WrapPanel>
                 </Viewbox>
             </WrapPanel>
         </Viewbox>
+
         <Viewbox Grid.Row="2" Grid.Column="1">
             <WrapPanel Width="700" Height="500">
-                <Border CornerRadius="50" Background="{StaticResource IconsBackground}" BorderThickness="20" Height="220" Width="220" Margin="1 0" MouseEnter="Border_MouseEnter" MouseLeave="Border_MouseLeave" MouseLeftButtonUp="SnakeGame_Click">
-                    <Image Cursor="Hand"  ToolTip="Snake" Source="/Assets/Snake.png" Style="{StaticResource GamesIcons}"  Height="150"/>
+                <Border CornerRadius="50" Background="{StaticResource IconsBackground}" BorderThickness="20" Height="220" Width="220" Margin="1 0" MouseEnter="Border_MouseEnter" MouseLeave="Border_MouseLeave" MouseLeftButtonUp="SnakeApp_Click" ToolTip="Snake Game">
+                    <Image Cursor="Hand"  ToolTip="Snake Game" Source="\Assets\SnakeIcon.png" Style="{StaticResource GamesIcons}"  Height="150"/>
                 </Border>
-                <Border CornerRadius="50" Background="{StaticResource IconsBackground}" BorderThickness="20" Height="220" Width="220" Margin="1 0" MouseEnter="Border_MouseEnter" MouseLeave="Border_MouseLeave" MouseLeftButtonUp="CatchTheEgg_Click">
-                    <Image Cursor="Hand"  ToolTip="Catch The Egg" Source="/Assets/Basket.png" Style="{StaticResource GamesIcons}"  Height="150" RenderTransformOrigin="0.564,0.5"/>
+                <Border CornerRadius="50" Background="{StaticResource IconsBackground}" BorderThickness="20" Height="220" Width="220" Margin="1 0" MouseEnter="Border_MouseEnter" MouseLeave="Border_MouseLeave" MouseLeftButtonUp="CatchTheEggApp_Click" ToolTip="Catch The Egg Game">
+                    <Image Cursor="Hand"  ToolTip="Catch The Egg Game" Source="\Assets\CatchTheEggIcon.png" Style="{StaticResource GamesIcons}"  Height="150"/>
                 </Border>
-                <Border CornerRadius="50" Background="#FF7C7373" BorderThickness="20" Height="220" Width="220" Margin="1 0" MouseEnter="Border_MouseEnter" MouseLeave="Border_MouseLeave">
-                    <Image Cursor="Hand"  ToolTip="BattleShip" Source="/Assets/BattleShip.png" Style="{StaticResource GamesIcons}"  Height="150"/>
+                <Border CornerRadius="50" Background="{StaticResource IconsBackground}" BorderThickness="20" Height="220" Width="220" Margin="1 0" MouseEnter="Border_MouseEnter" MouseLeave="Border_MouseLeave" MouseLeftButtonUp="CalenderApp_Click" ToolTip="Calender App">
+                    <Image Cursor="Hand"  ToolTip="Calender App" Source="\Assets\CalenderIcon.png" Style="{StaticResource GamesIcons}"  Height="150"/>
                 </Border>
-                <Border CornerRadius="50" Background="{StaticResource IconsBackground}" BorderThickness="20" Height="220" Width="220" Margin="1 0" MouseLeave="Border_MouseLeave" MouseEnter="Border_MouseEnter">
-                    <Image Cursor="Hand"  ToolTip="Tic Tac Toe" Source="/Assets/tictactoe.png" Style="{StaticResource GamesIcons}"  Height="150"/>
+                <Border CornerRadius="50" Background="{StaticResource IconsBackground}" BorderThickness="20" Height="220" Width="220" Margin="1 0" MouseLeave="Border_MouseLeave" MouseEnter="Border_MouseEnter" MouseLeftButtonUp="DontDTMillionApp_Click" ToolTip="Dont Drop The Million Game">
+                    <Image Cursor="Hand"  ToolTip="Dont Drop The Million Game" Source="\Assets\DropTheMillionIcon.png" Style="{StaticResource GamesIcons}" Height="150"/>
                 </Border>
-                <Border CornerRadius="50"  Background="{StaticResource IconsBackground}" BorderThickness="20" Height="220" Width="220" Margin="1 0" MouseEnter="Border_MouseEnter" MouseLeave="Border_MouseLeave">
-                    <Image Cursor="Hand"  ToolTip="Calculator" Source="/Assets/ergerg.png" Style="{StaticResource GamesIcons}"  Height="150"/>
+                <Border CornerRadius="50"  Background="{StaticResource IconsBackground}" BorderThickness="20" Height="220" Width="220" Margin="1 0" MouseEnter="Border_MouseEnter" MouseLeave="Border_MouseLeave" MouseLeftButtonUp="LittleBusinessApp_Click" ToolTip="My Little Business App">
+                    <Image Cursor="Hand"  ToolTip="My Little Business App" Source="\Assets\MylittleBusinessIcon.png" Style="{StaticResource GamesIcons}"  Height="150"/>
                 </Border>
-                <Border CornerRadius="50"  Background="{StaticResource IconsBackground}" BorderThickness="20" Height="220" Width="220" Margin="1 0" MouseEnter="Border_MouseEnter" MouseLeave="Border_MouseLeave">
-                    <Image Cursor="Hand"  ToolTip="Calculator" Source="/Assets/ergerg.png" Style="{StaticResource GamesIcons}"  Height="150"/>
+                <Border CornerRadius="50"  Background="{StaticResource IconsBackground}" BorderThickness="20" Height="220" Width="220" Margin="1 0" MouseEnter="Border_MouseEnter" MouseLeave="Border_MouseLeave" MouseLeftButtonUp="TicTacTowApp_Click"  ToolTip="Tic Tac Toe Game">
+                    <Image Cursor="Hand"  ToolTip="Tic Tac Toe Game" Source="\Assets\TicTacToeIcon.png" Style="{StaticResource GamesIcons}"  Height="150"/>
                 </Border>
             </WrapPanel>
         </Viewbox>
@@ -85,13 +99,13 @@
         <Viewbox Grid.Row="3" Grid.Column="1">
             <WrapPanel Width="575" Height="285">
                 <Border CornerRadius="50" Background="{StaticResource IconsBackground}" BorderThickness="10" Height="180">
-                    <Image ToolTip="C#" Source="/Assets/csharp.png" Style="{StaticResource FooterIcons}" Width="100" Height="100" />
+                    <Image ToolTip=".NET" Source="/Assets/dotnet.png" Style="{StaticResource FooterIcons}" Width="100" Height="100" />
+                </Border>
+                <Border CornerRadius="50"  Background="{StaticResource IconsBackground}" BorderThickness="10" Height="180">
+                    <Image ToolTip="C#" Source="/Assets/csharp.png" Style="{StaticResource FooterIcons}" Width="100" Height="100"/>
                 </Border>
                 <Border CornerRadius="50"  Background="{StaticResource IconsBackground}" BorderThickness="10" Height="180">
                     <Image ToolTip="WPF" Source="/Assets/wpf.png" Style="{StaticResource FooterIcons}" Width="100" Height="100"/>
-                </Border>
-                <Border CornerRadius="50"  Background="{StaticResource IconsBackground}" BorderThickness="10" Height="180">
-                    <Image ToolTip=".NET" Source="/Assets/dotnet.png" Style="{StaticResource FooterIcons}" Width="100" Height="100"/>
                 </Border>
             </WrapPanel>
         </Viewbox>

@@ -6,9 +6,33 @@
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="Resources/GridResource.xaml"/>
-                <ResourceDictionary Source="Resources/IconsResource.xaml"/>
-                <ResourceDictionary Source="Resources/TitleLabelResource.xaml"/>
+                <!--Game Center-->
+                <ResourceDictionary Source="/Resources/GameCenterResources/GridResource.xaml"/>
+                <ResourceDictionary Source="/Resources/GameCenterResources/IconsResource.xaml"/>
+                <ResourceDictionary Source="/Resources/GameCenterResources/TitleLabelResource.xaml"/>
+                <!--Calender-->
+                <ResourceDictionary Source="/Resources/CalendarResources/ButtonStyleResource.xaml"/>
+                <!--My Little Business-->
+                <ResourceDictionary Source="/Resources/BusinessResources/ButtonResource.xaml"/>
+                <ResourceDictionary Source="/Resources/BusinessResources/ButtonIconResource.xaml"/>
+                <ResourceDictionary Source="/Resources/BusinessResources/TopButtonResource.xaml"/>
+                <ResourceDictionary Source="/Resources/BusinessResources/SearchBarResource.xaml"/>
+                <ResourceDictionary Source="/Resources/BusinessResources/WideButtonResource.xaml"/>
+                <ResourceDictionary Source="/Resources/BusinessResources/TabButtonResource.xaml"/>
+                <ResourceDictionary Source="/Resources/BusinessResources/FilterBarResource.xaml"/>
+                <ResourceDictionary Source="/Resources/BusinessResources/MerchentImageResource.xaml"/>
+                <ResourceDictionary Source="/Resources/BusinessResources/DataGridRowResource.xaml"/>
+                <ResourceDictionary Source="/Resources/BusinessResources/DataGridColumnHeaderResource.xaml"/>
+                <ResourceDictionary Source="/Resources/BusinessResources/DataGridCellResource.xaml"/>
+                <ResourceDictionary Source="/Resources/BusinessResources/DataGridResource.xaml"/>
+                <ResourceDictionary Source="/Resources/BusinessResources/GridShowButtonResource.xaml"/>
+                <ResourceDictionary Source="/Resources/BusinessResources/GridDownloadButtonResource.xaml"/>
+                <ResourceDictionary Source="/Resources/BusinessResources/GridButtonIconResource.xaml"/>
+                <ResourceDictionary Source="/Resources/BusinessResources/HiddenStyleResource.xaml"/>
+                <ResourceDictionary Source="/Resources/BusinessResources/VisibleStyleResource.xaml"/>
+                <ResourceDictionary Source="/Resources/BusinessResources/TextBlockStyleResource.xaml"/>
+                <ResourceDictionary Source="/Resources/BusinessResources/ComboBoxStyleResource.xaml"/>
+
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

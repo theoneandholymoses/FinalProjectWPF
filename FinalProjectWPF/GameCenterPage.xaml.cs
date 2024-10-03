@@ -1,6 +1,10 @@
 ﻿using FinalProjectWPF.FileManagment;
 using FinalProjectWPF.Projects.CatchTheEgg;
+using FinalProjectWPF.Projects.DontDropTheMillion;
+using FinalProjectWPF.Projects.MyCalendar;
+using FinalProjectWPF.Projects.MyLittleBusiness;
 using FinalProjectWPF.Projects.Snake;
+using FinalProjectWPF.Projects.TicTacToe;
 using FinalProjectWPF.UserManagment;
 using System;
 using System.Collections.Generic;
@@ -28,10 +32,9 @@ namespace FinalProjectWPF
         public event PropertyChangedEventHandler? PropertyChanged;
         FileManager fm = ((App)Application.Current).fmGlobal;
         int LoggedInUser = ((App)Application.Current).LoggedInUserID;
-
         public GameCenterPage()
         {
-            User CurrentUser;
+            User CurrentUser = null;
             DateTime date = new DateTime(2024, 1, 1);
             if (fm.CheckLastLoginUser().LastLogin > date)
             {
@@ -41,11 +44,11 @@ namespace FinalProjectWPF
             }
             else
             {
-                
                 Random random = new Random();
                 int randomNumber = random.Next(1000, 10000);
                 CurrentUser = fm.CreateNewUser("player" + randomNumber.ToString());
             }
+
             InitializeComponent();
             DataContext = CurrentUser;
             DispatcherTimer LiveTime = new DispatcherTimer();
@@ -54,11 +57,19 @@ namespace FinalProjectWPF
             LiveTime.Start();
         }
 
+        private void BackgroundMedia_MediaEnded(object sender, RoutedEventArgs e)
+        {
+            // Restart the media when it ends
+            GifBackground.Position = TimeSpan.Zero;
+            GifBackground.Play();
+        }
+
         void timer_Tick(object sender, EventArgs e)
         {
             ClockText.Text = DateTime.Now.ToString("HH:mm:ss");
             ClockDate.Text = DateTime.Now.ToString("d");
         }
+
 
         private void Image_MouseEnter(object sender, MouseEventArgs e)
         {
@@ -72,6 +83,7 @@ namespace FinalProjectWPF
             (sender as Image)!.Opacity = 1;
         }
 
+
         private void Image_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             if (UserOptions.Visibility == Visibility.Visible)
@@ -84,16 +96,18 @@ namespace FinalProjectWPF
             }
         }
 
-
         private void Border_MouseEnter(object sender, MouseEventArgs e)
         {
             (sender as Border).BorderBrush = Brushes.AliceBlue;
+
+
         }
 
         private void Border_MouseLeave(object sender, MouseEventArgs e)
         {
             (sender as Border).BorderBrush = Brushes.Transparent;
         }
+
 
         private void CloseMenu()
         {
@@ -167,23 +181,20 @@ namespace FinalProjectWPF
                 if (IsClickInUserPanelArea(clickPosition))
                 {
                     return;
-                    //TestColor.Background = Brushes.Red;
                 }
                 else
                 {
                     CloseMenu();
-                    //TestColor.Background = Brushes.Transparent;
                 }
             }
             else return;
         }
 
-        public void SnakeGame_Click(object sender, EventArgs e)
+        private void SnakeApp_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new SnakeHomePage());
+            NavigationService.Navigate(new SnakePreviewPage());
         }
-
-        private void CatchTheEgg_Click(object sender, RoutedEventArgs e)
+        private void CatchTheEggApp_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new CatchTheEggPreviewPage());
         }
@@ -201,6 +212,7 @@ namespace FinalProjectWPF
             //Subtitle.Height = 30;
             //Subtitle.Content = "Select another user:";
             SelectionList.Visibility = Visibility.Visible;
+            SelectionList.Height = 40;
 
             DateTime date = new DateTime(2024, 1, 1);
 
@@ -237,6 +249,7 @@ namespace FinalProjectWPF
             fm.LoginUser(CurrentUser.ID);
             CloseMenu();
         }
+
         private void NewUserPanel_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             EditUserButton.Visibility = Visibility.Hidden;
@@ -256,6 +269,7 @@ namespace FinalProjectWPF
             CreateUserButton.Width = 50;
             CreateUserButton.Height = 70;
         }
+
         private void CreatUser_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             User CurrentUser = fm.CheckLastLoginUser();
@@ -264,6 +278,7 @@ namespace FinalProjectWPF
             DataContext = fm.LoginUser(CreateNewUser(newUserName).ID);
             CloseMenu();
         }
+
 
         private User CreateNewUser(string name)
         {
@@ -283,6 +298,7 @@ namespace FinalProjectWPF
             User CurrentUser = fm.CheckLastLoginUser();
             return CurrentUser;
         }
+
         private void EditName_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             EditUserButton.Visibility = Visibility.Hidden;
@@ -304,6 +320,33 @@ namespace FinalProjectWPF
             DataContext = fm.UpdateUser(CurrentUser.ID, EditUserInput.Text);
             CloseMenu();
         }
+
+        private void CatchTheEggApp_Click(object sender, MouseButtonEventArgs e)
+        {
+            NavigationService.Navigate(new CatchTheEggPreviewPage());
+        }
+
+        private void SnakeApp_Click(object sender, MouseButtonEventArgs e)
+        {
+            NavigationService.Navigate(new SnakePreviewPage());
+        }
+        private void CalenderApp_Click(object sender, MouseButtonEventArgs e)
+        {
+            NavigationService.Navigate(new CalendarPreviewPage());
+        }
+        private void DontDTMillionApp_Click(object sender, MouseButtonEventArgs e)
+        {
+            NavigationService.Navigate(new DontDropTheMillionPreviewPage());
+        }
+        private void LittleBusinessApp_Click(object sender, MouseButtonEventArgs e)
+        {
+            NavigationService.Navigate(new MyLittleBusinessPreviewPage());
+        }
+        private void TicTacTowApp_Click(object sender, MouseButtonEventArgs e)
+        {
+            NavigationService.Navigate(new TicTacToePreviewPage());
+        }
+
         
     }
 }
