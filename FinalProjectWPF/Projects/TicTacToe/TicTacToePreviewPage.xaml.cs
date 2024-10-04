@@ -25,14 +25,23 @@ namespace FinalProjectWPF.Projects.TicTacToe
         {
             InitializeComponent();
         }
-
+        private void BackgroundMedia_MediaEnded(object sender, RoutedEventArgs e)
+        {
+            GifBackground.Position = TimeSpan.Zero;
+            GifBackground.Play();
+        }
         private void GoBack_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.GoBack();
         }
-        private void MoveToProject_Click(object sender, RoutedEventArgs e)
+
+        private void OpenApp_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new TicTacToe());
+        }
+        private void Button_ClickGameInfo(object sender, RoutedEventArgs e)
+        {
+            PopUpWindow.IsOpen = true;
         }
     }
 }

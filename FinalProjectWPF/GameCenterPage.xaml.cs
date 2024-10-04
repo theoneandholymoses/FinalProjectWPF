@@ -29,11 +29,16 @@ namespace FinalProjectWPF
 {
     public partial class GameCenterPage : Page
     {
+        // modify
         public event PropertyChangedEventHandler? PropertyChanged;
         FileManager fm = ((App)Application.Current).fmGlobal;
         int LoggedInUser = ((App)Application.Current).LoggedInUserID;
+
+        // modify
         public GameCenterPage()
         {
+            var app = (App)Application.Current;
+            app.PropertyChanged += App_PropertyChanged;
             User CurrentUser = null;
             DateTime date = new DateTime(2024, 1, 1);
             if (fm.CheckLastLoginUser().LastLogin > date)
@@ -57,6 +62,20 @@ namespace FinalProjectWPF
             LiveTime.Start();
         }
 
+
+        // modify 
+        private void App_PropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            if (e.PropertyName == nameof(App.LastGameScore))
+            {
+                var app = (App)Application.Current;
+                var lastGameScore = app.LastGameScore;
+
+                // Handle the score change (e.g., update UI)
+                // (lastscore, gameType) / currentplayer / FileManager
+                fm.AddNewHighScore(LoggedInUser, lastGameScore.Item2,lastGameScore.Item1);
+            }
+        }
         private void BackgroundMedia_MediaEnded(object sender, RoutedEventArgs e)
         {
             // Restart the media when it ends
@@ -99,13 +118,13 @@ namespace FinalProjectWPF
         private void Border_MouseEnter(object sender, MouseEventArgs e)
         {
             (sender as Border).BorderBrush = Brushes.AliceBlue;
-
-
+            (sender as Border).Opacity = 0.95;
         }
 
         private void Border_MouseLeave(object sender, MouseEventArgs e)
         {
             (sender as Border).BorderBrush = Brushes.Transparent;
+            (sender as Border).Opacity = 0.65;
         }
 
 

@@ -26,7 +26,7 @@ namespace DontDropTheMillion
                 var content = await response.Content.ReadAsStringAsync();
                 var triviaResponse = JsonSerializer.Deserialize<TriviaApiResponse>(content);
 
-                if (triviaResponse.ResponseCode != 0)
+                if (triviaResponse != null && triviaResponse.ResponseCode != 0)
                 {
                     throw new Exception($"Trivia API error: Response code {triviaResponse.ResponseCode}");
                 }

@@ -1,4 +1,5 @@
-﻿using FinalProjectWPF.Projects.Snake.Models;
+﻿using FinalProjectWPF.Enums;
+using FinalProjectWPF.Projects.Snake.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,7 +24,6 @@ namespace FinalProjectWPF.Projects.Snake
     /// </summary>
     public partial class SnakeGame : Page
     {
-
         private Game game;
         private DispatcherTimer gameTimer;
         private const int GridSize = 20;
@@ -61,6 +61,7 @@ namespace FinalProjectWPF.Projects.Snake
             }
         }
 
+        // modify
         private void GameTimer_Tick(object sender, EventArgs e)
         {
             game.Update();
@@ -68,6 +69,7 @@ namespace FinalProjectWPF.Projects.Snake
             if (game.GameOver)
             {
                 gameTimer.Stop();
+                ((App)Application.Current).LastGameScore = (int.Parse(ScoreText.Content.ToString()), GameType.Snake);
                 GameOverOverlay.Visibility = Visibility.Visible;
             }
         }
@@ -103,7 +105,7 @@ namespace FinalProjectWPF.Projects.Snake
                     ((GridCell)GameGrid.Children[index]).SetState(game.GetCellState(col, row), game.snake.direction);
                 }
             }
-            ScoreText.Text = game.Score.ToString();
+            ScoreText.Content = game.Score.ToString();
             GameGrid.Focus();
         }
 

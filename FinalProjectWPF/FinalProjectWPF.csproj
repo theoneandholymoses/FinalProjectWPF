@@ -20,6 +20,7 @@
     <None Remove="Assets\editIcon.png" />
     <None Remove="Assets\GameCenterBackground.mp4" />
     <None Remove="Assets\GameCenterIcon.ico" />
+    <None Remove="Assets\InfoIcon.png" />
     <None Remove="Assets\MyLittleBusinessIcon.png" />
     <None Remove="Assets\saveIcon.png" />
     <None Remove="Assets\SnakeIcon.png" />
@@ -41,6 +42,7 @@
     <None Remove="Projects\CatchTheEgg\Assets\heartsImg\3.0.png" />
     <None Remove="Projects\CatchTheEgg\Assets\MultiplePointsEgg.png" />
     <None Remove="Projects\CatchTheEgg\Assets\Poop.png" />
+    <None Remove="Projects\CatchTheEgg\Assets\TempCTEbackground.mp4" />
     <None Remove="Projects\MyLittleBusiness\Assets\AddLineIcon.png" />
     <None Remove="Projects\MyLittleBusiness\Assets\american_express.gif" />
     <None Remove="Projects\MyLittleBusiness\Assets\APPLEpay.gif" />
@@ -70,6 +72,7 @@
     <None Remove="Projects\Snake\Assets\apple.png" />
     <None Remove="Projects\Snake\Assets\background.png" />
     <None Remove="Projects\Snake\Assets\body.png" />
+    <None Remove="Projects\Snake\Assets\ExitIcon.png" />
     <None Remove="Projects\Snake\Assets\snake_head_down.png" />
     <None Remove="Projects\Snake\Assets\snake_head_left.png" />
     <None Remove="Projects\Snake\Assets\snake_head_right.png" />
@@ -99,8 +102,11 @@
     <Resource Include="Assets\dotnet.png" />
     <Resource Include="Assets\DropTheMillionIcon.png" />
     <Resource Include="Assets\editIcon.png" />
-    <Resource Include="Assets\GameCenterBackground.mp4" />
+    <Content Include="Assets\GameCenterBackground.mp4">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Resource Include="Assets\GameCenterIcon.ico" />
+    <Resource Include="Assets\InfoIcon.png" />
     <Resource Include="Assets\MyLittleBusinessIcon.png" />
     <Resource Include="Assets\saveIcon.png" />
     <Resource Include="Assets\SnakeIcon.png" />
@@ -122,6 +128,7 @@
     <Resource Include="Projects\CatchTheEgg\Assets\heartsImg\3.0.png" />
     <Resource Include="Projects\CatchTheEgg\Assets\MultiplePointsEgg.png" />
     <Resource Include="Projects\CatchTheEgg\Assets\Poop.png" />
+    <Resource Include="Projects\CatchTheEgg\Assets\TempCTEbackground.mp4" />
     <Resource Include="Projects\MyLittleBusiness\Assets\AddLineIcon.png" />
     <Resource Include="Projects\MyLittleBusiness\Assets\american_express.gif" />
     <Resource Include="Projects\MyLittleBusiness\Assets\APPLEpay.gif" />
@@ -151,6 +158,7 @@
     <Resource Include="Projects\Snake\Assets\apple.png" />
     <Resource Include="Projects\Snake\Assets\background.png" />
     <Resource Include="Projects\Snake\Assets\body.png" />
+    <Resource Include="Projects\Snake\Assets\ExitIcon.png" />
     <Resource Include="Projects\Snake\Assets\snake_head_down.png" />
     <Resource Include="Projects\Snake\Assets\snake_head_left.png" />
     <Resource Include="Projects\Snake\Assets\snake_head_right.png" />

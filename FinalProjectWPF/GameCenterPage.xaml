@@ -28,7 +28,7 @@
         <MediaElement Name="GifBackground"
                       Source="Assets\GameCenterBackground.mp4"
                       LoadedBehavior="Play"
-                      UnloadedBehavior="Stop"
+                      UnloadedBehavior="Manual"
                       MediaEnded="BackgroundMedia_MediaEnded"
                       Stretch="Fill"
                       IsHitTestVisible="False"
@@ -75,22 +75,22 @@
 
         <Viewbox Grid.Row="2" Grid.Column="1">
             <WrapPanel Width="700" Height="500">
-                <Border CornerRadius="50" Background="{StaticResource IconsBackground}" BorderThickness="20" Height="220" Width="220" Margin="1 0" MouseEnter="Border_MouseEnter" MouseLeave="Border_MouseLeave" MouseLeftButtonUp="SnakeApp_Click" ToolTip="Snake Game">
+                <Border CornerRadius="50" Background="{StaticResource IconsBackground}" BorderThickness="10" Opacity="0.65" Height="200" Width="200" Margin="10 0" MouseEnter="Border_MouseEnter" MouseLeave="Border_MouseLeave" MouseLeftButtonUp="SnakeApp_Click" ToolTip="Snake Game">
                     <Image Cursor="Hand"  ToolTip="Snake Game" Source="\Assets\SnakeIcon.png" Style="{StaticResource GamesIcons}"  Height="150"/>
                 </Border>
-                <Border CornerRadius="50" Background="{StaticResource IconsBackground}" BorderThickness="20" Height="220" Width="220" Margin="1 0" MouseEnter="Border_MouseEnter" MouseLeave="Border_MouseLeave" MouseLeftButtonUp="CatchTheEggApp_Click" ToolTip="Catch The Egg Game">
+                <Border CornerRadius="50" Background="{StaticResource IconsBackground}" BorderThickness="10" Opacity="0.65" Height="200" Width="200" Margin="10 0" MouseEnter="Border_MouseEnter" MouseLeave="Border_MouseLeave" MouseLeftButtonUp="CatchTheEggApp_Click" ToolTip="Catch The Egg Game">
                     <Image Cursor="Hand"  ToolTip="Catch The Egg Game" Source="\Assets\CatchTheEggIcon.png" Style="{StaticResource GamesIcons}"  Height="150"/>
                 </Border>
-                <Border CornerRadius="50" Background="{StaticResource IconsBackground}" BorderThickness="20" Height="220" Width="220" Margin="1 0" MouseEnter="Border_MouseEnter" MouseLeave="Border_MouseLeave" MouseLeftButtonUp="CalenderApp_Click" ToolTip="Calender App">
+                <Border CornerRadius="50" Background="{StaticResource IconsBackground}" BorderThickness="10" Opacity="0.65" Height="200" Width="200" Margin="10 0" MouseEnter="Border_MouseEnter" MouseLeave="Border_MouseLeave" MouseLeftButtonUp="CalenderApp_Click" ToolTip="Calender App">
                     <Image Cursor="Hand"  ToolTip="Calender App" Source="\Assets\CalenderIcon.png" Style="{StaticResource GamesIcons}"  Height="150"/>
                 </Border>
-                <Border CornerRadius="50" Background="{StaticResource IconsBackground}" BorderThickness="20" Height="220" Width="220" Margin="1 0" MouseLeave="Border_MouseLeave" MouseEnter="Border_MouseEnter" MouseLeftButtonUp="DontDTMillionApp_Click" ToolTip="Dont Drop The Million Game">
+                <Border CornerRadius="50" Background="{StaticResource IconsBackground}" BorderThickness="10" Opacity="0.65" Height="200" Width="200" Margin="10 0" MouseLeave="Border_MouseLeave" MouseEnter="Border_MouseEnter" MouseLeftButtonUp="DontDTMillionApp_Click" ToolTip="Dont Drop The Million Game">
                     <Image Cursor="Hand"  ToolTip="Dont Drop The Million Game" Source="\Assets\DropTheMillionIcon.png" Style="{StaticResource GamesIcons}" Height="150"/>
                 </Border>
-                <Border CornerRadius="50"  Background="{StaticResource IconsBackground}" BorderThickness="20" Height="220" Width="220" Margin="1 0" MouseEnter="Border_MouseEnter" MouseLeave="Border_MouseLeave" MouseLeftButtonUp="LittleBusinessApp_Click" ToolTip="My Little Business App">
+                <Border CornerRadius="50"  Background="{StaticResource IconsBackground}" BorderThickness="10" Opacity="0.65" Height="200" Width="200" Margin="10 0" MouseEnter="Border_MouseEnter" MouseLeave="Border_MouseLeave" MouseLeftButtonUp="LittleBusinessApp_Click" ToolTip="My Little Business App">
                     <Image Cursor="Hand"  ToolTip="My Little Business App" Source="\Assets\MylittleBusinessIcon.png" Style="{StaticResource GamesIcons}"  Height="150"/>
                 </Border>
-                <Border CornerRadius="50"  Background="{StaticResource IconsBackground}" BorderThickness="20" Height="220" Width="220" Margin="1 0" MouseEnter="Border_MouseEnter" MouseLeave="Border_MouseLeave" MouseLeftButtonUp="TicTacTowApp_Click"  ToolTip="Tic Tac Toe Game">
+                <Border CornerRadius="50"  Background="{StaticResource IconsBackground}" BorderThickness="10" Opacity="0.65" Height="200" Width="200" Margin="10 0" MouseEnter="Border_MouseEnter" MouseLeave="Border_MouseLeave" ToolTip="Tic Tac Toe Game">
                     <Image Cursor="Hand"  ToolTip="Tic Tac Toe Game" Source="\Assets\TicTacToeIcon.png" Style="{StaticResource GamesIcons}"  Height="150"/>
                 </Border>
             </WrapPanel>
@@ -98,13 +98,13 @@
 
         <Viewbox Grid.Row="3" Grid.Column="1">
             <WrapPanel Width="575" Height="285">
-                <Border CornerRadius="50" Background="{StaticResource IconsBackground}" BorderThickness="10" Height="180">
+                <Border CornerRadius="50" Background="{StaticResource IconsBackground}" Opacity="0.65" BorderThickness="10" Height="180">
                     <Image ToolTip=".NET" Source="/Assets/dotnet.png" Style="{StaticResource FooterIcons}" Width="100" Height="100" />
                 </Border>
-                <Border CornerRadius="50"  Background="{StaticResource IconsBackground}" BorderThickness="10" Height="180">
+                <Border CornerRadius="50"  Background="{StaticResource IconsBackground}" Opacity="0.65" BorderThickness="10" Height="180">
                     <Image ToolTip="C#" Source="/Assets/csharp.png" Style="{StaticResource FooterIcons}" Width="100" Height="100"/>
                 </Border>
-                <Border CornerRadius="50"  Background="{StaticResource IconsBackground}" BorderThickness="10" Height="180">
+                <Border CornerRadius="50"  Background="{StaticResource IconsBackground}" Opacity="0.65" BorderThickness="10" Height="180">
                     <Image ToolTip="WPF" Source="/Assets/wpf.png" Style="{StaticResource FooterIcons}" Width="100" Height="100"/>
                 </Border>
             </WrapPanel>

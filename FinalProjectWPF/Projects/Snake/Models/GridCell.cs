@@ -22,8 +22,7 @@ namespace FinalProjectWPF.Projects.Snake.Models
         {
             border = new Border
             {
-                BorderBrush = Brushes.Gray,
-                BorderThickness = new Thickness(0.7)
+                BorderBrush = Brushes.Transparent,
             };
             image = new Image
             {
