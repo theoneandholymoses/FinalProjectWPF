@@ -43,6 +43,9 @@
     <None Remove="Projects\CatchTheEgg\Assets\MultiplePointsEgg.png" />
     <None Remove="Projects\CatchTheEgg\Assets\Poop.png" />
     <None Remove="Projects\CatchTheEgg\Assets\TempCTEbackground.mp4" />
+    <None Remove="Projects\DontDropTheMillion\Assets\Background.jpg" />
+    <None Remove="Projects\DontDropTheMillion\Assets\ExitIcon.png" />
+    <None Remove="Projects\DontDropTheMillion\Assets\QuestionBlock.png" />
     <None Remove="Projects\MyLittleBusiness\Assets\AddLineIcon.png" />
     <None Remove="Projects\MyLittleBusiness\Assets\american_express.gif" />
     <None Remove="Projects\MyLittleBusiness\Assets\APPLEpay.gif" />
@@ -90,7 +93,6 @@
     <Folder Include="Projects\MyCalendar\Assets\" />
     <Folder Include="Projects\TicTacToe\Assets\" />
     <Folder Include="Projects\TicTacToe\Models\" />
-    <Folder Include="Projects\DontDropTheMillion\Assets\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -129,6 +131,9 @@
     <Resource Include="Projects\CatchTheEgg\Assets\MultiplePointsEgg.png" />
     <Resource Include="Projects\CatchTheEgg\Assets\Poop.png" />
     <Resource Include="Projects\CatchTheEgg\Assets\TempCTEbackground.mp4" />
+    <Resource Include="Projects\DontDropTheMillion\Assets\Background.jpg" />
+    <Resource Include="Projects\DontDropTheMillion\Assets\ExitIcon.png" />
+    <Resource Include="Projects\DontDropTheMillion\Assets\QuestionBlock.png" />
     <Resource Include="Projects\MyLittleBusiness\Assets\AddLineIcon.png" />
     <Resource Include="Projects\MyLittleBusiness\Assets\american_express.gif" />
     <Resource Include="Projects\MyLittleBusiness\Assets\APPLEpay.gif" />

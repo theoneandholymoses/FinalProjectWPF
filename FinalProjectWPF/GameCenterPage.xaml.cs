@@ -361,7 +361,7 @@ namespace FinalProjectWPF
         {
             NavigationService.Navigate(new MyLittleBusinessPreviewPage());
         }
-        private void TicTacTowApp_Click(object sender, MouseButtonEventArgs e)
+        private void TicTacToeApp_Click(object sender, MouseButtonEventArgs e)
         {
             NavigationService.Navigate(new TicTacToePreviewPage());
         }

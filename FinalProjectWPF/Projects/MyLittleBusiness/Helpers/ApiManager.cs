@@ -25,7 +25,7 @@ namespace FinalProjectWPF.Projects.MyLittleBusiness.Helpers
 
         }
         // Method to cancel a deal
-        public string CancelDeal(int internalDealNumber, decimal? partialSum = null)
+        public async Task<string> CancelDeal(int internalDealNumber, decimal? partialSum = null)
         {
             string url;
             if (partialSum != null)

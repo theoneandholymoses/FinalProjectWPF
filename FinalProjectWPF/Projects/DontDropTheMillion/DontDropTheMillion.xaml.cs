@@ -126,48 +126,48 @@ namespace FinalProjectWPF.Projects.DontDropTheMillion
 
         private async Task HighlightCorrectAnswer()
         {
-            await Task.Delay(1000);
-            int CorrectIndex = 0;
-            for (int i = 0; i <= 3; i++)
-            {
-                if (_currentQuestion != null && _currentQuestion.AllAnswers[i] == _currentQuestion.CorrectAnswer)
-                {
-                    CorrectIndex = i;
-                }
-                else
-                {
-                    await Task.Delay(500);
-                    string recName = $"A{i}Rec";
-                    Rectangle? r = mainGrid.Children.OfType<Rectangle>().Where(r => r.Name == recName).FirstOrDefault();
-                    if (r != null)
-                    {
-                        r.Fill = new SolidColorBrush(Colors.Red);
-                    }
-                }
-            }
-            await Task.Delay(500);
-            switch (CorrectIndex)
-            {
-                case 0:
-                    A0Rec.Fill = new SolidColorBrush(Colors.LightGreen); 
-                    break;
-                case 1:
-                    A1Rec.Fill = new SolidColorBrush(Colors.LightGreen);
-                    break;
-                case 2:
-                    A2Rec.Fill = new SolidColorBrush(Colors.LightGreen);
-                    break;
-                case 3:
-                    A3Rec.Fill = new SolidColorBrush(Colors.LightGreen);
-                    break;
-            }
+            //await Task.Delay(1000);
+            //int CorrectIndex = 0;
+            //for (int i = 0; i <= 3; i++)
+            //{
+            //    if (_currentQuestion != null && _currentQuestion.AllAnswers[i] == _currentQuestion.CorrectAnswer)
+            //    {
+            //        CorrectIndex = i;
+            //    }
+            //    else
+            //    {
+            //        await Task.Delay(500);
+            //        string recName = $"A{i}Rec";
+            //        Rectangle? r = mainGrid.Children.OfType<Rectangle>().Where(r => r.Name == recName).FirstOrDefault();
+            //        if (r != null)
+            //        {
+            //            r.Fill = new SolidColorBrush(Colors.Red);
+            //        }
+            //    }
+            //}
+            //await Task.Delay(500);
+            //switch (CorrectIndex)
+            //{
+            //    case 0:
+            //        A0Rec.Fill = new SolidColorBrush(Colors.LightGreen); 
+            //        break;
+            //    case 1:
+            //        A1Rec.Fill = new SolidColorBrush(Colors.LightGreen);
+            //        break;
+            //    case 2:
+            //        A2Rec.Fill = new SolidColorBrush(Colors.LightGreen);
+            //        break;
+            //    case 3:
+            //        A3Rec.Fill = new SolidColorBrush(Colors.LightGreen);
+            //        break;
+            //}
 
-            await Task.Delay(2000); 
+                    //await Task.Delay(2000); 
 
-            A0Rec.Fill = new SolidColorBrush(Colors.Transparent);
-            A1Rec.Fill = new SolidColorBrush(Colors.Transparent);
-            A2Rec.Fill = new SolidColorBrush(Colors.Transparent);
-            A3Rec.Fill = new SolidColorBrush(Colors.Transparent);
+                    //A0Rec.Fill = new SolidColorBrush(Colors.Transparent);
+                    //A1Rec.Fill = new SolidColorBrush(Colors.Transparent);
+                    //A2Rec.Fill = new SolidColorBrush(Colors.Transparent);
+                    //A3Rec.Fill = new SolidColorBrush(Colors.Transparent);
 
         }
 
@@ -358,6 +358,10 @@ namespace FinalProjectWPF.Projects.DontDropTheMillion
         private async void SubmitAnswer(object sender, RoutedEventArgs e)
         {
             await SubmitAnswers();
+        }
+        private void GoBack_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.GoBack();
         }
     }
 }

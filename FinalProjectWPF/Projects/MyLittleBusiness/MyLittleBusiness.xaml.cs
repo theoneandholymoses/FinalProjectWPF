@@ -22,7 +22,11 @@ namespace FinalProjectWPF.Projects.MyLittleBusiness
         public MyLittleBusiness()
         {
             InitializeComponent();
+            UpdateCollection();
+        }
 
+        private void UpdateCollection()
+        {
             invoices = FM.GetAllInvoices();
             DocumentsData.ItemsSource = invoices;
 
@@ -34,7 +38,6 @@ namespace FinalProjectWPF.Projects.MyLittleBusiness
             customers = FM.GetAllCustomers();
             CustomersData.ItemsSource = customers;
             CustomerPopData.ItemsSource = customers;
-
         }
         private async Task SendInvoiceButton()
         {
@@ -216,9 +219,8 @@ namespace FinalProjectWPF.Projects.MyLittleBusiness
             }
 
             MessageBox.Show("successfully finish invoice send: " + responseValues["InvoiceID"]);
-            // update message for user 
-
-            // reset form 
+            UpdateCollection();
+            CleanAllForms();
         }
 
         public void CreateOrder()
@@ -1055,10 +1057,9 @@ namespace FinalProjectWPF.Projects.MyLittleBusiness
             await SendInvoiceButton();
         }
 
-        private async void Button_ClickDownloadInvoice(object sender, RoutedEventArgs e)
+        private async void DocDownButton_Click(object sender, RoutedEventArgs e)
         {
             Button clickedButton = sender as Button;
-
             // Extract the bound Invoice object from the Tag
             if (clickedButton != null && clickedButton.Tag is Invoice invoice)
             {
@@ -1068,7 +1069,6 @@ namespace FinalProjectWPF.Projects.MyLittleBusiness
 
                 // Call the download method and get the PDF as a byte array
                 byte[] pdfData = AM.DownloadDocumentPDF(invoiceNumber, invoiceType, true);
-
                 if (pdfData != null)
                 {
                     // Save the PDF file as a binary file
@@ -1080,6 +1080,136 @@ namespace FinalProjectWPF.Projects.MyLittleBusiness
                 else
                 {
                     MessageBox.Show("Failed to download the document.");
+                }
+            }
+        }
+        private async void DocSendEmailButton_Click(object sender, RoutedEventArgs e)
+        {
+            Button clickedButton = sender as Button;
+            // Extract the bound Invoice object from the Tag
+            if (clickedButton != null && clickedButton.Tag is Invoice invoice)
+            {
+                Customer thisC = FM.GetCustomerByInvoice(invoice);
+
+                // Access DocumentNumber and DocumentType
+                AM.SendInvoiceToEmail(invoice.InvoiceID, invoice.InvoiceType, thisC.Email);
+                MessageBox.Show("email was sent to customer");
+            }
+        }
+        private async void AddCustomerToInvoice_Click(object sender, RoutedEventArgs e)
+        {
+            Button clickedButton = sender as Button;
+            // Extract the bound Invoice object from the Tag
+            if (clickedButton != null && clickedButton.Tag is Customer customer)
+            {
+                if (chargeBUT.IsChecked == true)
+                {
+                    IcustomerName.Text = customer.FullName;
+                    IcustomerPhone.Text = customer.Phone;
+                    IcustomerEmail.Text = customer.Email;
+                }
+                else
+                {
+                    OcustomerName.Text = customer.FullName;
+                    OcustomerPhone.Text = customer.Phone;
+                    OcustomerEmail.Text = customer.Email;
+                }
+            }
+            PopUpWindow.IsOpen = false;
+
+        }
+
+        private void CreateNewItem_Click(object sender, RoutedEventArgs e)
+        {
+            Button clickedButton = sender as Button;
+        
+            int newID = FM.GetNextItemID();
+
+            FM.CreateItem(newID, NewItemDescription.Text,decimal.Parse(NewItemPrice.Text));
+            UpdateCollection();
+            PopUpWindow.IsOpen = false;
+            
+
+        }
+        private async void Button_ClickAddItemToInvoice(object sender, RoutedEventArgs e)
+        {
+            Button clickedButton = sender as Button;
+            char type;
+            if (chargeBUT.IsChecked == true)
+            {
+                type = 'I';
+            }
+            else
+            {
+                type = 'O';
+            }
+                if (clickedButton != null && clickedButton.Tag is Item item)
+            {
+                bool itemInserted = false;
+
+                Grid g = type == 'I' ? InvoiceItemLines : OrderItemLines;
+                // Iterate through each child grid inside InvoiceItemLines to find an empty line
+                foreach (UIElement child in g.Children)
+                {
+                    if (child is Grid lineGrid)
+                    {
+                        // Look for a specific TextBox (like IprodID) in the child grid
+                        TextBox prodDec = lineGrid.Children.OfType<TextBox>().FirstOrDefault(tb => tb.Name == $"{type}prodDescription");
+                        if (prodDec != null && string.IsNullOrWhiteSpace(prodDec.Text))
+                        {
+                            // If the product decroption TextBox is empty, insert the item here
+                            TextBox descriptionBox = lineGrid.Children.OfType<TextBox>().FirstOrDefault(tb => tb.Name == $"{type}prodDescription");
+                            TextBox IDBox = lineGrid.Children.OfType<TextBox>().FirstOrDefault(tb => tb.Name == $"{type}prodID");
+                            TextBox priceBox = lineGrid.Children.OfType<TextBox>().FirstOrDefault(tb => tb.Name == $"{type}prodPrice");
+                            IDBox.Text = item.ItemId.ToString();
+                            descriptionBox.Text = item.Name;
+                            priceBox.Text = item.Price.ToString();
+
+                            itemInserted = true;
+                            break;
+                        }
+                    }
+                }
+
+                // If no empty line was found, you can add a new line here or show a message
+                if (!itemInserted)
+                {
+                    MessageBox.Show("No empty line found, please add a new line.");
+                }
+
+                // Close the popup after the item is added
+                PopUpWindow.IsOpen = false;
+            }
+        }
+    
+
+        private async void DocRefundButton_Click(object sender, RoutedEventArgs e)
+        {
+            Button clickedButton = sender as Button;
+
+            // Extract the bound Invoice object from the Tag
+            if (clickedButton != null && clickedButton.Tag is Invoice invoice)
+            {
+                if (invoice.DealNumber != "" && invoice.IsRefunded != false)
+                {
+                    // Access DocumentNumber and DocumentType
+                    int DealNumber = int.Parse(invoice.DealNumber);
+                    string response = await AM.CancelDeal(DealNumber);
+                    if (response != null)
+                    {
+                        MessageBox.Show("invoice cancelled successfully" + invoice.InvoiceID);
+                        invoice.RefundInvoice();
+                        FM.UpdateExistingInvoice(invoice);
+                        UpdateCollection();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Failed");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("no Credit Card Deal was found to refund");
                 }
             }
         }

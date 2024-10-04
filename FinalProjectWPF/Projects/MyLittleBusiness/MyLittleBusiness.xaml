@@ -719,10 +719,10 @@
                                                     <!--<Button x:Name="DocShowButton" Visibility="Visible" Style="{StaticResource GridShowButton}" ToolTip="Show Document">
                                                     <Image Source="Assets\ShowIcon.png" Style="{StaticResource GridImageIcon}"/>
                                                 </Button>-->
-                                                    <Button x:Name="DocDownButton" Style="{StaticResource GridShowButton}" Margin="10 0 0 0" ToolTip="Download Document">
+                                                    <Button x:Name="DocDownButton" Tag="{Binding}" Style="{StaticResource GridShowButton}" Margin="10 0 0 0" ToolTip="Download Document" Click="DocDownButton_Click">
                                                         <Image Source="Assets\DownloadIcon.png" Style="{StaticResource GridImageIcon}"/>
                                                     </Button>
-                                                    <Button x:Name="DocRefundButton" Style="{StaticResource GridDownloadButton}" Margin="10 0 0 0" ToolTip="Refund Deal">
+                                                    <Button x:Name="DocRefundButton" Tag="{Binding}" Style="{StaticResource GridDownloadButton}" Margin="10 0 0 0" ToolTip="Refund Deal" Click="DocRefundButton_Click">
                                                         <Image Source="Assets\RefundIcon.png" Style="{StaticResource GridImageIcon}"/>
                                                     </Button>
                                                 </StackPanel>
@@ -734,13 +734,13 @@
                                         <DataGridTemplateColumn.CellTemplate>
                                             <DataTemplate>
                                                 <StackPanel Orientation="Horizontal">
-                                                    <Button x:Name="DocShowButton" Visibility="Visible" Style="{StaticResource GridShowButton}" ToolTip="Show Document">
+                                                    <Button x:Name="DocShowButton" Visibility="Hidden" Style="{StaticResource GridShowButton}" ToolTip="Show Document">
                                                         <Image Source="Assets\ShowIcon.png" Style="{StaticResource GridImageIcon}"/>
                                                     </Button>
-                                                    <Button x:Name="DocDownButton" Style="{StaticResource GridShowButton}" Margin="10 0 0 0" ToolTip="Download Document">
+                                                    <Button x:Name="DocDownButton" Tag="{Binding}" Style="{StaticResource GridShowButton}" Margin="10 0 0 0" ToolTip="Download Document" Click="DocDownButton_Click">
                                                         <Image Source="Assets\DownloadIcon.png" Style="{StaticResource GridImageIcon}"/>
                                                     </Button>
-                                                    <Button x:Name="DocSendButton" Style="{StaticResource GridShowButton}" Margin="10 0 0 0" ToolTip="Send To Mail">
+                                                    <Button x:Name="DocSendButton" Tag="{Binding}" Style="{StaticResource GridShowButton}" Margin="10 0 0 0" ToolTip="Send To Mail" Click="DocSendEmailButton_Click">
                                                         <Image Source="Assets\SendIcon.png" Style="{StaticResource GridImageIcon}"/>
                                                     </Button>
                                                 </StackPanel>
@@ -852,7 +852,7 @@
                                 <TextBlock Text="Price :" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10 5 5 5" FontSize="13" FontWeight="SemiBold" Style="{StaticResource TextBlockStyle}"/>
                                 <TextBox x:Name="NewItemPrice" Margin="10 5 5 5" Style="{StaticResource TextBoxFilterBar}"/>
                                 <Separator Height="1" Background="#dae2ea" Margin="0 3 0 10"/>
-                                <Button x:Name="CreateItemBUT" Content="Create Item" HorizontalAlignment="Center" IsEnabled="False" Style="{StaticResource WideButton}"/>
+                                <Button x:Name="CreateItemBUT" Content="Create Item" HorizontalAlignment="Center" IsEnabled="True" Style="{StaticResource WideButton}" Click="CreateNewItem_Click"/>
                             </StackPanel>
 
                             <!--Edit Item-->
@@ -884,7 +884,7 @@
                                                 <DataGridTemplateColumn.CellTemplate>
                                                     <DataTemplate>
                                                         <StackPanel Orientation="Horizontal">
-                                                            <Button Style="{StaticResource GridShowButton}" ToolTip="Edit Item" Click="Button_ClickEditItem">
+                                                            <Button Tag="{Binding}" Style="{StaticResource GridShowButton}" ToolTip="Edit Item" Click="Button_ClickAddItemToInvoice">
                                                                 <Image Source="Assets\EditIcon.png" Style="{StaticResource GridImageIcon}"/>
                                                             </Button>
                                                         </StackPanel>
@@ -913,7 +913,7 @@
                                                 <DataGridTemplateColumn.CellTemplate>
                                                     <DataTemplate>
                                                         <StackPanel Orientation="Horizontal">
-                                                            <Button Style="{StaticResource GridShowButton}" ToolTip="Create Document To Customer">
+                                                            <Button Tag="{Binding}" Style="{StaticResource GridShowButton}" ToolTip="Create Document To Customer" Click="AddCustomerToInvoice_Click">
                                                                 <Image Source="Assets\InvoiceIcon.png" Style="{StaticResource GridImageIcon}"/>
                                                             </Button>
                                                         </StackPanel>

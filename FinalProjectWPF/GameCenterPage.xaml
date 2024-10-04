@@ -90,7 +90,7 @@
                 <Border CornerRadius="50"  Background="{StaticResource IconsBackground}" BorderThickness="10" Opacity="0.65" Height="200" Width="200" Margin="10 0" MouseEnter="Border_MouseEnter" MouseLeave="Border_MouseLeave" MouseLeftButtonUp="LittleBusinessApp_Click" ToolTip="My Little Business App">
                     <Image Cursor="Hand"  ToolTip="My Little Business App" Source="\Assets\MylittleBusinessIcon.png" Style="{StaticResource GamesIcons}"  Height="150"/>
                 </Border>
-                <Border CornerRadius="50"  Background="{StaticResource IconsBackground}" BorderThickness="10" Opacity="0.65" Height="200" Width="200" Margin="10 0" MouseEnter="Border_MouseEnter" MouseLeave="Border_MouseLeave" ToolTip="Tic Tac Toe Game">
+                <Border CornerRadius="50"  Background="{StaticResource IconsBackground}" BorderThickness="10" Opacity="0.65" Height="200" Width="200" Margin="10 0" MouseEnter="Border_MouseEnter" MouseLeave="Border_MouseLeave" MouseLeftButtonUp="TicTacToeApp_Click" ToolTip="Tic Tac Toe Game">
                     <Image Cursor="Hand"  ToolTip="Tic Tac Toe Game" Source="\Assets\TicTacToeIcon.png" Style="{StaticResource GamesIcons}"  Height="150"/>
                 </Border>
             </WrapPanel>
@@ -98,13 +98,13 @@
 
         <Viewbox Grid.Row="3" Grid.Column="1">
             <WrapPanel Width="575" Height="285">
-                <Border CornerRadius="50" Background="{StaticResource IconsBackground}" Opacity="0.65" BorderThickness="10" Height="180">
+                <Border CornerRadius="50" Background="{StaticResource IconsBackground}" Opacity="0.6" BorderThickness="10" Height="180">
                     <Image ToolTip=".NET" Source="/Assets/dotnet.png" Style="{StaticResource FooterIcons}" Width="100" Height="100" />
                 </Border>
-                <Border CornerRadius="50"  Background="{StaticResource IconsBackground}" Opacity="0.65" BorderThickness="10" Height="180">
+                <Border CornerRadius="50"  Background="{StaticResource IconsBackground}" Opacity="0.6" BorderThickness="10" Height="180">
                     <Image ToolTip="C#" Source="/Assets/csharp.png" Style="{StaticResource FooterIcons}" Width="100" Height="100"/>
                 </Border>
-                <Border CornerRadius="50"  Background="{StaticResource IconsBackground}" Opacity="0.65" BorderThickness="10" Height="180">
+                <Border CornerRadius="50"  Background="{StaticResource IconsBackground}" Opacity="0.6" BorderThickness="10" Height="180">
                     <Image ToolTip="WPF" Source="/Assets/wpf.png" Style="{StaticResource FooterIcons}" Width="100" Height="100"/>
                 </Border>
             </WrapPanel>
