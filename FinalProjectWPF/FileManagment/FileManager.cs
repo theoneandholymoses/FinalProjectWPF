@@ -10,6 +10,7 @@ using System.Text;
 using System.Text.Json;
 using System.Text.Json.Nodes;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace FinalProjectWPF.FileManagment
 {
@@ -18,7 +19,7 @@ namespace FinalProjectWPF.FileManagment
         private readonly string usersFilePath = "users.json";
         private readonly string highScoreSnakeFilePath = "highscoreSnake.json";
         private readonly string highScoreCatchTheEggFilePath = "highscoreCatchTheEgg.json";
-        private readonly string highScoreBattleShipFilePath = "highscoreBattleShip.json";
+        private readonly string highScoreDontDropTheMillionFilePath = "highscoreDontDropTheMillion.json";
 
         public FileManager()
         {
@@ -117,6 +118,8 @@ namespace FinalProjectWPF.FileManagment
             }
         }
 
+        // modify
+
         public ObservableCollection<(GameType game, double score)> GetUserAllHighScores(int userID)
         {
             ObservableCollection<(GameType game, double score)> allHighScores = new ObservableCollection<(GameType game, double score)>();
@@ -126,39 +129,110 @@ namespace FinalProjectWPF.FileManagment
             {
                 try
                 {
-                    ObservableCollection<double> scores = new ObservableCollection<double>(GetUserHighScoresForGame(userID, game));
-                    allHighScores.Add((game, scores.Max()));
+                    // Get user's high scores for the specific game
+                    ObservableCollection<double> scores = GetUserHighScoresForGame(userID, game);
+                    if (scores != null && scores.Count > 0)
+                    {
+                        // Add the game and the highest score to the collection
+                        allHighScores.Add((game, scores.Max()));
+                    }
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
+                    // Optionally log the exception message or handle it
+                    Console.WriteLine($"Error retrieving scores for user {userID} in game {game}: {ex.Message}");
                 }
             }
 
             return allHighScores;
         }
 
+        //public ObservableCollection<(GameType game, double score)> GetUserAllHighScores(int userID)
+        //{
+        //    ObservableCollection<(GameType game, double score)> allHighScores = new ObservableCollection<(GameType game, double score)>();
+        //    IEnumerable<GameType> gameTypes = Enum.GetValues(typeof(GameType)).Cast<GameType>();
+
+        //    foreach (GameType game in gameTypes)
+        //    {
+        //        try
+        //        {
+        //            ObservableCollection<double> scores = new ObservableCollection<double>(GetUserHighScoresForGame(userID, game));
+        //            allHighScores.Add((game, scores.Max()));
+        //        }
+        //        catch (Exception)
+        //        {
+        //        }
+        //    }
+
+        //    return allHighScores;
+        //}
 
 
-        public ObservableCollection<(string name, double score)> GetAllPlayersHighScores(GameType game)
+
+        // modify
+        public ObservableCollection<PlayerScore> GetAllPlayersHighScores(GameType game)
         {
             string filePath = GetHighScoreFilePath(game);
             if (!File.Exists(filePath))
             {
-                return new ObservableCollection<(string name, double score)>();
+                return new ObservableCollection<PlayerScore>();
             }
             try
             {
                 string jsonContent = File.ReadAllText(filePath);
-                ObservableCollection<(string name, double score)> finalList = JsonSerializer.Deserialize<ObservableCollection<(string name, double score)>>(jsonContent) ?? new ObservableCollection<(string name, double score)>();
-                ObservableCollection<(string name, double score)> filteredFinalList = new ObservableCollection<(
-                    string name, double score)>(finalList.OrderByDescending(player => player.score).ThenBy(p => p.name).ToList());
-                return filteredFinalList;
+                var highScoresData = JsonSerializer.Deserialize<Dictionary<string, List<double>>>(jsonContent);
+                ObservableCollection<PlayerScore> finalList = new ObservableCollection<PlayerScore>();
+
+                // Assuming you have a method to get user names from IDs
+                var users = GetAllUsers(); // This should return the list of users
+
+                foreach (var entry in highScoresData)
+                {
+                    string customerId = entry.Key; // This is the customer ID
+                    List<double> scores = entry.Value;
+
+                    var user = users.FirstOrDefault(u => u.ID.ToString() == customerId); // Get the user by ID
+                    if (user != null)
+                    {
+                        // Add scores to the final list
+                        foreach (var score in scores)
+                        {
+                            finalList.Add(new PlayerScore { Name = user.FullName, Score = score });
+                        }
+                    }
+                }
+
+                return new ObservableCollection<PlayerScore>(finalList.OrderByDescending(ps => ps.Score));
             }
             catch (Exception)
             {
-                return new ObservableCollection<(string name, double score)>();
+                return new ObservableCollection<PlayerScore>();
             }
         }
+
+
+
+        //public ObservableCollection<(string name, double score)> GetAllPlayersHighScores(GameType game)
+        //{
+        //    string filePath = GetHighScoreFilePath(game);
+        //    if (!File.Exists(filePath))
+        //    {
+        //        return new ObservableCollection<(string name, double score)>();
+        //    }
+        //    try
+        //    {
+        //        string jsonContent = File.ReadAllText(filePath);
+        //        ObservableCollection<(string name, double score)> finalList = JsonSerializer.Deserialize<ObservableCollection<(string name, double score)>>(jsonContent) ?? new ObservableCollection<(string name, double score)>();
+        //        ObservableCollection<(string name, double score)> filteredFinalList = new ObservableCollection<(
+        //            string name, double score)>(finalList.OrderByDescending(player => player.score).ThenBy(p => p.name).ToList());
+        //        MessageBox.Show(filteredFinalList[0].name);
+        //        return filteredFinalList;
+        //    }
+        //    catch (Exception)
+        //    {
+        //        return new ObservableCollection<(string name, double score)>();
+        //    }
+        //}
 
 
         // modify
@@ -193,7 +267,7 @@ namespace FinalProjectWPF.FileManagment
             {
                 GameType.Snake => highScoreSnakeFilePath,
                 GameType.CatchTheEgg => highScoreCatchTheEggFilePath,
-                GameType.BattleShip => highScoreBattleShipFilePath,
+                GameType.DontDropTheMillion => highScoreDontDropTheMillionFilePath,
                 _ => throw new ArgumentOutOfRangeException(nameof(game), $"No file path defined for game {game}")
             };
         }
@@ -217,12 +291,12 @@ namespace FinalProjectWPF.FileManagment
                         string users = data.RootElement.GetProperty("users").ToString();
                         string highscoreSnake = data.RootElement.GetProperty("highscoreSnake").ToString();
                         string highscoreCatchTheEgg = data.RootElement.GetProperty("highscoreCatchTheEgg").ToString();
-                        string highscoreBattleShip = data.RootElement.GetProperty("highscoreBattleShip").ToString();
+                        string highscoreDontDropTheMillion = data.RootElement.GetProperty("highscoreDontDropTheMillion").ToString();
 
                         File.WriteAllText(usersFilePath, users);
                         File.WriteAllText(highScoreSnakeFilePath, highscoreSnake);
                         File.WriteAllText(highScoreCatchTheEggFilePath, highscoreCatchTheEgg);
-                        File.WriteAllText(highScoreBattleShipFilePath, highscoreBattleShip);
+                        File.WriteAllText(highScoreDontDropTheMillionFilePath, highscoreDontDropTheMillion);
                     }
                 }
                 catch (Exception)
@@ -231,5 +305,10 @@ namespace FinalProjectWPF.FileManagment
                 }
             }
         }
+    }
+    public class PlayerScore
+    {
+        public string Name { get; set; }
+        public double Score { get; set; }
     }
 }

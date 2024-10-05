@@ -1,4 +1,5 @@
 ﻿using DontDropTheMillion;
+using FinalProjectWPF.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -102,7 +103,7 @@ namespace FinalProjectWPF.Projects.DontDropTheMillion
             double availableMoney = _gameManager.TotalMoney - _currentBets.Values.Sum();
             if (availableMoney > 0)
             {
-                _currentBets[answerKey] += 20000; 
+                _currentBets[answerKey] += 200000; 
                 UpdateUIForBets();
             }
             if (_currentBets.Values.Sum() >= _gameManager.TotalMoney)
@@ -115,7 +116,7 @@ namespace FinalProjectWPF.Projects.DontDropTheMillion
         {
             if (_currentBets[answerKey] > 0)
             {
-                _currentBets[answerKey] -= 20000; 
+                _currentBets[answerKey] -= 200000; 
                 UpdateUIForBets();
             }
             if (_currentBets.Values.Sum() < _gameManager.TotalMoney)
@@ -204,7 +205,7 @@ namespace FinalProjectWPF.Projects.DontDropTheMillion
             else if (_currentQuestionIndex >= 10) 
             {
                 MessageBox.Show("Congratulations! You won the game.");
-
+                ((App)Application.Current).LastGameScore = (remainingMoney, GameType.DontDropTheMillion);
             }
             else
             {
@@ -254,11 +255,11 @@ namespace FinalProjectWPF.Projects.DontDropTheMillion
             if (_timeRemaining <= 0)
             {
                 _timer.Stop();
-                MessageBox.Show("Time's up! money will be spread radomally between answers");
-                if (_gameManager.TotalMoney != 0)
+                if (UserMoney.Content.ToString() != "0")
                 {
+                    MessageBox.Show("Time's up! money will be spread radomally between answers");
                     int j = _gameManager.TotalMoney;
-                    for (int i=0; i <= j; i += 20000)
+                    for (int i=0; i <= j; i += 200000)
                     {
                         IncreaseBetAmount("Answer"+_random.Next(0,3));
                     }

@@ -32,6 +32,7 @@
                 <ResourceDictionary Source="/Resources/BusinessResources/VisibleStyleResource.xaml"/>
                 <ResourceDictionary Source="/Resources/BusinessResources/TextBlockStyleResource.xaml"/>
                 <ResourceDictionary Source="/Resources/BusinessResources/ComboBoxStyleResource.xaml"/>
+                <ResourceDictionary Source="/Resources/BusinessResources/DocRefundButtonResource.xaml"/>
 
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>

@@ -23,6 +23,7 @@ namespace FinalProjectWPF.Projects.MyLittleBusiness
         {
             InitializeComponent();
             UpdateCollection();
+            SetGlobalApiSecrets.Click += SetGlobalApiSecrets_Click;
         }
 
         private void UpdateCollection()
@@ -221,11 +222,6 @@ namespace FinalProjectWPF.Projects.MyLittleBusiness
             MessageBox.Show("successfully finish invoice send: " + responseValues["InvoiceID"]);
             UpdateCollection();
             CleanAllForms();
-        }
-
-        public void CreateOrder()
-        {
-
         }
 
         private void Button_Click_ManuNav(object sender, RoutedEventArgs e)
@@ -499,7 +495,7 @@ namespace FinalProjectWPF.Projects.MyLittleBusiness
 
         private void RadioButton_ExitApp(object sender, RoutedEventArgs e)
         {
-            // navigate out to home
+            NavigationService.GoBack();
         }
 
         private void Button_ClickNewProductLine(object sender, RoutedEventArgs e)
@@ -527,13 +523,13 @@ namespace FinalProjectWPF.Projects.MyLittleBusiness
 
             // Add the Button
             Button deleteButton = new Button { HorizontalAlignment = HorizontalAlignment.Left, Style = (Style)FindResource("TopButton") };
-            deleteButton.Content = new Image { Source = new BitmapImage(new Uri("/Assets/DeleteIcon.png", UriKind.Relative)), Width = 15, Height = 15 };
+            deleteButton.Content = new Image { Source = new BitmapImage(new Uri("Assets/DeleteIcon.png", UriKind.Relative)), Width = 15, Height = 15 };
             deleteButton.Click += (sender, e) => DeleteProductLine(newProductLine); // Assign the event handler
             //Grid.SetColumn(deleteButton, 0);
             newProductLine.Children.Add(deleteButton);
 
             // Add TextBoxes for Product ID, Description, Price, Quantity, and Total Price
-            TextBox productIDTextBox = new TextBox { Name = $"{kind}prodID", Margin = new Thickness(5, 0, 5, 0), Style = (Style)FindResource("TextBoxFilterBar") };
+            TextBox productIDTextBox = new TextBox { Name = $"{kind}prodID", Margin = new Thickness(5, 0, 5, 0), IsReadOnly = true ,Style = (Style)FindResource("TextBoxFilterBar") };
             Grid.SetColumn(productIDTextBox, 1);
             newProductLine.Children.Add(productIDTextBox);
 
@@ -611,7 +607,7 @@ namespace FinalProjectWPF.Projects.MyLittleBusiness
 
             // Add the Delete Button
             Button deleteButton = new Button { HorizontalAlignment = HorizontalAlignment.Left, Style = (Style)FindResource("TopButton") };
-            deleteButton.Content = new Image { Source = new BitmapImage(new Uri("/Assets/DeleteIcon.png", UriKind.Relative)), Width = 15, Height = 15 };
+            deleteButton.Content = new Image { Source = new BitmapImage(new Uri("Assets/DeleteIcon.png", UriKind.Relative)), Width = 15, Height = 15 };
             deleteButton.Click += (sender, e) => DeleteChequeLine(newChequeLine); // Assign the event handler
             newChequeLine.Children.Add(deleteButton);
             Grid.SetColumn(deleteButton, 0);
@@ -1054,6 +1050,7 @@ namespace FinalProjectWPF.Projects.MyLittleBusiness
 
         private async void SendInvoiceButton_Click(object sender, RoutedEventArgs e)
         {
+
             await SendInvoiceButton();
         }
 
@@ -1121,8 +1118,8 @@ namespace FinalProjectWPF.Projects.MyLittleBusiness
 
         private void CreateNewItem_Click(object sender, RoutedEventArgs e)
         {
+
             Button clickedButton = sender as Button;
-        
             int newID = FM.GetNextItemID();
 
             FM.CreateItem(newID, NewItemDescription.Text,decimal.Parse(NewItemPrice.Text));
@@ -1190,7 +1187,7 @@ namespace FinalProjectWPF.Projects.MyLittleBusiness
             // Extract the bound Invoice object from the Tag
             if (clickedButton != null && clickedButton.Tag is Invoice invoice)
             {
-                if (invoice.DealNumber != "" && invoice.IsRefunded != false)
+                if (invoice.DealNumber != "" && !invoice.IsRefunded)
                 {
                     // Access DocumentNumber and DocumentType
                     int DealNumber = int.Parse(invoice.DealNumber);
@@ -1304,6 +1301,8 @@ namespace FinalProjectWPF.Projects.MyLittleBusiness
             EditItemPop.Visibility = Visibility.Hidden;
             GetItemPop.Visibility = Visibility.Hidden;
             GetCustomerPop.Visibility = Visibility.Visible;
+            AppSettingsPop.Visibility = Visibility.Hidden;
+
         }
 
         private void Button_ClickGetItem(object sender, RoutedEventArgs e)
@@ -1313,6 +1312,8 @@ namespace FinalProjectWPF.Projects.MyLittleBusiness
             EditItemPop.Visibility = Visibility.Hidden;
             GetItemPop.Visibility = Visibility.Visible;
             GetCustomerPop.Visibility = Visibility.Hidden;
+            AppSettingsPop.Visibility = Visibility.Hidden;
+
         }
         private void Button_ClickCreateNewItem(object sender, RoutedEventArgs e)
         {
@@ -1321,17 +1322,154 @@ namespace FinalProjectWPF.Projects.MyLittleBusiness
             EditItemPop.Visibility = Visibility.Hidden;
             GetItemPop.Visibility = Visibility.Hidden;
             GetCustomerPop.Visibility = Visibility.Hidden;
+            AppSettingsPop.Visibility = Visibility.Hidden;
+
         }
         private void Button_ClickEditItem(object sender, RoutedEventArgs e)
         {
+            Button clickedButton = sender as Button;
+            // Extract the bound Invoice object from the Tag
+            if (clickedButton != null && clickedButton.Tag is Item item)
+            {
+                EditItemDescription.Text = item.Name;
+                EditItemPrice.Text = item.Price.ToString();
+                EditItemID.Text = item.ItemId.ToString();
+            }
+
             PopUpWindow.IsOpen = true;
             AddItemPop.Visibility = Visibility.Hidden;
             EditItemPop.Visibility = Visibility.Visible;
             GetItemPop.Visibility = Visibility.Hidden;
             GetCustomerPop.Visibility = Visibility.Hidden;
+            AppSettingsPop.Visibility = Visibility.Hidden;
         }
 
+        // modify
+        private void Button_ClickAppSettings(object sender, RoutedEventArgs e)
+        {
+            Button clickedButton = sender as Button;
 
+            PopUpWindow.IsOpen = true;
+            AddItemPop.Visibility = Visibility.Hidden;
+            EditItemPop.Visibility = Visibility.Hidden;
+            GetItemPop.Visibility = Visibility.Hidden;
+            GetCustomerPop.Visibility = Visibility.Hidden;
+            AppSettingsPop.Visibility = Visibility.Visible;
+        }
+
+        private void EditItemButton_Click(object sender, RoutedEventArgs e)
+        {
+            FM.UpdateItem(int.Parse(EditItemID.Text), EditItemDescription.Text, decimal.Parse(EditItemPrice.Text));
+            UpdateCollection();
+            PopUpWindow.IsOpen = false;
+        }
+
+        private void NewItemDescription_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            CreateItemBUT.IsEnabled = ValidateItemInput("create");
+        }
+
+        private void NewItemPrice_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            CreateItemBUT.IsEnabled = ValidateItemInput("create");
+        }
+
+        // For Edit Item Pop-Up
+        private void EditItemDescription_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            EditItemBUT.IsEnabled = ValidateItemInput("edit");
+        }
+
+        private void EditItemPrice_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            EditItemBUT.IsEnabled = ValidateItemInput("edit");
+        }
+
+        private bool ValidateItemInput(string action)
+        {
+            switch (action)
+            {
+                case "edit":
+                    {
+                        // Validate item name (cannot be empty)
+                        if (string.IsNullOrWhiteSpace(EditItemDescription.Text))
+                        {
+                            return false;
+                        }
+
+                        // Validate price (should be a positive number)
+                        if (!decimal.TryParse(EditItemPrice.Text, out decimal price) || price <= 0)
+                        {
+                            return false;
+                        }
+                        break;
+                    }
+                case "create":
+                    {
+                        // Validate item name (cannot be empty)
+                        if (string.IsNullOrWhiteSpace(NewItemDescription.Text))
+                        {
+                            return false;
+                        }
+
+                        // Validate price (should be a positive number)
+                        if (!decimal.TryParse(NewItemPrice.Text, out decimal price) || price <= 0)
+                        {
+                            return false;
+                        }
+                        break;
+                    }
+            }
+
+            return true;
+        }
+
+        private void Button_ClickDeleteItem(object sender, RoutedEventArgs e)
+        {
+            Button clickedButton = sender as Button;
+
+            // Extract the bound Invoice object from the Tag
+            if (clickedButton != null && clickedButton.Tag is Item item)
+            {
+                FM.DeleteItem(item.ItemId);
+                UpdateCollection();
+            }
+        }
+
+        private void SetCustomerToInvoice_Click(object sender, RoutedEventArgs e)
+        {
+            Button clickedButton = sender as Button;
+            RadioButton chargingButton = new RadioButton
+            {
+                Name = "chargingBUT"
+            };
+            Button_Click_ManuNav(chargingButton, e);
+            if (clickedButton != null && clickedButton.Tag is Customer customer)
+            {
+                // go to invoice page 
+                IcustomerName.Text = customer.FullName;
+                IcustomerEmail.Text = customer.Email;
+                IcustomerPhone.Text = customer.Phone;
+            }
+
+        }
+
+        private void SetGlobalApiSecrets_Click(object sender, RoutedEventArgs e)
+        {
+            // Get the values from the TextBoxes
+            string username = ApiUserName.Text;
+            string password = ApiPassword.Text;
+            string terminalNumber = ApiTerminalNumber.Text;
+
+            // Set the environment variables for the user
+            Environment.SetEnvironmentVariable("UserName", username, EnvironmentVariableTarget.User);
+            Environment.SetEnvironmentVariable("UserPassword", password, EnvironmentVariableTarget.User);
+            Environment.SetEnvironmentVariable("TerminalNumber", terminalNumber, EnvironmentVariableTarget.User);
+
+            // Provide some feedback or close the pop-up (optional)
+            MessageBox.Show("API secrets saved successfully.");
+            PopUpWindow.IsOpen = false;
+        }
     }
 
 }

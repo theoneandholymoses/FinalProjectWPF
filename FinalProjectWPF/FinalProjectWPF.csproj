@@ -83,6 +83,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Page Remove="Resources\BusinessResources\DocRefundButtonResource.xaml" />
     <Page Remove="Resources\CalendarResources\ButtonStyleResource.xaml" />
     <Page Remove="Resources\GameCenterResources\GridResource.xaml" />
     <Page Remove="Resources\GameCenterResources\IconsResource.xaml" />
@@ -168,6 +169,7 @@
     <Resource Include="Projects\Snake\Assets\snake_head_left.png" />
     <Resource Include="Projects\Snake\Assets\snake_head_right.png" />
     <Resource Include="Projects\Snake\Assets\snake_head_up.png" />
+    <Resource Include="Resources\BusinessResources\DocRefundButtonResource.xaml" />
     <Resource Include="Resources\CalendarResources\ButtonStyleResource.xaml" />
     <Resource Include="Resources\GameCenterResources\GridResource.xaml" />
     <Resource Include="Resources\GameCenterResources\IconsResource.xaml" />

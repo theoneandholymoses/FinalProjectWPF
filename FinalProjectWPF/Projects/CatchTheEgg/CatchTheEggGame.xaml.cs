@@ -1,4 +1,5 @@
-﻿using FinalProjectWPF.Projects.CatchTheEgg.Models;
+﻿using FinalProjectWPF.Enums;
+using FinalProjectWPF.Projects.CatchTheEgg.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -72,6 +73,7 @@ namespace FinalProjectWPF.Projects.CatchTheEgg
             if (gameManager.IsGameOver())
             {
                 GameTimer.Stop();
+                ((App)Application.Current).LastGameScore = (gameManager.Score, GameType.CatchTheEgg);
                 MessageBox.Show($"You Lost!\nYour Score: {gameManager.Score}\nClick to play again", "Catch The Egg");
                 ResetGame();
             }

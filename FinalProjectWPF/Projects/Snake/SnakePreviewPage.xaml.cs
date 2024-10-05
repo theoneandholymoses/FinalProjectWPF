@@ -15,6 +15,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using static System.Formats.Asn1.AsnWriter;
 
 namespace FinalProjectWPF.Projects.Snake
 {
@@ -25,7 +26,7 @@ namespace FinalProjectWPF.Projects.Snake
     {
         FileManager fm;
         int LoggedInUser;
-        ObservableCollection<double> GameScoreData;
+        public ObservableCollection<PlayerScore> GameScoreData { get; set; } = new ObservableCollection<PlayerScore>();
         GameType Snake;
         public SnakePreviewPage()
         {
@@ -33,7 +34,9 @@ namespace FinalProjectWPF.Projects.Snake
             fm = (FileManager)((App)Application.Current).fmGlobal;
             LoggedInUser = ((App)Application.Current).LoggedInUserID;
 
-            GameScoreData = fm.GetUserHighScoresForGame(LoggedInUser, Snake);
+            // Call the modified method
+            GameScoreData = fm.GetAllPlayersHighScores(GameType.Snake);
+
             ScoreBoard.ItemsSource = GameScoreData;
         }
         private void BackgroundMedia_MediaEnded(object sender, RoutedEventArgs e)
@@ -43,7 +46,7 @@ namespace FinalProjectWPF.Projects.Snake
         }
         private void GoBack_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.GoBack();
+            NavigationService.Navigate(new GameCenterPage());
         }
 
         private void OpenApp_Click(object sender, RoutedEventArgs e)

@@ -32,11 +32,12 @@
             <Button x:Name="button9" Height="50" Width="50" Click="button_Click" Grid.Column="2" Grid.Row="2"></Button>
         </Grid>
         <Label x:Name="WinnerDisplay" Content="" Canvas.Left="342" Canvas.Top="225" HorizontalAlignment="Left" VerticalAlignment="Top" Width="116"/>
-        <Label x:Name="CurrentPdisplay" Content="Player X turn" Canvas.Left="358" Canvas.Top="262" HorizontalAlignment="Left" VerticalAlignment="Top" Width="84"/>
+        <Label x:Name="CurrentPdisplay" Content="Player X turn" Canvas.Left="358" Canvas.Top="262" HorizontalAlignment="Left" VerticalAlignment="Top" Width="84" Visibility="Hidden"/>
         <Button x:Name="ResetButton" Content="Reset Game" Canvas.Left="358" Canvas.Top="340" HorizontalAlignment="Center" VerticalAlignment="Top" Width="70" Click="resetButton_Click"/>
         <Button x:Name="StartButton" Content="Start Game" Canvas.Left="358" Canvas.Top="308" HorizontalAlignment="Center" VerticalAlignment="Top" Width="70" Click="StartButton_Click" />
         <Label Content="Player 1 Score" Canvas.Left="156" Canvas.Top="63" HorizontalAlignment="Left" VerticalAlignment="Center"/>
         <Label x:Name="Pscore" Content="0" Canvas.Left="190" Canvas.Top="102" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+        <Label x:Name="P1score" Content="0" Canvas.Left="190" Canvas.Top="102" HorizontalAlignment="Left" VerticalAlignment="Center" Visibility="Hidden"/>
         <Label x:Name="SecondPlayer" Content="Computer Score" Canvas.Left="560" Canvas.Top="65" HorizontalAlignment="Center" VerticalAlignment="Top"/>
         <Label x:Name="Cscore" Content="0" Canvas.Left="594" Canvas.Top="102" HorizontalAlignment="Center" VerticalAlignment="Center"/>
         <Label Content="player 2 Score" Canvas.Left="560" Canvas.Top="65" HorizontalAlignment="Center" VerticalAlignment="Top" Visibility="Hidden"/>

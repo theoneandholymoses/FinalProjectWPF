@@ -23,6 +23,7 @@ namespace FinalProjectWPF.Projects.TicTacToe
         private int _player = 0;
         private char[] _boardArr = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9' };
         private int _Pscore = 0;
+        private int _P1score = 0;
         private int _P2score = 0;
         private int _Cscore = 0;
         private bool _gameOver = false;
@@ -43,17 +44,6 @@ namespace FinalProjectWPF.Projects.TicTacToe
         {
             InitializeComponent();
             _buttons = new Button[] { button1, button2, button3, button4, button5, button6, button7, button8, button9 };
-            if (_player == 1)
-            {
-                if (_gameLevel == 2)
-                {
-                    ComputerPlayHard();
-                }
-                else
-                {
-                    ComputerPlayEasy();
-                }
-            }
         }
 
         private async Task ComputerPlayEasy()
@@ -73,12 +63,16 @@ namespace FinalProjectWPF.Projects.TicTacToe
             if (CheckWin() == 1)
             {
                 WinnerDisplay.Content = "Computer win";
+                _Cscore++;
+                Cscore.Content = _Cscore.ToString();
                 _gameOver = true;
             }
             if (isBoarderFull() && CheckWin() == 0)
             {
                 WinnerDisplay.Content = "it's a tie";
             };
+            ToggleButtons(true);
+
         }
 
         private async Task ComputerPlayHard()
@@ -116,12 +110,15 @@ namespace FinalProjectWPF.Projects.TicTacToe
             if (CheckWin() == 1)
             {
                 WinnerDisplay.Content = "Computer wins!";
+                _Cscore++;
+                Cscore.Content = _Cscore.ToString();
                 _gameOver = true;
             }
             else if (isBoarderFull())
             {
                 WinnerDisplay.Content = "It's a tie!";
             }
+            ToggleButtons(true);
         }
 
         // Helper function to find the best move for either winning or blocking
@@ -153,8 +150,13 @@ namespace FinalProjectWPF.Projects.TicTacToe
         private async void button_Click(object sender, RoutedEventArgs e)
         {
             Button clickedButton = sender as Button;
+            if (clickedButton.Content != null)
+            {
+                return; // Exit if the button already has a value
+            }
             if (_gameLevel > 0)
             {
+                ToggleButtons(false);
                 if (clickedButton.Content == null && !_gameOver)
                 {
                     if (!_gameOver)
@@ -175,7 +177,8 @@ namespace FinalProjectWPF.Projects.TicTacToe
                     {
                         WinnerDisplay.Content = "Player win";
                         _gameOver = true;
-
+                        _Pscore++;
+                        Pscore.Content = _Pscore.ToString();
                     }
                     else if (isBoarderFull() && CheckWin() == 0)
                     {
@@ -219,18 +222,18 @@ namespace FinalProjectWPF.Projects.TicTacToe
                     {
                         if (_player == 0)
                         {
-                            WinnerDisplay.Content = "Player X win";
-                            _Pscore++;
-                            Pscore.Content = _Pscore;
+                            WinnerDisplay.Content = "Player O win";
+                            _P2score++;
+                            P2score.Content = _P2score;
                             _gameOver = true;
                             UpdateTurnDisplay();
 
                         }
                         else
                         {
-                            WinnerDisplay.Content = "Player O win";
-                            _P2score++;
-                            P2score.Content = _P2score;
+                            WinnerDisplay.Content = "Player X win";
+                            _P1score++;
+                            P1score.Content = _P1score;
                             _gameOver = true;
                             UpdateTurnDisplay();
 
@@ -245,17 +248,25 @@ namespace FinalProjectWPF.Projects.TicTacToe
                 }
             }
         }
+
+        private void ToggleButtons(bool isEnabled)
+        {
+            foreach (Button button in _buttons)
+            {
+                button.IsEnabled = isEnabled;
+            }
+        }
         private void UpdateTurnDisplay()
         {
             if (_player == 1)
             {
                 _player = 0;
-                CurrentPdisplay.Content = "Player O turn";
+                CurrentPdisplay.Content = "Player X turn";
             }
             else
             {
                 _player = 1;
-                CurrentPdisplay.Content = "Player X turn";
+                CurrentPdisplay.Content = "Player O turn";
             }
         }
 
@@ -308,6 +319,8 @@ namespace FinalProjectWPF.Projects.TicTacToe
             Cscore.Content = "0";
             _P2score = 0;
             P2score.Content = "0";
+            _P1score = 0;
+            P1score.Content = "0";
 
         }
 
@@ -331,7 +344,10 @@ namespace FinalProjectWPF.Projects.TicTacToe
                 StartP2.Visibility = Visibility.Visible;
                 StartButton.Visibility = Visibility.Visible;
                 Cscore.Visibility = Visibility.Visible;
+                Pscore.Visibility = Visibility.Visible;
                 P2score.Visibility = Visibility.Hidden;
+                P1score.Visibility = Visibility.Hidden;
+                CurrentPdisplay.Visibility = Visibility.Hidden;
                 SecondPlayer.Content = "Computer score";
             }
             else if (Gamelevel.SelectedIndex == 1)
@@ -341,7 +357,10 @@ namespace FinalProjectWPF.Projects.TicTacToe
                 StartP2.Visibility = Visibility.Visible;
                 StartButton.Visibility = Visibility.Visible;
                 Cscore.Visibility = Visibility.Visible;
+                Pscore.Visibility = Visibility.Visible;
                 P2score.Visibility = Visibility.Hidden;
+                P1score.Visibility = Visibility.Hidden;
+                CurrentPdisplay.Visibility = Visibility.Hidden;
                 SecondPlayer.Content = "Computer score";
             }
             else if (StartP != null)
@@ -350,9 +369,12 @@ namespace FinalProjectWPF.Projects.TicTacToe
                 _player = 0;
                 StartP.Visibility = Visibility.Hidden;
                 StartP2.Visibility = Visibility.Hidden;
-                StartButton.Visibility = Visibility.Hidden;
+                StartButton.Visibility = Visibility.Visible;
                 Cscore.Visibility = Visibility.Hidden;
+                Pscore.Visibility = Visibility.Hidden;
                 P2score.Visibility = Visibility.Visible;
+                P1score.Visibility = Visibility.Visible;
+                CurrentPdisplay.Visibility = Visibility.Visible;
                 SecondPlayer.Content = "Player 2 score";
             }
         }
@@ -361,8 +383,21 @@ namespace FinalProjectWPF.Projects.TicTacToe
 
         private async void StartButton_Click(object sender, RoutedEventArgs e)
         {
-            if (_player == 1)
+            WinnerDisplay.Content = null;
+            for (int slotToReset = 1; slotToReset < _boardArr.Length; slotToReset++)
             {
+                _boardArr[slotToReset] = (char)slotToReset;
+            }
+
+            for (int i = 0; i < _buttons.Length; i++)
+            {
+                _buttons[i].Content = null;
+            }
+            _gameOver = false;
+            ToggleButtons(true);
+            if (_gameLevel != 0 && _player != 0)
+            {
+                ToggleButtons(false);
                 if (_gameLevel == 2)
                 {
                     await ComputerPlayHard();

@@ -10,7 +10,6 @@ namespace FinalProjectWPF.Enums
     {
         Snake,
         CatchTheEgg,
-        BattleShip,
         DontDropTheMillion
     }
 }

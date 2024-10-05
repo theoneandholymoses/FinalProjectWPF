@@ -39,7 +39,7 @@
             </Button>
         </StackPanel>
 
-        <Border CornerRadius="30" BorderThickness="2"  Grid.Row="2" Width="500" BorderBrush="CadetBlue" ClipToBounds="True" Padding="10" Background="CadetBlue" Opacity="0.8">
+        <Border>
             <StackPanel x:Name="ScoreBoardPanel" Orientation="Vertical" Background="CadetBlue" Height="200">
                 <TextBlock Text="Scoreboard :" HorizontalAlignment="Center" Margin="0 5 0 5" FontSize="20" FontWeight="Bold" Style="{StaticResource TextBlockStyle}"/>
                 <Grid>
@@ -47,8 +47,8 @@
                   ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" RowStyle="{DynamicResource DataGridRowStyle1}" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.CanContentScroll="True">
                         <DataGrid.Columns>
 
-                            <DataGridTextColumn Header="Player Name" IsReadOnly="True" CanUserResize="False" Width="*" Binding="{Binding LoggedInUser}"/>
-                            <DataGridTextColumn Header="score" IsReadOnly="True" Width="*" Binding="{Binding GameScoreData}"/>
+                            <DataGridTextColumn Header="Player Name" IsReadOnly="True" CanUserResize="False" Width="*" Binding="{Binding Name}"/>
+                            <DataGridTextColumn Header="score" IsReadOnly="True" Width="*" Binding="{Binding Score}"/>
 
                         </DataGrid.Columns>
                     </DataGrid>
