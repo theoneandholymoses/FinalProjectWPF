@@ -10,6 +10,7 @@
         <Setter Property="Margin" Value="0 20 0 0"/>
         <Setter Property="FontSize" Value="13"/>
         <!--<Setter Property="Grid.Row" Value="1"/>-->
+        <!--!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!To erase!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!-->
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Button">
@@ -22,11 +23,11 @@
 
         <Style.Triggers>
             <Trigger Property="IsMouseOver" Value="True">
-                <Setter Property="Background" Value="#7b5cd6"/>
+                <Setter Property="Background" Value="#FBC9B1"/>
                 <Setter Property="Foreground" Value="#ffffff"/>
             </Trigger>
             <Trigger Property="IsEnabled" Value="False">
-                <Setter Property="Background" Value="#574f6e"/>
+                <Setter Property="Background" Value="#f69669"/>
                 <Setter Property="Foreground" Value="#ffffff"/>
             </Trigger>
         </Style.Triggers>

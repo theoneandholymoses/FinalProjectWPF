@@ -12,6 +12,12 @@
                 <ResourceDictionary Source="/Resources/GameCenterResources/TitleLabelResource.xaml"/>
                 <!--Calender-->
                 <ResourceDictionary Source="/Resources/CalendarResources/ButtonStyleResource.xaml"/>
+                <ResourceDictionary Source="/Resources/CalendarResources/CalendarTextBlockResource.xaml"/>
+                <ResourceDictionary Source="/Resources/CalendarResources/CalendarStyleResource.xaml"/>
+                <ResourceDictionary Source="/Resources/CalendarResources/CalendarItemStyleResource.xaml"/>
+                <ResourceDictionary Source="/Resources/CalendarResources/CalendarImageResource.xaml"/>
+                <ResourceDictionary Source="/Resources/CalendarResources/CalendarDayButtonStyleResource.xaml"/>
+                <ResourceDictionary Source="/Resources/CalendarResources/CalendarButtonResource.xaml"/>
                 <!--My Little Business-->
                 <ResourceDictionary Source="/Resources/BusinessResources/ButtonResource.xaml"/>
                 <ResourceDictionary Source="/Resources/BusinessResources/ButtonIconResource.xaml"/>

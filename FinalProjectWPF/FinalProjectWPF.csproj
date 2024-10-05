@@ -47,6 +47,15 @@
     <None Remove="Projects\DontDropTheMillion\Assets\Background.jpg" />
     <None Remove="Projects\DontDropTheMillion\Assets\ExitIcon.png" />
     <None Remove="Projects\DontDropTheMillion\Assets\QuestionBlock.png" />
+    <None Remove="Projects\MyCalendar\Assets\AddTaskIcon.png" />
+    <None Remove="Projects\MyCalendar\Assets\ArrowBackIcon.png" />
+    <None Remove="Projects\MyCalendar\Assets\ArrowNextIcon.png" />
+    <None Remove="Projects\MyCalendar\Assets\ClockIcon.png" />
+    <None Remove="Projects\MyCalendar\Assets\EditIcon.png" />
+    <None Remove="Projects\MyCalendar\Assets\ExitIcon.png" />
+    <None Remove="Projects\MyCalendar\Assets\Info_icon.svg.png" />
+    <None Remove="Projects\MyCalendar\Assets\ItemTaskIcon.png" />
+    <None Remove="Projects\MyCalendar\Assets\TasksIcon.png" />
     <None Remove="Projects\MyLittleBusiness\Assets\AddLineIcon.png" />
     <None Remove="Projects\MyLittleBusiness\Assets\american_express.gif" />
     <None Remove="Projects\MyLittleBusiness\Assets\APPLEpay.gif" />
@@ -92,7 +101,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Projects\MyCalendar\Assets\" />
     <Folder Include="Projects\TicTacToe\Assets\" />
     <Folder Include="Projects\TicTacToe\Models\" />
   </ItemGroup>
@@ -137,6 +145,15 @@
     <Resource Include="Projects\DontDropTheMillion\Assets\Background.jpg" />
     <Resource Include="Projects\DontDropTheMillion\Assets\ExitIcon.png" />
     <Resource Include="Projects\DontDropTheMillion\Assets\QuestionBlock.png" />
+    <Resource Include="Projects\MyCalendar\Assets\AddTaskIcon.png" />
+    <Resource Include="Projects\MyCalendar\Assets\ArrowBackIcon.png" />
+    <Resource Include="Projects\MyCalendar\Assets\ArrowNextIcon.png" />
+    <Resource Include="Projects\MyCalendar\Assets\ClockIcon.png" />
+    <Resource Include="Projects\MyCalendar\Assets\EditIcon.png" />
+    <Resource Include="Projects\MyCalendar\Assets\ExitIcon.png" />
+    <Resource Include="Projects\MyCalendar\Assets\Info_icon.svg.png" />
+    <Resource Include="Projects\MyCalendar\Assets\ItemTaskIcon.png" />
+    <Resource Include="Projects\MyCalendar\Assets\TasksIcon.png" />
     <Resource Include="Projects\MyLittleBusiness\Assets\AddLineIcon.png" />
     <Resource Include="Projects\MyLittleBusiness\Assets\american_express.gif" />
     <Resource Include="Projects\MyLittleBusiness\Assets\APPLEpay.gif" />

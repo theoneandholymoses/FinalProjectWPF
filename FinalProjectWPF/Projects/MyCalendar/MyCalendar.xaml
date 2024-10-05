@@ -4,135 +4,247 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:FinalProjectWPF.Projects.MyCalendar"
+      xmlns:uc="clr-namespace:FinalProjectWPF.Projects.MyCalendar.UserControls"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="MyCalendar">
+    <Viewbox Margin="250 0">
+        <Grid>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1.2*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
 
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
+                <Border CornerRadius="20 0 0 20" Background="#E1F4FD"/>
+                <Border CornerRadius="0 20 20 0" Background="#f69669" Grid.Column="1"/>
+            </Grid>
 
-        <Grid HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="10">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
-            <Button Content="BackToToday" Margin="5"  Grid.Column="0" Click="BackToToday_Click" Style="{StaticResource CalenderWideButton}"/>
-            <ComboBox Name="MonthComboBox" SelectionChanged="MonthComboBox_SelectionChanged" Width="120" Margin="5" Grid.Column="1"/>
-            <ComboBox Name="YearComboBox" SelectionChanged="YearComboBox_SelectionChanged" Width="120" Margin="5"  Grid.Column="2"/>
-            <Button Content="Previous Week" Click="PrevWeekButton_Click" Margin="5"  Grid.Column="3"  Style="{StaticResource CalenderWideButton}"/>
-            <Button Content="Next Week" Click="NextWeekButton_Click" Margin="5" Grid.Column="4"  Style="{StaticResource CalenderWideButton}"/>
-            <Button Content="Create Task" Click="CreateTaskButton_Click" Margin="5"  Grid.Column="5"  Style="{StaticResource CalenderWideButton}"/>
-            <TextBlock Name="CurrentMonthYear" Text="" Margin="10" FontWeight="Bold" HorizontalAlignment="Right" VerticalAlignment="Top"  Grid.Column="6"/>
-        </Grid>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1.2*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
 
-        <Grid Name="WeekGrid" Grid.Row="1" Margin="10" Background="White" />
-        <Popup x:Name="TaskPopup" 
-               StaysOpen="False" 
-               IsOpen="False" PlacementTarget="{Binding ElementName=MainWindow}" 
-               Placement="Center" HorizontalAlignment="Center" VerticalAlignment="Center" AllowsTransparency="True">
-            <Border Background="White" BorderBrush="Gray" BorderThickness="2" Padding="20" CornerRadius="10">
                 <StackPanel>
-                    <TextBlock Text="Task Details" FontWeight="Bold" FontSize="16" Margin="0,0,0,10"/>
-                    <!-- Title Field -->
-                    <TextBox x:Name="TaskIDBox" Visibility="Hidden"/>
+                    <!--years bar-->
+                    <StackPanel x:Name="YearBar" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 50 0 30">
+                        <Button x:Name="PreviousYearButton" Style="{StaticResource RegularButton}" Click="MoveToYear"> 
+                            <Image Source="Assets\ArrowBackIcon.png" Height="25"/> 
+                        </Button>
 
-                    <!-- Title Field -->
-                    <TextBlock Text="Title:"/>
-                    <TextBox x:Name="TaskNameBox" Width="200" Margin="0,5,0,10" />
+                        <RadioButton x:Name="MyYear1" Content="2022" Style="{StaticResource RadioButton}" Checked="MoveToYear"/>
+                        <RadioButton x:Name="MyYear2" Content="2023" Style="{StaticResource RadioButton}" Checked="MoveToYear"/>
+                        <RadioButton x:Name="MyYear3" Content="2024" Style="{StaticResource RadioButton}" Checked="MoveToYear"/>
+                        <RadioButton x:Name="MyYear4" Content="2025" Style="{StaticResource RadioButton}" Checked="MoveToYear"/>
+                        <RadioButton x:Name="MyYear5" Content="2026" Style="{StaticResource RadioButton}" Checked="MoveToYear"/>
 
-                    <!-- Description Field -->
-                    <TextBlock Text="Description:"/>
-                    <TextBox x:Name="TaskDescriptionBox" Width="200" Height="100" TextWrapping="Wrap" AcceptsReturn="True" Margin="0,5,0,10" />
+                        <Button x:Name="NextYearButton" Style="{StaticResource RegularButton}" Click="MoveToYear">
+                            <Image Source="Assets\ArrowNextIcon.png" Height="25"/>
+                        </Button>
+                    </StackPanel>
 
-                    <!-- Location Field -->
-                    <TextBlock Text="Location:"/>
-                    <TextBox x:Name="TaskLocationBox" Width="200" Margin="0,5,0,10"/>
-
-                    <!-- Task Date Field -->
-                    <TextBlock Text="Task Date:"/>
-                    <DatePicker x:Name="TaskDatePicker" Width="200" Margin="0,5,0,10"/>
-
-                    <!-- Start Time Field -->
-                    <TextBlock Text="Start Time:"/>
-                    <ComboBox x:Name="TaskStartTimeComboBox" Width="100" Margin="0,5,0,10">
-                        <!-- Time slots from 00:00 to 23:00 -->
-                        <ComboBoxItem Content="00:00" Tag="00:00"/>
-                        <ComboBoxItem Content="01:00" Tag="01:00"/>
-                        <ComboBoxItem Content="02:00" Tag="02:00"/>
-                        <ComboBoxItem Content="03:00" Tag="03:00"/>
-                        <ComboBoxItem Content="04:00" Tag="04:00"/>
-                        <ComboBoxItem Content="05:00" Tag="05:00"/>
-                        <ComboBoxItem Content="06:00" Tag="06:00"/>
-                        <ComboBoxItem Content="07:00" Tag="07:00"/>
-                        <ComboBoxItem Content="08:00" Tag="08:00"/>
-                        <ComboBoxItem Content="09:00" Tag="09:00"/>
-                        <ComboBoxItem Content="10:00" Tag="10:00"/>
-                        <ComboBoxItem Content="11:00" Tag="11:00"/>
-                        <ComboBoxItem Content="12:00" Tag="12:00"/>
-                        <ComboBoxItem Content="13:00" Tag="13:00"/>
-                        <ComboBoxItem Content="14:00" Tag="14:00"/>
-                        <ComboBoxItem Content="15:00" Tag="15:00"/>
-                        <ComboBoxItem Content="16:00" Tag="16:00"/>
-                        <ComboBoxItem Content="17:00" Tag="17:00"/>
-                        <ComboBoxItem Content="18:00" Tag="18:00"/>
-                        <ComboBoxItem Content="19:00" Tag="19:00"/>
-                        <ComboBoxItem Content="20:00" Tag="20:00"/>
-                        <ComboBoxItem Content="21:00" Tag="21:00"/>
-                        <ComboBoxItem Content="22:00" Tag="22:00"/>
-                        <ComboBoxItem Content="23:00" Tag="23:00"/>
-                        <ComboBoxItem Content="00:00" Tag="23:59"/>
-                    </ComboBox>
-
-                    <!-- End Time Field -->
-                    <TextBlock Text="End Time:"/>
-                    <ComboBox x:Name="TaskEndTimeComboBox" Width="100" Margin="0,5,0,10">
-                        <!-- Time slots from 00:00 to 23:00 -->
-                        <ComboBoxItem Content="00:00" Tag="00:00"/>
-                        <ComboBoxItem Content="01:00" Tag="01:00"/>
-                        <ComboBoxItem Content="02:00" Tag="02:00"/>
-                        <ComboBoxItem Content="03:00" Tag="03:00"/>
-                        <ComboBoxItem Content="04:00" Tag="04:00"/>
-                        <ComboBoxItem Content="05:00" Tag="05:00"/>
-                        <ComboBoxItem Content="06:00" Tag="06:00"/>
-                        <ComboBoxItem Content="07:00" Tag="07:00"/>
-                        <ComboBoxItem Content="08:00" Tag="08:00"/>
-                        <ComboBoxItem Content="09:00" Tag="09:00"/>
-                        <ComboBoxItem Content="10:00" Tag="10:00"/>
-                        <ComboBoxItem Content="11:00" Tag="11:00"/>
-                        <ComboBoxItem Content="12:00" Tag="12:00"/>
-                        <ComboBoxItem Content="13:00" Tag="13:00"/>
-                        <ComboBoxItem Content="14:00" Tag="14:00"/>
-                        <ComboBoxItem Content="15:00" Tag="15:00"/>
-                        <ComboBoxItem Content="16:00" Tag="16:00"/>
-                        <ComboBoxItem Content="17:00" Tag="17:00"/>
-                        <ComboBoxItem Content="18:00" Tag="18:00"/>
-                        <ComboBoxItem Content="19:00" Tag="19:00"/>
-                        <ComboBoxItem Content="20:00" Tag="20:00"/>
-                        <ComboBoxItem Content="21:00" Tag="21:00"/>
-                        <ComboBoxItem Content="22:00" Tag="22:00"/>
-                        <ComboBoxItem Content="23:00" Tag="23:00"/>
-                        <ComboBoxItem Content="00:00" Tag="23:59"/>
-                    </ComboBox>
-
-                    <!-- All Day Toggle -->
-                    <CheckBox x:Name="AllDayCheckBox" Content="All Day" Margin="0,10,0,10" Checked="AllDayCheckBox_Checked" Unchecked="AllDayCheckBox_Unchecked"/>
-
-                    <!-- Submit Button -->
-                    <Button Content="Submit" Width="100" Margin="0,10,0,0" Click="SubmitButton_Click"  Style="{StaticResource CalenderWideButton}"/>
-                    <Separator Margin="3" Background="black" BorderThickness="1" />
-                    <Button Content="Delete" Width="100" Margin="0,10,0,0" Click="DeleteButton_Click"  Style="{StaticResource CalenderWideButton}"/>
+                    <!--month bar-->
+                    <StackPanel x:Name="MonthBar" Orientation="Horizontal" HorizontalAlignment="Center">
+                        <RadioButton x:Name="MyMonth1" Content="1" Style="{StaticResource ButtonMonth}" Checked="MoveToMonth"/>
+                        <RadioButton x:Name="MyMonth2" Content="2" Style="{StaticResource ButtonMonth}" Checked="MoveToMonth"/>
+                        <RadioButton x:Name="MyMonth3" Content="3" Style="{StaticResource ButtonMonth}" Checked="MoveToMonth"/>
+                        <RadioButton x:Name="MyMonth4" Content="4" Style="{StaticResource ButtonMonth}" Checked="MoveToMonth"/>
+                        <RadioButton x:Name="MyMonth5" Content="5" Style="{StaticResource ButtonMonth}" Checked="MoveToMonth"/>
+                        <RadioButton x:Name="MyMonth6" Content="6" Style="{StaticResource ButtonMonth}" Checked="MoveToMonth"/>
+                        <RadioButton x:Name="MyMonth7" Content="7" Style="{StaticResource ButtonMonth}" Checked="MoveToMonth"/>
+                        <RadioButton x:Name="MyMonth8" Content="8" Style="{StaticResource ButtonMonth}" Checked="MoveToMonth"/>
+                        <RadioButton x:Name="MyMonth9" Content="9" Style="{StaticResource ButtonMonth}" Checked="MoveToMonth"/>
+                        <RadioButton x:Name="MyMonth10" Content="10" Style="{StaticResource ButtonMonth}" Checked="MoveToMonth"/>
+                        <RadioButton x:Name="MyMonth11" Content="11" Style="{StaticResource ButtonMonth}" Checked="MoveToMonth"/>
+                        <RadioButton x:Name="MyMonth12" Content="12" Style="{StaticResource ButtonMonth}" Checked="MoveToMonth"/>
+                    </StackPanel>
+                    <Separator Height="0.8" Background="#cacaca" Margin="30 10"/>
+                    <TextBlock x:Name="SelectedMonthText" Text="October" Foreground="#f69669" FontSize="24" TextAlignment="Center" FontWeight="SemiBold" Margin="0 15 0 20"/>
+                    <Calendar x:Name="MainCalendar" SelectedDatesChanged="MainCalendar_SelectedDatesChanged" IsTodayHighlighted="False" CalendarItemStyle="{DynamicResource CalendarItemStyle}" CalendarDayButtonStyle="{DynamicResource CalendarDayButtonStyle}" Style="{DynamicResource CalendarStyle}"/>
                 </StackPanel>
-            </Border>
-        </Popup>
-    </Grid>
+
+                <!--right side-->
+                <Grid Grid.Column="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1.3*"/>
+                        <RowDefinition Height="3*"/>
+                    </Grid.RowDefinitions>
+                    <!--date header-->
+                    <Grid Grid.Row="0">
+                        <StackPanel Margin="30 45 30 10" Orientation="Horizontal">
+                            <TextBlock x:Name="SelectedDayNumber" Text="04" FontSize="50" Foreground="#ffffff"/>
+
+                            <StackPanel Margin="10 0 0 0" VerticalAlignment="Center">
+                                <TextBlock x:Name="SelectedMonthSide" Text="October" Foreground="#ffffff" FontSize="24"/>
+                                <TextBlock x:Name="SelectedDayText" Text="Friday" Foreground="#FBC9B1" FontSize="14"/>
+                            </StackPanel>
+                            <StackPanel Margin="70 0 0 0">
+                                <StackPanel Orientation="Horizontal">
+                                    <Button x:Name="next" Margin="25 0 0 0" Style="{StaticResource RegularButton}" Click="PrevDayButton_Click">
+                                        <Image Source="Assets\ArrowBackIcon.png" Height="25"/>
+                                    </Button>
+
+                                    <Button x:Name="prev" Style="{StaticResource RegularButton}" Click="NextDayButton_Click">
+                                        <Image Source="Assets\ArrowNextIcon.png" Height="25"/>
+                                    </Button>
+                                </StackPanel>
+                                <Button Content="Back To Today" HorizontalAlignment="Right" VerticalAlignment="Center" Background="#99DAF9" Width="100" Style="{StaticResource CalenderWideButton}" Click="BackToToday_Click"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </Grid>
+
+                    <!--task section-->
+                    <Grid Grid.Row="1">
+                        <TextBlock x:Name="TeskCount" Text="5 Tasks" Foreground="#FBC9B1" FontSize="16" Margin="35 0 20 0"/>
+
+                        <Border Background="#FBC9B1" CornerRadius="10" HorizontalAlignment="Center" Width="355" Margin="0 30 0 20" Padding="17 15 5 15">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+
+                                <StackPanel>
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+
+                                        <Image x:Name="Tasks" Source="Assets\TasksIcon.png" Width="15" Height="15"/>
+                                        <TextBlock x:Name="LableNote" Text="Add Note" Style="{StaticResource txtHint}"/>
+                                    </Grid>
+                                    <Separator Margin="0 12 0 11" Height="0.8" Background="#f69669"/>
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+
+                                        <Image x:Name="Clock" Source="Assets\ClockIcon.png" Width="15" Height="15"/>
+                                        <TextBlock x:Name="LableTime" Text="_ _ : _ _ - _ _ : _ _" Style="{StaticResource txtHint}"/>
+                                        <TextBox x:Name="TextTime" Style="{StaticResource txtBox}"/>
+                                    </Grid>
+
+                                </StackPanel>
+
+                                <Button Grid.Column="1" Style="{StaticResource RegularButton}" Click="CreateTaskButton_Click">
+                                    <Image x:Name="Pluse" Source="Assets\AddTaskIcon.png" Width="28" Height="28"/>
+                                </Button>
+                            </Grid>
+                        </Border>
+                    </Grid>
+
+                    <!--Notes-->
+                    <StackPanel x:Name="TaskTable" Grid.Row="2">
+                        <!--<uc:Item Title="hi" Time="09:45 - 10:30" Color="#FBC9B1" Icon="Assets\ItemTaskIcon.png" DurationIcon="Assets\ClockIcon.png"/>
+                        <uc:Item Title="lalal" Time="13:15 - 20:25" Color="#FBC9B1" Icon="Assets\ItemTaskIcon.png" DurationIcon="Assets\ClockIcon.png"/>-->
+                    </StackPanel>
+                    <Popup x:Name="TaskPopup" StaysOpen="False" IsOpen="False" PlacementTarget="{Binding ElementName=MainWindow}" Placement="Left" HorizontalAlignment="Center" VerticalAlignment="Center" AllowsTransparency="True">
+                        <Border Background="White" BorderBrush="Gray" BorderThickness="2" Padding="20" CornerRadius="10">
+                            <StackPanel>
+                                <TextBlock Text="Task Details" FontWeight="Bold" FontSize="16" Margin="0,0,0,10"/>
+                                <!-- Title Field -->
+                                <TextBox x:Name="TaskIDBox" Visibility="Hidden" Padding="0" Style="{StaticResource TextBoxFilterBar}"/>
+
+                                <!-- Title Field -->
+                                <TextBlock Text="Title:"/>
+                                <TextBox x:Name="TaskNameBox" Width="200" Margin="0,5,0,10" Style="{StaticResource TextBoxFilterBar}"/>
+
+                                <!-- Description Field -->
+                                <TextBlock Text="Description:"/>
+                                <TextBox x:Name="TaskDescriptionBox" Width="200" Height="100" TextWrapping="Wrap" AcceptsReturn="True" Margin="0,5,0,10" Style="{StaticResource TextBoxFilterBar}"/>
+
+                                <!-- Location Field -->
+                                <TextBlock Text="Location:"/>
+                                <TextBox x:Name="TaskLocationBox" Width="200" Margin="0,5,0,10" Style="{StaticResource TextBoxFilterBar}"/>
+
+                                <!-- Task Date Field -->
+                                <TextBlock Text="Task Date:"/>
+                                <DatePicker x:Name="TaskDatePicker" Width="200" Margin="0,5,0,10"/>
+
+                                <!-- Start Time Field -->
+                                <TextBlock Text="Start Time:"/>
+                                <ComboBox x:Name="TaskStartTimeComboBox" Width="100" Margin="0,5,0,10" Style="{StaticResource ComboBoxStyle}">
+                                    <!-- Time slots from 00:00 to 23:00 -->
+                                    <ComboBoxItem Content="00:00" Tag="00:00"/>
+                                    <ComboBoxItem Content="01:00" Tag="01:00"/>
+                                    <ComboBoxItem Content="02:00" Tag="02:00"/>
+                                    <ComboBoxItem Content="03:00" Tag="03:00"/>
+                                    <ComboBoxItem Content="04:00" Tag="04:00"/>
+                                    <ComboBoxItem Content="05:00" Tag="05:00"/>
+                                    <ComboBoxItem Content="06:00" Tag="06:00"/>
+                                    <ComboBoxItem Content="07:00" Tag="07:00"/>
+                                    <ComboBoxItem Content="08:00" Tag="08:00"/>
+                                    <ComboBoxItem Content="09:00" Tag="09:00"/>
+                                    <ComboBoxItem Content="10:00" Tag="10:00"/>
+                                    <ComboBoxItem Content="11:00" Tag="11:00"/>
+                                    <ComboBoxItem Content="12:00" Tag="12:00"/>
+                                    <ComboBoxItem Content="13:00" Tag="13:00"/>
+                                    <ComboBoxItem Content="14:00" Tag="14:00"/>
+                                    <ComboBoxItem Content="15:00" Tag="15:00"/>
+                                    <ComboBoxItem Content="16:00" Tag="16:00"/>
+                                    <ComboBoxItem Content="17:00" Tag="17:00"/>
+                                    <ComboBoxItem Content="18:00" Tag="18:00"/>
+                                    <ComboBoxItem Content="19:00" Tag="19:00"/>
+                                    <ComboBoxItem Content="20:00" Tag="20:00"/>
+                                    <ComboBoxItem Content="21:00" Tag="21:00"/>
+                                    <ComboBoxItem Content="22:00" Tag="22:00"/>
+                                    <ComboBoxItem Content="23:00" Tag="23:00"/>
+                                    <ComboBoxItem Content="00:00" Tag="23:59"/>
+                                </ComboBox>
+
+                                <!-- End Time Field -->
+                                <TextBlock Text="End Time:"/>
+                                <ComboBox x:Name="TaskEndTimeComboBox" Width="100" Margin="0,5,0,10" Style="{StaticResource ComboBoxStyle}">
+                                    <!-- Time slots from 00:00 to 23:00 -->
+                                    <ComboBoxItem Content="00:00" Tag="00:00"/>
+                                    <ComboBoxItem Content="01:00" Tag="01:00"/>
+                                    <ComboBoxItem Content="02:00" Tag="02:00"/>
+                                    <ComboBoxItem Content="03:00" Tag="03:00"/>
+                                    <ComboBoxItem Content="04:00" Tag="04:00"/>
+                                    <ComboBoxItem Content="05:00" Tag="05:00"/>
+                                    <ComboBoxItem Content="06:00" Tag="06:00"/>
+                                    <ComboBoxItem Content="07:00" Tag="07:00"/>
+                                    <ComboBoxItem Content="08:00" Tag="08:00"/>
+                                    <ComboBoxItem Content="09:00" Tag="09:00"/>
+                                    <ComboBoxItem Content="10:00" Tag="10:00"/>
+                                    <ComboBoxItem Content="11:00" Tag="11:00"/>
+                                    <ComboBoxItem Content="12:00" Tag="12:00"/>
+                                    <ComboBoxItem Content="13:00" Tag="13:00"/>
+                                    <ComboBoxItem Content="14:00" Tag="14:00"/>
+                                    <ComboBoxItem Content="15:00" Tag="15:00"/>
+                                    <ComboBoxItem Content="16:00" Tag="16:00"/>
+                                    <ComboBoxItem Content="17:00" Tag="17:00"/>
+                                    <ComboBoxItem Content="18:00" Tag="18:00"/>
+                                    <ComboBoxItem Content="19:00" Tag="19:00"/>
+                                    <ComboBoxItem Content="20:00" Tag="20:00"/>
+                                    <ComboBoxItem Content="21:00" Tag="21:00"/>
+                                    <ComboBoxItem Content="22:00" Tag="22:00"/>
+                                    <ComboBoxItem Content="23:00" Tag="23:00"/>
+                                    <ComboBoxItem Content="00:00" Tag="23:59"/>
+                                </ComboBox>
+
+                                <!-- All Day Toggle -->
+                                <CheckBox x:Name="AllDayCheckBox" Content="All Day" Margin="0,10,0,10" />
+                                <!--Checked="AllDayCheckBox_Checked" Unchecked="AllDayCheckBox_Unchecked"-->
+
+                                <!-- Submit Button -->
+                                <StackPanel Orientation="Horizontal">
+                                    <Button Content="Submit" Width="100" Margin="0,10,0,0" Style="{StaticResource CalenderWideButton}" Click="SubmitTask_Click"/>
+                                    <!--Click="SubmitButton_Click"-->
+                                    <Separator Margin="3" Background="black" BorderThickness="1" />
+                                    <Button Content="Delete" Width="100" Margin="0,10,0,0"   Style="{StaticResource CalenderWideButton}" Click="DeleteTask_Click"/>
+                                    <!--Click="DeleteButton_Click"-->
+                                </StackPanel>
+
+                            </StackPanel>
+                        </Border>
+                    </Popup>
+                </Grid>
+            </Grid>
+        </Grid>
+    </Viewbox>
 </Page>

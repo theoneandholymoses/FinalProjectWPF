@@ -731,9 +731,6 @@
                                         <DataGridTemplateColumn.CellTemplate>
                                             <DataTemplate>
                                                 <StackPanel Orientation="Horizontal">
-                                                    <Button x:Name="DocShowButton" Visibility="Hidden" Style="{StaticResource GridShowButton}" ToolTip="Show Document">
-                                                        <Image Source="Assets\ShowIcon.png" Style="{StaticResource GridImageIcon}"/>
-                                                    </Button>
                                                     <Button x:Name="DocDownButton" Tag="{Binding}" Style="{StaticResource GridShowButton}" Margin="10 0 0 0" ToolTip="Download Document" Click="DocDownButton_Click">
                                                         <Image Source="Assets\DownloadIcon.png" Style="{StaticResource GridImageIcon}"/>
                                                     </Button>

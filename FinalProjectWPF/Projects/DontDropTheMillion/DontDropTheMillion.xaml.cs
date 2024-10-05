@@ -245,7 +245,7 @@ namespace FinalProjectWPF.Projects.DontDropTheMillion
 
         private void StartTimer()
         {
-            _timeRemaining = 15; // 60 seconds
+            _timeRemaining = 60; // 60 seconds
             Timer.Content = _timeRemaining.ToString();
             Timer.Visibility = Visibility.Visible;
             _timer.Start();
@@ -348,145 +348,42 @@ namespace FinalProjectWPF.Projects.DontDropTheMillion
         {
             await LoadQuestionForCatagory((TriviaCategory)Enum.Parse(typeof(TriviaCategory), Catagory2.Content.ToString()));
         }
-        //private void A1Up_Click(object sender, MouseButtonEventArgs e)
-        //{   
-        //    IncreaseBetAmount("Answer0");
-        //}
-        //private void A1Down_Click(object sender, RoutedEventArgs e)
-        //{
-        //    DecreaseBetAmount("Answer0");
-        //}
-        //private void A2Up_Click(object sender, RoutedEventArgs e)
-        //{
-        //    IncreaseBetAmount("Answer1");
-        //}
-        //private void A2Down_Click(object sender, RoutedEventArgs e)
-        //{
-        //    DecreaseBetAmount("Answer1");
-        //}
-        //private void A3Up_Click(object sender, RoutedEventArgs e)
-        //{
-        //    IncreaseBetAmount("Answer2");
-        //}
-        //private void A3Down_Click(object sender, RoutedEventArgs e)
-        //{
-        //    DecreaseBetAmount("Answer2");
-        //}
-        //private void A4Up_Click(object sender, RoutedEventArgs e)
-        //{
-        //    IncreaseBetAmount("Answer3");
-        //}
-        //private void A4Down_Click(object sender, RoutedEventArgs e)
-        //{
-        //    DecreaseBetAmount("Answer3");
-        //}
 
-        private void A1Up_MouseDown(object sender, RoutedEventArgs e)
+        private void HandleBetMouseDown(int answerIndex, bool isBettingUp)
         {
-            _currentAnswerIndex = 0; // A1
-            _isBettingUp = true;
+            _currentAnswerIndex = answerIndex;
+            _isBettingUp = isBettingUp;
+            _isBettingDown = !isBettingUp;
             _betTimer.Start();
         }
 
-        private void A1Up_MouseUp(object sender, RoutedEventArgs e)
+        private void HandleBetMouseUp()
         {
             _isBettingUp = false;
-            _betTimer.Stop();
-        }
-
-        private void A1Down_MouseDown(object sender, RoutedEventArgs e)
-        {
-            _currentAnswerIndex = 0; // A1
-            _isBettingDown = true;
-            _betTimer.Start();
-        }
-
-        private void A1Down_MouseUp(object sender, RoutedEventArgs e)
-        {
             _isBettingDown = false;
             _betTimer.Stop();
         }
 
-        // A2 Up and Down Functions
-        private void A2Up_MouseDown(object sender, RoutedEventArgs e)
-        {
-            _currentAnswerIndex = 1; // A2
-            _isBettingUp = true;
-            _betTimer.Start();
-        }
+        private void A1Up_MouseDown(object sender, RoutedEventArgs e) => HandleBetMouseDown(0, true);
+        private void A1Up_MouseUp(object sender, RoutedEventArgs e) => HandleBetMouseUp();
+        private void A1Down_MouseDown(object sender, RoutedEventArgs e) => HandleBetMouseDown(0, false);
+        private void A1Down_MouseUp(object sender, RoutedEventArgs e) => HandleBetMouseUp();
 
-        private void A2Up_MouseUp(object sender, RoutedEventArgs e)
-        {
-            _isBettingUp = false;
-            _betTimer.Stop();
-        }
+        private void A2Up_MouseDown(object sender, RoutedEventArgs e) => HandleBetMouseDown(1, true);
+        private void A2Up_MouseUp(object sender, RoutedEventArgs e) => HandleBetMouseUp();
+        private void A2Down_MouseDown(object sender, RoutedEventArgs e) => HandleBetMouseDown(1, false);
+        private void A2Down_MouseUp(object sender, RoutedEventArgs e) => HandleBetMouseUp();
 
-        private void A2Down_MouseDown(object sender, RoutedEventArgs e)
-        {
-            _currentAnswerIndex = 1; // A2
-            _isBettingDown = true;
-            _betTimer.Start();
-        }
+        private void A3Up_MouseDown(object sender, RoutedEventArgs e) => HandleBetMouseDown(2, true);
+        private void A3Up_MouseUp(object sender, RoutedEventArgs e) => HandleBetMouseUp();
+        private void A3Down_MouseDown(object sender, RoutedEventArgs e) => HandleBetMouseDown(2, false);
+        private void A3Down_MouseUp(object sender, RoutedEventArgs e) => HandleBetMouseUp();
 
-        private void A2Down_MouseUp(object sender, RoutedEventArgs e)
-        {
-            _isBettingDown = false;
-            _betTimer.Stop();
-        }
+        private void A4Up_MouseDown(object sender, RoutedEventArgs e) => HandleBetMouseDown(3, true);
+        private void A4Up_MouseUp(object sender, RoutedEventArgs e) => HandleBetMouseUp();
+        private void A4Down_MouseDown(object sender, RoutedEventArgs e) => HandleBetMouseDown(3, false);
+        private void A4Down_MouseUp(object sender, RoutedEventArgs e) => HandleBetMouseUp();
 
-        // A3 Up and Down Functions
-        private void A3Up_MouseDown(object sender, RoutedEventArgs e)
-        {
-            _currentAnswerIndex = 2; // A3
-            _isBettingUp = true;
-            _betTimer.Start();
-        }
-
-        private void A3Up_MouseUp(object sender, RoutedEventArgs e)
-        {
-            _isBettingUp = false;
-            _betTimer.Stop();
-        }
-
-        private void A3Down_MouseDown(object sender, RoutedEventArgs e)
-        {
-            _currentAnswerIndex = 2; // A3
-            _isBettingDown = true;
-            _betTimer.Start();
-        }
-
-        private void A3Down_MouseUp(object sender, RoutedEventArgs e)
-        {
-            _isBettingDown = false;
-            _betTimer.Stop();
-        }
-
-        // A4 Up and Down Functions
-        private void A4Up_MouseDown(object sender, RoutedEventArgs e)
-        {
-            _currentAnswerIndex = 3; // A4
-            _isBettingUp = true;
-            _betTimer.Start();
-        }
-
-        private void A4Up_MouseUp(object sender, RoutedEventArgs e)
-        {
-            _isBettingUp = false;
-            _betTimer.Stop();
-        }
-
-        private void A4Down_MouseDown(object sender, RoutedEventArgs e)
-        {
-            _currentAnswerIndex = 3; // A4
-            _isBettingDown = true;
-            _betTimer.Start();
-        }
-
-        private void A4Down_MouseUp(object sender, RoutedEventArgs e)
-        {
-            _isBettingDown = false;
-            _betTimer.Stop();
-        }
         private async void SubmitAnswer(object sender, RoutedEventArgs e)
         {
             await SubmitAnswers();
