@@ -31,6 +31,7 @@
     <None Remove="Projects\CatchTheEgg\Assets\Basket.png" />
     <None Remove="Projects\CatchTheEgg\Assets\BrokenEgg.png" />
     <None Remove="Projects\CatchTheEgg\Assets\Egg.png" />
+    <None Remove="Projects\CatchTheEgg\Assets\ExitIcon.png" />
     <None Remove="Projects\CatchTheEgg\Assets\FreezEgg.png" />
     <None Remove="Projects\CatchTheEgg\Assets\GoldenEgg.png" />
     <None Remove="Projects\CatchTheEgg\Assets\Heart.png" />
@@ -120,6 +121,7 @@
     <Resource Include="Projects\CatchTheEgg\Assets\Basket.png" />
     <Resource Include="Projects\CatchTheEgg\Assets\BrokenEgg.png" />
     <Resource Include="Projects\CatchTheEgg\Assets\Egg.png" />
+    <Resource Include="Projects\CatchTheEgg\Assets\ExitIcon.png" />
     <Resource Include="Projects\CatchTheEgg\Assets\FreezEgg.png" />
     <Resource Include="Projects\CatchTheEgg\Assets\GoldenEgg.png" />
     <Resource Include="Projects\CatchTheEgg\Assets\Heart.png" />

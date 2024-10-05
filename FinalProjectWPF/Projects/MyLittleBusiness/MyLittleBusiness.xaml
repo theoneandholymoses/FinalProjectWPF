@@ -16,10 +16,8 @@
 
     <ScrollViewer VerticalScrollBarVisibility="Auto">
         <Border Background="#eff2f7" CornerRadius="30" >
-
-            <!--Left Manu grid-->
-
             <Grid>
+                
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="200"/>
                     <ColumnDefinition Width="*"/>
@@ -31,9 +29,8 @@
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
 
-                    <Button HorizontalAlignment="Left" ToolTip="Home Pase" Margin="20 28 0 35" Style="{StaticResource TopButton}">
-                        <Image Source="Assets\HomeIcon.png" Width="15" Height="15" />
-                    </Button>
+                    <Border HorizontalAlignment="Left" ToolTip="Home Pase" Margin="20 28 0 35"/>
+
 
                     <Border Grid.Row="1" Background="#623ed0" CornerRadius="0 50 0 30">
                         <DockPanel>
@@ -647,7 +644,7 @@
                                     <Button Grid.Row="1" Grid.Column="0" Style="{StaticResource TopButton}" ToolTip="First Line Cannot Be Deleted!!" HorizontalAlignment="Left">
                                         <Image Source="Assets\DeleteIcon.png" Width="15" Height="15" />
                                     </Button>
-                                    <TextBox x:Name="OprodID" Grid.Column="2" Margin="5 0 5 0" Style="{StaticResource TextBoxFilterBar}"/>
+                                    <TextBox x:Name="OprodID" IsReadOnly="true" Grid.Column="2" Margin="5 0 5 0" Style="{StaticResource TextBoxFilterBar}"/>
                                     <TextBox x:Name="OprodDescription" Grid.Column="3" Margin="5 0 5 0" Style="{StaticResource TextBoxFilterBar}"/>
                                     <TextBox x:Name="OprodPrice" Grid.Column="4" Margin="5 0 5 0" Style="{StaticResource TextBoxFilterBar}" TextChanged="InvoiceLine_TextChanged"/>
                                     <TextBox x:Name="OprodQuantity" Text="1" Grid.Column="5" Margin="5 0 5 0" Style="{StaticResource TextBoxFilterBar}" TextChanged="InvoiceLine_TextChanged"/>
@@ -943,7 +940,6 @@
                     </Border>
                 </Popup>
             </Grid>
-            
         </Border>
     </ScrollViewer>
 </Page>

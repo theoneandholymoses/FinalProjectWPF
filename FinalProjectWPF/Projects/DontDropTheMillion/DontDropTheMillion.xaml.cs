@@ -31,6 +31,10 @@ namespace FinalProjectWPF.Projects.DontDropTheMillion
         private TriviaQuestion? _currentQuestion;
         private static Random _random = new Random();
         private int CountOfQuestions = 0;
+        private DispatcherTimer _betTimer;
+        private bool _isBettingUp = false;
+        private bool _isBettingDown = false;
+        private int _currentAnswerIndex;
         private Dictionary<string, int> _currentBets = new Dictionary<string, int>()
         {
             { "Answer0", 0 },
@@ -44,6 +48,7 @@ namespace FinalProjectWPF.Projects.DontDropTheMillion
             InitializeComponent();
             LoadCatagories();
             SetupTimer();
+            SetupBetTimer(); // New method to set up the betting timer
         }
         public void LoadCatagories()
         {
@@ -89,10 +94,10 @@ namespace FinalProjectWPF.Projects.DontDropTheMillion
             _currentQuestion = await _questionManager.GetQuestionsAsync(GetGameLevel(), catagory);
             QuestionLabel.Content = _currentQuestion.QuestionText;
 
-            Answer0.Content = _currentQuestion.AllAnswers[0];
-            Answer1.Content = _currentQuestion.AllAnswers[1];
-            Answer2.Content = _currentQuestion.AllAnswers[2];
-            Answer3.Content = _currentQuestion.AllAnswers[3];
+            Answer0.Text = _currentQuestion.AllAnswers[0];
+            Answer1.Text = _currentQuestion.AllAnswers[1];
+            Answer2.Text = _currentQuestion.AllAnswers[2];
+            Answer3.Text = _currentQuestion.AllAnswers[3];
 
             StartTimer();
             TheRightAnswer.Content = _currentQuestion.CorrectAnswer;
@@ -103,7 +108,7 @@ namespace FinalProjectWPF.Projects.DontDropTheMillion
             double availableMoney = _gameManager.TotalMoney - _currentBets.Values.Sum();
             if (availableMoney > 0)
             {
-                _currentBets[answerKey] += 200000; 
+                _currentBets[answerKey] += 20000; 
                 UpdateUIForBets();
             }
             if (_currentBets.Values.Sum() >= _gameManager.TotalMoney)
@@ -116,7 +121,7 @@ namespace FinalProjectWPF.Projects.DontDropTheMillion
         {
             if (_currentBets[answerKey] > 0)
             {
-                _currentBets[answerKey] -= 200000; 
+                _currentBets[answerKey] -= 20000; 
                 UpdateUIForBets();
             }
             if (_currentBets.Values.Sum() < _gameManager.TotalMoney)
@@ -127,55 +132,54 @@ namespace FinalProjectWPF.Projects.DontDropTheMillion
 
         private async Task HighlightCorrectAnswer()
         {
-            //await Task.Delay(1000);
-            //int CorrectIndex = 0;
-            //for (int i = 0; i <= 3; i++)
-            //{
-            //    if (_currentQuestion != null && _currentQuestion.AllAnswers[i] == _currentQuestion.CorrectAnswer)
-            //    {
-            //        CorrectIndex = i;
-            //    }
-            //    else
-            //    {
-            //        await Task.Delay(500);
-            //        string recName = $"A{i}Rec";
-            //        Rectangle? r = mainGrid.Children.OfType<Rectangle>().Where(r => r.Name == recName).FirstOrDefault();
-            //        if (r != null)
-            //        {
-            //            r.Fill = new SolidColorBrush(Colors.Red);
-            //        }
-            //    }
-            //}
-            //await Task.Delay(500);
-            //switch (CorrectIndex)
-            //{
-            //    case 0:
-            //        A0Rec.Fill = new SolidColorBrush(Colors.LightGreen); 
-            //        break;
-            //    case 1:
-            //        A1Rec.Fill = new SolidColorBrush(Colors.LightGreen);
-            //        break;
-            //    case 2:
-            //        A2Rec.Fill = new SolidColorBrush(Colors.LightGreen);
-            //        break;
-            //    case 3:
-            //        A3Rec.Fill = new SolidColorBrush(Colors.LightGreen);
-            //        break;
-            //}
+            await Task.Delay(1000);
+            int CorrectIndex = 0;
+            for (int i = 0; i <= 3; i++)
+            {
+                if (_currentQuestion != null && _currentQuestion.AllAnswers[i] == _currentQuestion.CorrectAnswer)
+                {
+                    CorrectIndex = i;
+                }
+                else
+                {
+                    await Task.Delay(500);
+                    string imgName = $"A{i}Img";
+                    string gridName = $"A{i}Grid";
+                    string mainGridName = $"A{i}MainGrid";
+                    Grid? mg = mainGrid.Children.OfType<Grid>().Where(r => r.Name == mainGridName).FirstOrDefault();
+                    Grid? g = mg.Children.OfType<Grid>().Where(r => r.Name == gridName).FirstOrDefault();
+                    Image? m = g.Children.OfType<Image>().Where(im => im.Name == imgName).FirstOrDefault();
+                    if (m != null)
+                    {
+                        m.Visibility = Visibility.Visible;
+                    }
+                }
+            }
+            await Task.Delay(500);
+            switch (CorrectIndex)
+            {
+                case 0:
+                    Answer0.Text = "correct answer";
+                    break;
+                case 1:
+                    Answer1.Text = "correct answer";
+                    break;
+                case 2:
+                    Answer2.Text = "correct answer";
+                    break;
+                case 3:
+                    Answer3.Text = "correct answer";
+                    break;
+            }
 
-                    //await Task.Delay(2000); 
-
-                    //A0Rec.Fill = new SolidColorBrush(Colors.Transparent);
-                    //A1Rec.Fill = new SolidColorBrush(Colors.Transparent);
-                    //A2Rec.Fill = new SolidColorBrush(Colors.Transparent);
-                    //A3Rec.Fill = new SolidColorBrush(Colors.Transparent);
+            await Task.Delay(2000);
+            A0Img.Visibility = Visibility.Hidden;
+            A1Img.Visibility = Visibility.Hidden;
+            A2Img.Visibility = Visibility.Hidden;
+            A3Img.Visibility = Visibility.Hidden;
 
         }
 
-        //    private void EndGame()
-        //    {
-        //        MessageBox.Show($"Game over! You finished with ${_gameManager.TotalMoney}.", "Game Over", MessageBoxButton.OK, MessageBoxImage.Information);
-        //    }
         public async Task SubmitAnswers()
         {
             _timer.Stop();
@@ -200,12 +204,13 @@ namespace FinalProjectWPF.Projects.DontDropTheMillion
             if (_gameManager.IsGameOver())
             {
                 MessageBox.Show("Game Over! You lost all the money.");
-
+                ResetGameButton.Visibility = Visibility.Visible;
             }
             else if (_currentQuestionIndex >= 10) 
             {
                 MessageBox.Show("Congratulations! You won the game.");
                 ((App)Application.Current).LastGameScore = (remainingMoney, GameType.DontDropTheMillion);
+                ResetGameButton.Visibility = Visibility.Visible;
             }
             else
             {
@@ -259,12 +264,31 @@ namespace FinalProjectWPF.Projects.DontDropTheMillion
                 {
                     MessageBox.Show("Time's up! money will be spread radomally between answers");
                     int j = _gameManager.TotalMoney;
-                    for (int i=0; i <= j; i += 200000)
+                    for (int i=0; i <= j; i += 20000)
                     {
                         IncreaseBetAmount("Answer"+_random.Next(0,3));
                     }
                 }
                 await SubmitAnswers(); 
+            }
+        }
+
+        private void SetupBetTimer()
+        {
+            _betTimer = new DispatcherTimer();
+            _betTimer.Interval = TimeSpan.FromMilliseconds(50); // Example interval
+            _betTimer.Tick += BetTimer_Tick; 
+        }
+
+        private void BetTimer_Tick(object sender, EventArgs e)
+        {
+            if (_isBettingUp)
+            {
+                IncreaseBetAmount("Answer" + _currentAnswerIndex); // Replace with your actual logic
+            }
+            else if (_isBettingDown)
+            {
+                DecreaseBetAmount("Answer" + _currentAnswerIndex); // Replace with your actual logic
             }
         }
 
@@ -324,45 +348,157 @@ namespace FinalProjectWPF.Projects.DontDropTheMillion
         {
             await LoadQuestionForCatagory((TriviaCategory)Enum.Parse(typeof(TriviaCategory), Catagory2.Content.ToString()));
         }
-        private void A1Up_Click(object sender, RoutedEventArgs e)
+        //private void A1Up_Click(object sender, MouseButtonEventArgs e)
+        //{   
+        //    IncreaseBetAmount("Answer0");
+        //}
+        //private void A1Down_Click(object sender, RoutedEventArgs e)
+        //{
+        //    DecreaseBetAmount("Answer0");
+        //}
+        //private void A2Up_Click(object sender, RoutedEventArgs e)
+        //{
+        //    IncreaseBetAmount("Answer1");
+        //}
+        //private void A2Down_Click(object sender, RoutedEventArgs e)
+        //{
+        //    DecreaseBetAmount("Answer1");
+        //}
+        //private void A3Up_Click(object sender, RoutedEventArgs e)
+        //{
+        //    IncreaseBetAmount("Answer2");
+        //}
+        //private void A3Down_Click(object sender, RoutedEventArgs e)
+        //{
+        //    DecreaseBetAmount("Answer2");
+        //}
+        //private void A4Up_Click(object sender, RoutedEventArgs e)
+        //{
+        //    IncreaseBetAmount("Answer3");
+        //}
+        //private void A4Down_Click(object sender, RoutedEventArgs e)
+        //{
+        //    DecreaseBetAmount("Answer3");
+        //}
+
+        private void A1Up_MouseDown(object sender, RoutedEventArgs e)
         {
-            IncreaseBetAmount("Answer0");
+            _currentAnswerIndex = 0; // A1
+            _isBettingUp = true;
+            _betTimer.Start();
         }
-        private void A1Down_Click(object sender, RoutedEventArgs e)
+
+        private void A1Up_MouseUp(object sender, RoutedEventArgs e)
         {
-            DecreaseBetAmount("Answer0");
+            _isBettingUp = false;
+            _betTimer.Stop();
         }
-        private void A2Up_Click(object sender, RoutedEventArgs e)
+
+        private void A1Down_MouseDown(object sender, RoutedEventArgs e)
         {
-            IncreaseBetAmount("Answer1");
+            _currentAnswerIndex = 0; // A1
+            _isBettingDown = true;
+            _betTimer.Start();
         }
-        private void A2Down_Click(object sender, RoutedEventArgs e)
+
+        private void A1Down_MouseUp(object sender, RoutedEventArgs e)
         {
-            DecreaseBetAmount("Answer1");
+            _isBettingDown = false;
+            _betTimer.Stop();
         }
-        private void A3Up_Click(object sender, RoutedEventArgs e)
+
+        // A2 Up and Down Functions
+        private void A2Up_MouseDown(object sender, RoutedEventArgs e)
         {
-            IncreaseBetAmount("Answer2");
+            _currentAnswerIndex = 1; // A2
+            _isBettingUp = true;
+            _betTimer.Start();
         }
-        private void A3Down_Click(object sender, RoutedEventArgs e)
+
+        private void A2Up_MouseUp(object sender, RoutedEventArgs e)
         {
-            DecreaseBetAmount("Answer2");
+            _isBettingUp = false;
+            _betTimer.Stop();
         }
-        private void A4Up_Click(object sender, RoutedEventArgs e)
+
+        private void A2Down_MouseDown(object sender, RoutedEventArgs e)
         {
-            IncreaseBetAmount("Answer3");
+            _currentAnswerIndex = 1; // A2
+            _isBettingDown = true;
+            _betTimer.Start();
         }
-        private void A4Down_Click(object sender, RoutedEventArgs e)
+
+        private void A2Down_MouseUp(object sender, RoutedEventArgs e)
         {
-            DecreaseBetAmount("Answer3");
+            _isBettingDown = false;
+            _betTimer.Stop();
+        }
+
+        // A3 Up and Down Functions
+        private void A3Up_MouseDown(object sender, RoutedEventArgs e)
+        {
+            _currentAnswerIndex = 2; // A3
+            _isBettingUp = true;
+            _betTimer.Start();
+        }
+
+        private void A3Up_MouseUp(object sender, RoutedEventArgs e)
+        {
+            _isBettingUp = false;
+            _betTimer.Stop();
+        }
+
+        private void A3Down_MouseDown(object sender, RoutedEventArgs e)
+        {
+            _currentAnswerIndex = 2; // A3
+            _isBettingDown = true;
+            _betTimer.Start();
+        }
+
+        private void A3Down_MouseUp(object sender, RoutedEventArgs e)
+        {
+            _isBettingDown = false;
+            _betTimer.Stop();
+        }
+
+        // A4 Up and Down Functions
+        private void A4Up_MouseDown(object sender, RoutedEventArgs e)
+        {
+            _currentAnswerIndex = 3; // A4
+            _isBettingUp = true;
+            _betTimer.Start();
+        }
+
+        private void A4Up_MouseUp(object sender, RoutedEventArgs e)
+        {
+            _isBettingUp = false;
+            _betTimer.Stop();
+        }
+
+        private void A4Down_MouseDown(object sender, RoutedEventArgs e)
+        {
+            _currentAnswerIndex = 3; // A4
+            _isBettingDown = true;
+            _betTimer.Start();
+        }
+
+        private void A4Down_MouseUp(object sender, RoutedEventArgs e)
+        {
+            _isBettingDown = false;
+            _betTimer.Stop();
         }
         private async void SubmitAnswer(object sender, RoutedEventArgs e)
         {
             await SubmitAnswers();
         }
+        private void ResetGame(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new DontDropTheMillion());
+        }
         private void GoBack_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.GoBack();
+            _timer.Stop();
+            NavigationService.Navigate(new DontDropTheMillionPreviewPage());
         }
     }
 }

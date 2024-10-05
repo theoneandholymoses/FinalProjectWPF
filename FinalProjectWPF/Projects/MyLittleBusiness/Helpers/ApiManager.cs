@@ -159,7 +159,6 @@ namespace FinalProjectWPF.Projects.MyLittleBusiness.Helpers
             }
 
             var defaultResponse = client.PostAsync(url, null).Result;
-            MessageBox.Show(defaultResponse.Content.ReadAsStringAsync().Result);
             return defaultResponse.Content.ReadAsStringAsync().Result; // Read response content
         }
 

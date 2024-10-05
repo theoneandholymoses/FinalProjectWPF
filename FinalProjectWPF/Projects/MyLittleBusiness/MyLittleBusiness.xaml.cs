@@ -6,6 +6,7 @@ using System.IO;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media.Imaging;
+using Microsoft.Win32;
 
 namespace FinalProjectWPF.Projects.MyLittleBusiness
 {
@@ -65,6 +66,8 @@ namespace FinalProjectWPF.Projects.MyLittleBusiness
 
             if (!ValidateInvoice(invoiceType, invoiceTypeKind))
             {
+                CreateInvoiceButton.Content = "Create Invoice";
+                CreateOrderButton.Content = "Create Order";
                 return;
             }
 
@@ -222,6 +225,8 @@ namespace FinalProjectWPF.Projects.MyLittleBusiness
             MessageBox.Show("successfully finish invoice send: " + responseValues["InvoiceID"]);
             UpdateCollection();
             CleanAllForms();
+            CreateInvoiceButton.Content = "Create Invoice";
+            CreateOrderButton.Content = "Create Order";
         }
 
         private void Button_Click_ManuNav(object sender, RoutedEventArgs e)
@@ -791,58 +796,15 @@ namespace FinalProjectWPF.Projects.MyLittleBusiness
         {
             UpdateInvoiceBalance();
         }
-        public void InitilizeDataForInvoice()
-        {
-            InitilizeDataForCustomers();
-            InitilizeDataForItems();
-
-        }
-        public void InitilizeDataForCustomers()
-        {
-            FM.GetAllCustomers();
-        }
-
-        public void InitilizeDataForItems()
-        {
-            FM.GetAllItems();
-        }
 
         // reports **************************************************
         // get the data related to other files in the reports (customerName => invoice report) 
-        // validate buttons according to invoice type & deal refunded 
-        // manage items in table - add functions  
-        public void CopyCustomerToInvoice()
-        {
-
-        }
-
-        public void CopyInvoiceToRefund()
-        {
-
-        }
 
         public void CopyOrderToInvoice()
         {
 
         }
-        public void CancelInvoice()
-        {
 
-        }
-
-        public void EditCustomerTable()
-        {
-
-        }
-
-        // make some tooltip - or pop-up to show more details of the invoice 
-        public void ShowInvoiceDetails()
-        {
-            //AM.GetInvoiceDetails();
-        }
-
-
-        // remember to also bind to the invoice 
         public void SendToEmail(object sender, RoutedEventArgs e)
         {
             Button clickedButton = sender as Button;
@@ -864,11 +826,6 @@ namespace FinalProjectWPF.Projects.MyLittleBusiness
 
         }
 
-        // reset in all forms - and reload the data for all reports 
-        public void ResetFormFields()
-        {
-
-        }
         private bool ValidateInvoice(int invoiceType, char invoiceKind)
         {
             // Validate Customer Information
@@ -1050,7 +1007,11 @@ namespace FinalProjectWPF.Projects.MyLittleBusiness
 
         private async void SendInvoiceButton_Click(object sender, RoutedEventArgs e)
         {
-
+            CreateInvoiceButton.IsEnabled = false;
+            CreateOrderButton.IsEnabled = false;
+            CreateOrderButton.Content = "sendind...";
+            CreateInvoiceButton.Content = "sendind...";
+            await Task.Delay(100); 
             await SendInvoiceButton();
         }
 
@@ -1068,11 +1029,24 @@ namespace FinalProjectWPF.Projects.MyLittleBusiness
                 byte[] pdfData = AM.DownloadDocumentPDF(invoiceNumber, invoiceType, true);
                 if (pdfData != null)
                 {
-                    // Save the PDF file as a binary file
-                    string filePath = $"{invoiceNumber.ToString()}_{DateTime.Now.Hour}.pdf";
-                    File.WriteAllBytes(filePath, pdfData);
+                    // Open SaveFileDialog to let the user select where to save the PDF
+                    SaveFileDialog saveFileDialog = new SaveFileDialog
+                    {
+                        FileName = $"{invoiceNumber.ToString()}_{DateTime.Now.Hour}.pdf", // Default file name
+                        Filter = "PDF files (*.pdf)|*.pdf", // Filter to show only PDF files
+                        DefaultExt = ".pdf", // Default file extension
+                        Title = "Save PDF Document"
+                    };
 
-                    MessageBox.Show("File downloaded successfully to " + filePath);
+                    // Show the dialog and get the selected file path
+                    if (saveFileDialog.ShowDialog() == true)
+                    {
+                        string filePath = saveFileDialog.FileName;
+
+                        // Save the PDF file
+                        File.WriteAllBytes(filePath, pdfData);
+                        MessageBox.Show("File downloaded successfully to " + filePath);
+                    }
                 }
                 else
                 {
@@ -1210,36 +1184,6 @@ namespace FinalProjectWPF.Projects.MyLittleBusiness
                 }
             }
         }
-        //private async void Button_ClickShowInvoice(object sender, RoutedEventArgs e)
-        //{
-        //    Button clickedButton = sender as Button;
-
-        //    // Extract the bound Invoice object from the Tag
-        //    if (clickedButton != null && clickedButton.Tag is Invoice invoice)
-        //    {
-        //        // Access InvoiceNumber and InvoiceType
-        //        int invoiceNumber = invoice.InvoiceID;
-        //        int invoiceType = invoice.InvoiceType;
-
-        //        // Call the download method to get the HTML content as a string
-        //        string htmlContent = AM.DownloadDocumentHTML(invoiceNumber, invoiceType, true);
-
-        //        if (!string.IsNullOrEmpty(htmlContent))
-        //        {
-        //            // Load the HTML content into the WebBrowser control
-        //            InvoiceWebBrowser.Visibility = Visibility.Visible;
-        //            Test1.Visibility = Visibility.Hidden;
-        //            InvoiceWebBrowser.NavigateToString(htmlContent);
-
-        //        }
-        //        else
-        //        {
-        //            MessageBox.Show("Failed to retrieve the HTML content.");
-        //        }
-
-        //    }
-        //    MessageBox.Show("success");
-        //}
         public void CleanAllForms()
         {
             IcustomerName.Text = "";
@@ -1328,7 +1272,6 @@ namespace FinalProjectWPF.Projects.MyLittleBusiness
         private void Button_ClickEditItem(object sender, RoutedEventArgs e)
         {
             Button clickedButton = sender as Button;
-            // Extract the bound Invoice object from the Tag
             if (clickedButton != null && clickedButton.Tag is Item item)
             {
                 EditItemDescription.Text = item.Name;
@@ -1456,17 +1399,14 @@ namespace FinalProjectWPF.Projects.MyLittleBusiness
 
         private void SetGlobalApiSecrets_Click(object sender, RoutedEventArgs e)
         {
-            // Get the values from the TextBoxes
             string username = ApiUserName.Text;
             string password = ApiPassword.Text;
             string terminalNumber = ApiTerminalNumber.Text;
 
-            // Set the environment variables for the user
             Environment.SetEnvironmentVariable("UserName", username, EnvironmentVariableTarget.User);
             Environment.SetEnvironmentVariable("UserPassword", password, EnvironmentVariableTarget.User);
             Environment.SetEnvironmentVariable("TerminalNumber", terminalNumber, EnvironmentVariableTarget.User);
 
-            // Provide some feedback or close the pop-up (optional)
             MessageBox.Show("API secrets saved successfully.");
             PopUpWindow.IsOpen = false;
         }

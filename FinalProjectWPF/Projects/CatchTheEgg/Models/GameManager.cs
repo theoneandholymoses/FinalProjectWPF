@@ -6,7 +6,7 @@ namespace FinalProjectWPF.Projects.CatchTheEgg.Models
 {
     internal class GameManager
     {
-        public int GeneralSpeed { get; set; }
+        public int GeneralSpeed = 10;
         public int Score { get; set; }
         public double Hearts { get; set; }
         public Basket PlayerBasket { get; set; }
@@ -18,12 +18,11 @@ namespace FinalProjectWPF.Projects.CatchTheEgg.Models
         private Canvas MyCanvas;
         private List<Rectangle> itemsToRemove = new List<Rectangle>();
 
-        public GameManager(Canvas canvas, Basket basket, int level)
+        public GameManager(Canvas canvas, Basket basket)
         {
             MyCanvas = canvas;
             Score = 0;
             Hearts = 6;
-            GeneralSpeed = level;
             PlayerBasket = basket;
 
             PlayerBasket.Size = MyCanvas.ActualWidth * 0.1;
@@ -62,39 +61,37 @@ namespace FinalProjectWPF.Projects.CatchTheEgg.Models
 
         public void IncreaseGameLevel()
         {
-            switch (Score)
+            if (Score > 25 && Score < 50 && GeneralSpeed == 10)
             {
-                case 25:
-                    {
-                        GeneralSpeed += 5;
-                        break;
-                    }
-                case 50:
-                    {
-                        GeneralSpeed += 5;
-                        break;
-                    }
-                case 100:
-                    {
-                        GeneralSpeed += 5;
-                        break;
-                    }
+                GeneralSpeed += 5;
+            }
+            else if (Score >= 50 && Score < 100 && GeneralSpeed == 15)
+            {
+                GeneralSpeed += 5;
+            }
+            else if (Score >= 100 && GeneralSpeed == 20)
+            {
+                GeneralSpeed += 5;
             }
         }
 
         private void EggCreationRate()
         {
             EggRate++;
-            if (EggRate % 25 == 0)
+            if (EggRate % 40 == 0)
             {
-                if (EggRate % 150 == 0)
+                if (EggRate % 1200 == 0)
+                {
+                    MakeItem(6);
+                }
+                else if (EggRate % 240 == 0)
                 {
                     MakeItem(7);
                 }
-                else if (SpecialEggRate != 15)
+                
+                else if (SpecialEggRate != 20)
                 {
                     MakeItem(1);
-
                     SpecialEggRate++;
                 }
                 else
@@ -174,10 +171,6 @@ namespace FinalProjectWPF.Projects.CatchTheEgg.Models
                 {
                     ApplySpecialSkill(specialEgg.Skill);
                 }
-                if (egg is Poop)
-                {
-                    Hearts--;
-                }
                 if (egg is Heart)
                 {
                     if (Hearts == 6)
@@ -194,11 +187,15 @@ namespace FinalProjectWPF.Projects.CatchTheEgg.Models
                         Score += 2;
                     }
                 }
+                else if(egg is Poop)
+                {
+                    Hearts--;
+                }
                 else
                 {
                     if (!DoubleSkill) {Score++;}
                     else { Score += 2; }
-                    if (Score <= 100)
+                    if (Score <= 110)
                     {
                         IncreaseGameLevel();
                     }

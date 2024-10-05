@@ -46,7 +46,7 @@ namespace FinalProjectWPF.Projects.CatchTheEgg
             Basket.Fill = basket;
             MyCanvas.Background = backgroundImage;
 
-            gameManager = new GameManager(MyCanvas, new Basket(Canvas.GetLeft(Basket), Basket.Width), 10);
+            gameManager = new GameManager(MyCanvas, new Basket(Canvas.GetLeft(Basket), Basket.Width));
             DataContext = gameManager.PlayerBasket;
 
             GameTimer.Tick += GameEngine;
@@ -103,6 +103,11 @@ namespace FinalProjectWPF.Projects.CatchTheEgg
             gameManager.PlayerBasket.Size = newWidth * 0.1;
             gameManager.PlayerBasket.Size = newHeight * 0.1;
 
+        }
+
+        private void GoBack_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new CatchTheEggPreviewPage());
         }
     }
 }
