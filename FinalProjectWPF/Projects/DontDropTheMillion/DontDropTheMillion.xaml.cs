@@ -255,7 +255,7 @@ namespace FinalProjectWPF.Projects.DontDropTheMillion
 
         private void StartTimer()
         {
-            _timeRemaining = 15; // 60 seconds
+            _timeRemaining = 60; // 60 seconds
             Timer.Content = _timeRemaining.ToString();
             Timer.Visibility = Visibility.Visible;
             _timer.Start();

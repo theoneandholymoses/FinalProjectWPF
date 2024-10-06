@@ -1,4 +1,5 @@
-﻿using FinalProjectWPF.FileManagment;
+﻿using FinalProjectWPF.Enums;
+using FinalProjectWPF.FileManagment;
 using FinalProjectWPF.Projects.CatchTheEgg;
 using FinalProjectWPF.Projects.DontDropTheMillion;
 using FinalProjectWPF.Projects.MyCalendar;
@@ -7,7 +8,9 @@ using FinalProjectWPF.Projects.Snake;
 using FinalProjectWPF.Projects.TicTacToe;
 using FinalProjectWPF.UserManagment;
 using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -60,6 +63,40 @@ namespace FinalProjectWPF
             LiveTime.Interval = TimeSpan.FromSeconds(1);
             LiveTime.Tick += timer_Tick;
             LiveTime.Start();
+            UpdateCurrentPlayerScores();
+        }
+
+
+        private void UpdateCurrentPlayerScores()
+        {
+            // Retrieve the high scores for the logged-in user
+            ObservableCollection<(GameType game, double score)> highScores = fm.GetUserAllHighScores(LoggedInUser);
+
+            // Initialize scores for different games
+            double snakeScore = 0;
+            double DontDropTheMillionScore = 0;
+            double catchTheEggScore = 0;
+
+            // Iterate through the high scores to find the relevant scores
+            foreach (var highScore in highScores)
+            {
+                switch (highScore.game)
+                {
+                    case GameType.Snake:
+                        snakeScore = highScore.score;
+                        break;
+                    case GameType.DontDropTheMillion:
+                        DontDropTheMillionScore = highScore.score;
+                        break;
+                    case GameType.CatchTheEgg:
+                        catchTheEggScore = highScore.score;
+                        break;
+                        // Add cases for other game types as needed
+                }
+            }
+
+            // Update the PlayerHighScores text
+            PlayerHighScores.Text = $"Highscore: {snakeScore}         Highscore: {catchTheEggScore}         Highscore: {DontDropTheMillionScore} ";
         }
 
 
@@ -70,15 +107,12 @@ namespace FinalProjectWPF
             {
                 var app = (App)Application.Current;
                 var lastGameScore = app.LastGameScore;
-
-                // Handle the score change (e.g., update UI)
-                // (lastscore, gameType) / currentplayer / FileManager
-                fm.AddNewHighScore(LoggedInUser, lastGameScore.Item2,lastGameScore.Item1);
+                int user = app.LoggedInUserID;
+                fm.AddNewHighScore(user, lastGameScore.Item2,lastGameScore.Item1);
             }
         }
         private void BackgroundMedia_MediaEnded(object sender, RoutedEventArgs e)
         {
-            // Restart the media when it ends
             GifBackground.Position = TimeSpan.Zero;
             GifBackground.Play();
         }
@@ -130,9 +164,6 @@ namespace FinalProjectWPF
 
         private void CloseMenu()
         {
-            //Subtitle.Visibility = Visibility.Hidden;
-            //Subtitle.Width = 0;
-            //Subtitle.Height = 0;
             UserOptions.Visibility = Visibility.Hidden;
             UserName.Visibility = Visibility.Visible;
             EditUserInput.Width = 0;
@@ -218,6 +249,8 @@ namespace FinalProjectWPF
             NavigationService.Navigate(new CatchTheEggPreviewPage());
         }
 
+
+        // migel
         private void SwitchUser_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             EditUserButton.Visibility = Visibility.Hidden;
@@ -226,10 +259,6 @@ namespace FinalProjectWPF
             SwitchUserButton.Width = 0;
             AddUserButton.Visibility = Visibility.Hidden;
             AddUserButton.Width = 0;
-            //Subtitle.Visibility = Visibility.Visible;
-            //Subtitle.Width = 100;
-            //Subtitle.Height = 30;
-            //Subtitle.Content = "Select another user:";
             SelectionList.Visibility = Visibility.Visible;
             SelectionList.Height = 40;
 
@@ -238,34 +267,41 @@ namespace FinalProjectWPF
             List<User> users = fm.GetAllUsers() ?? new List<User>();
             List<User> localUsers = users.Where(u => u.LastLogin > date).ToList();
 
-            if (SelectionList.Items.Count == 0)
-            {
-                foreach (User User in localUsers)
-                {
-                    ComboBoxItem ItemToSelect = new ComboBoxItem
-                    {
-                        Content = User.FullName
-                    };
-                    SelectionList.Items.Add(ItemToSelect);
-                }
-            }
+            SelectionList.Items.Clear();
 
+            foreach (User User in localUsers)
+            {
+                ComboBoxItem ItemToSelect = new ComboBoxItem
+                {
+                    Content = User.FullName
+                };
+                SelectionList.Items.Add(ItemToSelect);
+            }
         }
 
+        // migel
         private void SelectedUser(object sender, SelectionChangedEventArgs e)
         {
             EditUserButton.Visibility = Visibility.Visible;
             SwitchUserButton.Visibility = Visibility.Visible;
             SelectionList.Visibility = Visibility.Hidden;
             ComboBoxItem selectedItem = (ComboBoxItem)SelectionList.SelectedItem;
-            string selectedUserName = selectedItem.Content.ToString();
-
+            string selectedUserName;
             User CurrentUser = fm.CheckLastLoginUser();
+            if (selectedItem != null) 
+            {
+                selectedUserName = selectedItem.Content.ToString();
+            }
+            else
+            {
+                selectedUserName = CurrentUser.FullName;
+            }
             fm.LogoutUser(CurrentUser.ID);
 
             CurrentUser = fm.GetAllUsers().FirstOrDefault(user => user.FullName == selectedUserName);
             DataContext = CurrentUser;
             fm.LoginUser(CurrentUser.ID);
+            SelectionList.SelectedItem = null;
             CloseMenu();
         }
 
@@ -328,15 +364,21 @@ namespace FinalProjectWPF
             EditUserInput.Width = 120;
             EditUserInput.Height = 30;
             EditUserInput.Margin = new Thickness(10);
+            EditUserInput.Text = fm.CheckLastLoginUser().FullName;
             EditUserInput.Focus();
             SaveNewName.Visibility = Visibility.Visible;
             SaveNewName.Width = 40;
             SaveNewName.Height = 70;
         }
+
+        // migel
         private void EditUserName(object sender, MouseButtonEventArgs e)
         {
             User CurrentUser = fm.CheckLastLoginUser();
-            DataContext = fm.UpdateUser(CurrentUser.ID, EditUserInput.Text);
+            fm.UpdateUser(CurrentUser.ID, EditUserInput.Text);
+            CurrentUser = fm.CheckLastLoginUser();
+            fm.LoginUser(CurrentUser.ID);
+            DataContext = CurrentUser;
             CloseMenu();
         }
 

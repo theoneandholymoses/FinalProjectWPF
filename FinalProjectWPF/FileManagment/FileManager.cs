@@ -65,6 +65,7 @@ namespace FinalProjectWPF.FileManagment
                     user.LastLogin = DateTime.Now;
                     File.WriteAllText(usersFilePath, JsonSerializer.Serialize(users));
                 }
+                
                 return user;
             }
             return user;
@@ -94,6 +95,7 @@ namespace FinalProjectWPF.FileManagment
         {
             List<User> users = GetAllUsers() ?? new List<User>();
             users.Where(u => u.ID == userId).First().IsLogin = false;
+            File.WriteAllText(usersFilePath, JsonSerializer.Serialize(users));
         }
 
         public ObservableCollection<double> GetUserHighScoresForGame(int userID, GameType game)
@@ -168,12 +170,12 @@ namespace FinalProjectWPF.FileManagment
                 foreach (var entry in highScoresData)
                 {
                     string customerId = entry.Key; // This is the customer ID
-                    List<double> scores = entry.Value;
+                    List<double> scores = entry.Value ?? new List<double>(); // Ensure the list is not null
 
                     var user = users.FirstOrDefault(u => u.ID.ToString() == customerId); // Get the user by ID
                     if (user != null)
                     {
-                        // Add scores to the final list
+                        // Add scores to the final list, even if it's just one score
                         foreach (var score in scores)
                         {
                             finalList.Add(new PlayerScore { Name = user.FullName, Score = score });
@@ -181,14 +183,15 @@ namespace FinalProjectWPF.FileManagment
                     }
                 }
 
+                // Sort and return the high scores in descending order
                 return new ObservableCollection<PlayerScore>(finalList.OrderByDescending(ps => ps.Score));
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                MessageBox.Show($"Error while fetching high scores: {ex.Message}");
                 return new ObservableCollection<PlayerScore>();
             }
         }
-
 
         // modify
         public void AddNewHighScore(int userID, GameType game, double score)

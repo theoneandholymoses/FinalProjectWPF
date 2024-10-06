@@ -8,9 +8,26 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="TicTacToe">
 
-    <Canvas>
-        <Label Content="Tic Tac Toe" Canvas.Left="361" Canvas.Top="10" HorizontalAlignment="Left" VerticalAlignment="Center" Width="78" Height="29"/>
-        <Grid Canvas.Left="325" Canvas.Top="64" HorizontalAlignment="Left" VerticalAlignment="Top">
+    <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="Assets\Background.jpg" Stretch="Fill"/>
+        </Grid.Background>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Button Grid.Row="0" Grid.Column="0"  Height="20" x:Name="GoBackButton" VerticalAlignment="Top" Margin="20,20,0,0" HorizontalAlignment="Left" Width="70" Style="{StaticResource WideButton}" Click="GoBackButton_Click">
+            <Image Source="Assets/ExitIcon.png"/>
+        </Button>
+        <Label Grid.Row="0" Grid.Column="1" Content="Tic Tac Toe" VerticalAlignment="Center" FontSize="50" HorizontalAlignment="Center" Style="{StaticResource TitleLabelStyle}"/>
+        <Grid Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Top">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
@@ -21,33 +38,33 @@
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <Button x:Name="button1" Height="50" Width="50" Click="button_Click" ></Button>
-            <Button x:Name="button2" Height="50" Width="50" Click="button_Click" Grid.Column="1"></Button>
-            <Button x:Name="button3" Height="50" Width="50" Click="button_Click" Grid.Column="2"></Button>
-            <Button x:Name="button4" Height="50" Width="50" Click="button_Click" Grid.Row="1"></Button>
-            <Button x:Name="button5" Height="50" Width="50" Click="button_Click" Grid.Column="1" Grid.Row="1"></Button>
-            <Button x:Name="button6" Height="50" Width="50" Click="button_Click" Grid.Column="2" Grid.Row="1"></Button>
-            <Button x:Name="button7" Height="50" Width="50" Click="button_Click" Grid.Row="2"></Button>
-            <Button x:Name="button8" Height="50" Width="50" Click="button_Click" Grid.Column="1" Grid.Row="2"></Button>
-            <Button x:Name="button9" Height="50" Width="50" Click="button_Click" Grid.Column="2" Grid.Row="2"></Button>
+            <Button x:Name="button1" FontSize="50" Height="160" Width="160" Click="button_Click" ></Button>
+            <Button x:Name="button2" FontSize="50" Height="160" Width="160" Click="button_Click" Grid.Column="1"></Button>
+            <Button x:Name="button3" FontSize="50" Height="160" Width="160" Click="button_Click" Grid.Column="2"></Button>
+            <Button x:Name="button4" FontSize="50" Height="160" Width="160" Click="button_Click" Grid.Row="1"></Button>
+            <Button x:Name="button5" FontSize="50" Height="160" Width="160" Click="button_Click" Grid.Column="1" Grid.Row="1"></Button>
+            <Button x:Name="button6" FontSize="50" Height="160" Width="160" Click="button_Click" Grid.Column="2" Grid.Row="1"></Button>
+            <Button x:Name="button7" FontSize="50" Height="160" Width="160" Click="button_Click" Grid.Row="2"></Button>
+            <Button x:Name="button8" FontSize="50" Height="160" Width="160" Click="button_Click" Grid.Column="1" Grid.Row="2"></Button>
+            <Button x:Name="button9" FontSize="50" Height="160" Width="160" Click="button_Click" Grid.Column="2" Grid.Row="2"></Button>
         </Grid>
-        <Label x:Name="WinnerDisplay" Content="" Canvas.Left="342" Canvas.Top="225" HorizontalAlignment="Left" VerticalAlignment="Top" Width="116"/>
-        <Label x:Name="CurrentPdisplay" Content="Player X turn" Canvas.Left="358" Canvas.Top="262" HorizontalAlignment="Left" VerticalAlignment="Top" Width="84" Visibility="Hidden"/>
-        <Button x:Name="ResetButton" Content="Reset Game" Canvas.Left="358" Canvas.Top="340" HorizontalAlignment="Center" VerticalAlignment="Top" Width="70" Click="resetButton_Click"/>
-        <Button x:Name="StartButton" Content="Start Game" Canvas.Left="358" Canvas.Top="308" HorizontalAlignment="Center" VerticalAlignment="Top" Width="70" Click="StartButton_Click" />
-        <Label Content="Player 1 Score" Canvas.Left="156" Canvas.Top="63" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-        <Label x:Name="Pscore" Content="0" Canvas.Left="190" Canvas.Top="102" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-        <Label x:Name="P1score" Content="0" Canvas.Left="190" Canvas.Top="102" HorizontalAlignment="Left" VerticalAlignment="Center" Visibility="Hidden"/>
-        <Label x:Name="SecondPlayer" Content="Computer Score" Canvas.Left="560" Canvas.Top="65" HorizontalAlignment="Center" VerticalAlignment="Top"/>
-        <Label x:Name="Cscore" Content="0" Canvas.Left="594" Canvas.Top="102" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-        <Label Content="player 2 Score" Canvas.Left="560" Canvas.Top="65" HorizontalAlignment="Center" VerticalAlignment="Top" Visibility="Hidden"/>
-        <Label x:Name="P2score" Content="0" Canvas.Left="594" Canvas.Top="102" HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="Hidden"/>
-        <ComboBox x:Name="Gamelevel" Canvas.Left="433" Canvas.Top="308" Width="120" SelectionChanged="ComboBox_SelectionChanged">
+        <Label  Grid.Row="2" Grid.Column="1" FontSize="30"  x:Name="WinnerDisplay" Content="" Margin="0,40,0,0" HorizontalAlignment="Center" Width="auto" Style="{StaticResource TitleLabelStyle}"/>
+        <Label  Grid.Row="2" Grid.Column="1" FontSize="30" x:Name="CurrentPdisplay" Content="Player X turn" HorizontalAlignment="Center"  Width="auto" Visibility="Hidden" Style="{StaticResource TitleLabelStyle}"/>
+        <Button Grid.Row="2" Grid.Column="1"  Height="40" x:Name="StartButton" Content="Start Game" HorizontalAlignment="Center" Width="150" Margin="0,60,0,0" Click="StartButton_Click" Style="{StaticResource WideButton}"/>
+        <Button Grid.Row="2" Grid.Column="1"  Height="40" x:Name="ResetButton" Content="Reset Game"  HorizontalAlignment="Center" Width="150"  Margin="0,180,0,0" Click="resetButton_Click" Style="{StaticResource WideButton}"/>
+        <Label  Grid.Row="1" Grid.Column="0" FontSize="30" Content="Player 1 Score" HorizontalAlignment="Center" Style="{StaticResource TitleLabelStyle}"/>
+        <Label  Grid.Row="1" Grid.Column="0" FontSize="30" x:Name="Pscore" Content="0" HorizontalAlignment="Center" Margin="0,50,0,0" Style="{StaticResource TitleLabelStyle}"/>
+        <Label  Grid.Row="1" Grid.Column="0" FontSize="30" x:Name="P1score" Content="0" HorizontalAlignment="Center" Visibility="Hidden"  Margin="0,50,0,0" Style="{StaticResource TitleLabelStyle}"/>
+        <Label  Grid.Row="1" Grid.Column="2" FontSize="30" x:Name="SecondPlayer" Content="Computer Score" HorizontalAlignment="Center" Style="{StaticResource TitleLabelStyle}"/>
+        <Label  Grid.Row="1" Grid.Column="2" FontSize="30" x:Name="Cscore" Content="0"  HorizontalAlignment="Center" Margin="0,50,0,0" Style="{StaticResource TitleLabelStyle}"/>
+        <Label  Grid.Row="1" Grid.Column="2" FontSize="30" Content="player 2 Score" HorizontalAlignment="Center" Visibility="Hidden" Style="{StaticResource TitleLabelStyle}"/>
+        <Label  Grid.Row="1" Grid.Column="2" FontSize="30" x:Name="P2score" Content="0"  HorizontalAlignment="Center"  Visibility="Hidden" Margin="0,50,0,0" Style="{StaticResource TitleLabelStyle}"/>
+        <ComboBox Grid.Row="3" Grid.Column="2" x:Name="Gamelevel" Height="40" Width="150" VerticalAlignment="Top" SelectionChanged="ComboBox_SelectionChanged" FontSize="20" Style="{StaticResource ComboBoxStyle}">
             <ComboBoxItem Content="easy" IsSelected="True"></ComboBoxItem>
             <ComboBoxItem Content="hard"></ComboBoxItem>
             <ComboBoxItem Content="Two Players"></ComboBoxItem>
         </ComboBox>
-        <RadioButton x:Name="StartP" Content="X" Canvas.Left="610" Canvas.Top="299" IsChecked="True" Checked="radioButton_Checked" Visibility="Visible"/>
-        <RadioButton x:Name="StartP2" Content="O" Canvas.Left="610" Canvas.Top="320" Checked="radioButton_Checked" Visibility="Visible"/>
-    </Canvas>
+        <RadioButton Style="{StaticResource RadioButtonTitleStyle}" Grid.Row="2" Grid.Column="2" x:Name="StartP" Content="X" IsChecked="True" Checked="radioButton_Checked" Visibility="Visible" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20"/>
+        <RadioButton Style="{StaticResource RadioButtonTitleStyle}" Grid.Row="2" Grid.Column="2" Margin="0,70,0,0" x:Name="StartP2" Content="O" Checked="radioButton_Checked" Visibility="Visible" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20"/>
+    </Grid>
 </Page>

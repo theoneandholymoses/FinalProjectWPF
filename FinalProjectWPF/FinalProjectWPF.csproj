@@ -95,6 +95,8 @@
     <None Remove="Projects\Snake\Assets\snake_head_left.png" />
     <None Remove="Projects\Snake\Assets\snake_head_right.png" />
     <None Remove="Projects\Snake\Assets\snake_head_up.png" />
+    <None Remove="Projects\TicTacToe\Assets\Background.jpg" />
+    <None Remove="Projects\TicTacToe\Assets\ExitIcon.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -106,7 +108,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Projects\TicTacToe\Assets\" />
     <Folder Include="Projects\TicTacToe\Models\" />
   </ItemGroup>
 
@@ -198,6 +199,8 @@
     <Resource Include="Projects\Snake\Assets\snake_head_left.png" />
     <Resource Include="Projects\Snake\Assets\snake_head_right.png" />
     <Resource Include="Projects\Snake\Assets\snake_head_up.png" />
+    <Resource Include="Projects\TicTacToe\Assets\Background.jpg" />
+    <Resource Include="Projects\TicTacToe\Assets\ExitIcon.png" />
     <Resource Include="Resources\BusinessResources\DocRefundButtonResource.xaml" />
     <Resource Include="Resources\CalendarResources\ButtonStyleResource.xaml" />
     <Resource Include="Resources\GameCenterResources\GridResource.xaml" />

@@ -11,7 +11,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="3*"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
@@ -29,7 +29,7 @@
               IsHitTestVisible="False"
               Grid.ColumnSpan="1" Grid.RowSpan="5"/>
 
-        <Label x:Name="TitleLabel" Content="Don't Drop The Million" Grid.Row="0" HorizontalAlignment="Center" Style="{StaticResource TitleLabelStyle}" />
+        <Label x:Name="TitleLabel" Content="Dont Drop The Million" Margin="0 50 0 0" Grid.Row="0" HorizontalAlignment="Center" Style="{StaticResource TitleLabelStyle}" />
 
         <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 0 0 10">
             <TextBlock Text="About the game" Foreground="#FFCEC9C9" VerticalAlignment="Center" FontSize="30" Width="230"/>
@@ -38,12 +38,12 @@
             </Button>
         </StackPanel>
 
-        <Border CornerRadius="30" BorderThickness="2"  Grid.Row="2" Width="500" BorderBrush="#da41e8" ClipToBounds="True" Padding="10" Background="#da41e8" Opacity="0.8">
-            <StackPanel x:Name="ScoreBoardPanel" Orientation="Vertical" Background="#da41e8" Height="200">
+        <Border CornerRadius="30" BorderThickness="2" VerticalAlignment="Top" Grid.Row="2" Width="500" BorderBrush="#da41e8" ClipToBounds="True" Padding="10" Background="#da41e8" Opacity="0.8">
+            <StackPanel x:Name="ScoreBoardPanel" Orientation="Vertical" Background="#da41e8" Height="500">
                 <TextBlock Text="Scoreboard :" HorizontalAlignment="Center" Margin="0 5 0 5" FontSize="20" FontWeight="Bold" Style="{StaticResource TextBlockStyle}"/>
                 <Grid>
-                    <DataGrid x:Name="ScoreBoard" Height="200" Style="{DynamicResource DataGridStyle1}" CellStyle="{DynamicResource DataGridCellStyle1}"
-                  ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" RowStyle="{DynamicResource DataGridRowStyle1}" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.CanContentScroll="True">
+                    <DataGrid x:Name="ScoreBoard" Height="380" Style="{DynamicResource DataGridStyle1}" CellStyle="{DynamicResource DataGridCellStyle1}"
+                  ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" RowStyle="{DynamicResource DataGridRowStyle1}" ScrollViewer.VerticalScrollBarVisibility="Hidden" ScrollViewer.CanContentScroll="True">
                         <DataGrid.Columns>
 
                             <DataGridTextColumn Header="Player Name" IsReadOnly="True" CanUserResize="False" Width="*" Binding="{Binding Name}"/>

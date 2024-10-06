@@ -30,23 +30,23 @@
               IsHitTestVisible="False"
               Grid.ColumnSpan="1" Grid.RowSpan="5"/>
 
-        <Label x:Name="TitleLabel" Content="Catch the Egg" Grid.Row="0" HorizontalAlignment="Center" Style="{StaticResource TitleLabelStyle}" />
+        <Label x:Name="TitleLabel" Content="My Little Business App" Margin="0 50 0 0" Grid.Row="0" HorizontalAlignment="Center" Style="{StaticResource TitleLabelStyle}" />
 
         <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 0 0 10">
-            <TextBlock Text="About the game" Foreground="#FFCEC9C9" VerticalAlignment="Center" FontSize="30" Width="230"/>
-            <Button ToolTip="About the game" Style="{StaticResource TopButton}" Height="30" Background="CadetBlue" Click="Button_ClickGameInfo">
+            <TextBlock Text="About the App" Foreground="#FFCEC9C9" VerticalAlignment="Center" FontSize="30" Width="230"/>
+            <Button ToolTip="About the App" Style="{StaticResource TopButton}" Height="30" Background="#7e5fdc" Click="Button_ClickGameInfo">
                 <Image Source="\Assets\InfoIcon.png" Width="15" Height="15" />
             </Button>
         </StackPanel>
 
         <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center">
-            <Button x:Name="GoBack" Content="Go back" Height="30" Margin="0 0 10 0" Background="CadetBlue" Style="{StaticResource CalenderWideButton}" Click="GoBack_Click"/>
-            <Button x:Name="OpenApp" Content="Open App" Height="30" Margin="10 0 0 0" Background="CadetBlue" Style="{StaticResource CalenderWideButton}" Click="OpenApp_Click"/>
+            <Button x:Name="GoBack" Content="Go back" Height="30" Margin="0 0 10 0" Background="#7e5fdc" Style="{StaticResource CalenderWideButton}" Click="GoBack_Click"/>
+            <Button x:Name="OpenApp" Content="Open App" Height="30" Margin="10 0 0 0" Background="#7e5fdc" Style="{StaticResource CalenderWideButton}" Click="OpenApp_Click"/>
         </StackPanel>
 
         <Popup x:Name="PopUpWindow" StaysOpen="False" IsOpen="False" PlacementTarget="{Binding ElementName=MainWindow}" 
                    Placement="Center" HorizontalAlignment="Center" VerticalAlignment="Center" AllowsTransparency="True">
-            <Border CornerRadius="30" BorderThickness="2" BorderBrush="CadetBlue" ClipToBounds="True" Padding="10" Background="White">
+            <Border CornerRadius="30" BorderThickness="2" BorderBrush="#7e5fdc" ClipToBounds="True" Padding="10" Background="White">
                 <Grid>
 
 

@@ -40,9 +40,10 @@
             </WrapPanel>
         </Viewbox>
         <Viewbox HorizontalAlignment="Center" Margin="0 15" Grid.Column="1" Grid.Row="1">
-            <WrapPanel >
+            <StackPanel >
                 <TextBlock Text="Welcome to App center!" Foreground="#FFCEC9C9" FontSize="30" Width="340"/>
-            </WrapPanel>
+                <TextBlock x:Name="PlayerHighScores" Text="" Foreground="#FFCEC9C9" FontSize="30" Width="700" HorizontalAlignment="Center"/>
+            </StackPanel>
 
         </Viewbox>
         <Viewbox Grid.Row="0" Grid.Column="2">
@@ -55,7 +56,7 @@
         <Viewbox x:Name="UserPanel" VerticalAlignment="Top" Grid.Column="0" Margin="11,9,84,0" Grid.RowSpan="2">
             <WrapPanel HorizontalAlignment="Left" Width="350">
                 <Image Cursor="Hand" ToolTip="{Binding FullName}" Source="/Assets/3177440.png" Height="99" Width="64" MouseEnter="Image_MouseEnter" MouseLeave="Image_MouseLeave" MouseLeftButtonUp="Image_MouseLeftButtonUp" />
-                <TextBox x:Name="EditUserInput" Visibility="Hidden" Width="0" Margin="0" FontSize="20" Style="{StaticResource TextBoxFilterBar}"/>
+                <TextBox x:Name="EditUserInput" Visibility="Hidden" Width="0" Margin="0" FontSize="10" Style="{StaticResource TextBoxFilterBar}"/>
                 <Image x:Name="SaveNewName" Visibility="Hidden" Cursor="Hand" ToolTip="Save" Source="/Assets/saveIcon.png" Height="0" Width="0" MouseEnter="Image_MouseEnter" MouseLeave="Image_MouseLeave" MouseLeftButtonUp="EditUserName" />
                 <Label x:Name="UserName" Content="{Binding FullName}" Style="{StaticResource TitleLabelStyle}" Margin="0,15,0,0"/>
                 <Label x:Name="Subtitle" Content="" Visibility="Hidden" Width="0" Height="0" Style="{StaticResource TitleLabelStyle}" Margin="0,15,0,0"/>
@@ -66,7 +67,7 @@
                         <Image x:Name="SwitchUserButton" Cursor="Hand" ToolTip="Switch User" Source="/Assets/switchIcon.png" Margin="10,0,0,0" Height="80" Width="50" MouseEnter="Image_MouseEnter" MouseLeave="Image_MouseLeave" MouseLeftButtonUp="SwitchUser_MouseLeftButtonUp"/>
                         <Image x:Name="AddUserButton" Cursor="Hand" ToolTip="Add User" Source="/Assets/addIcon.png" Margin="10,0,0,0" Height="80" Width="50" MouseEnter="Image_MouseEnter" MouseLeave="Image_MouseLeave" MouseLeftButtonUp="NewUserPanel_MouseLeftButtonUp"/>
                         <ComboBox x:Name="SelectionList" Width="0" Height="0" Visibility="Hidden" SelectionChanged="SelectedUser" Style="{StaticResource ComboBoxStyle}"/>
-                        <TextBox x:Name="NewUserInput" Visibility="Hidden" Width="0" Margin="0" FontSize="20" Style="{StaticResource TextBoxFilterBar}"/>
+                        <TextBox x:Name="NewUserInput" Visibility="Hidden" Width="0" Margin="0" FontSize="10" Style="{StaticResource TextBoxFilterBar}"/>
                         <Image x:Name="CreateUserButton" Cursor="Hand" Visibility="Hidden" ToolTip="Create User" Source="/Assets/addIcon.png" Margin="10,0,0,0" Height="0" Width="0" MouseEnter="Image_MouseEnter" MouseLeave="Image_MouseLeave" MouseLeftButtonUp="CreatUser_MouseLeftButtonUp"/>
                     </WrapPanel>
                 </Viewbox>
@@ -81,11 +82,11 @@
                 <Border CornerRadius="50" Background="{StaticResource IconsBackground}" BorderThickness="10" Opacity="0.65" Height="200" Width="200" Margin="10 0" MouseEnter="Border_MouseEnter" MouseLeave="Border_MouseLeave" MouseLeftButtonUp="CatchTheEggApp_Click" ToolTip="Catch The Egg Game">
                     <Image Cursor="Hand"  ToolTip="Catch The Egg Game" Source="\Assets\CatchTheEggIcon.png" Style="{StaticResource GamesIcons}"  Height="150"/>
                 </Border>
-                <Border CornerRadius="50" Background="{StaticResource IconsBackground}" BorderThickness="10" Opacity="0.65" Height="200" Width="200" Margin="10 0" MouseEnter="Border_MouseEnter" MouseLeave="Border_MouseLeave" MouseLeftButtonUp="CalenderApp_Click" ToolTip="Calender App">
-                    <Image Cursor="Hand"  ToolTip="Calender App" Source="\Assets\CalenderIcon.png" Style="{StaticResource GamesIcons}"  Height="150"/>
-                </Border>
                 <Border CornerRadius="50" Background="{StaticResource IconsBackground}" BorderThickness="10" Opacity="0.65" Height="200" Width="200" Margin="10 0" MouseLeave="Border_MouseLeave" MouseEnter="Border_MouseEnter" MouseLeftButtonUp="DontDTMillionApp_Click" ToolTip="Dont Drop The Million Game">
                     <Image Cursor="Hand"  ToolTip="Dont Drop The Million Game" Source="\Assets\DropTheMillionIcon.png" Style="{StaticResource GamesIcons}" Height="150"/>
+                </Border>
+                <Border CornerRadius="50" Background="{StaticResource IconsBackground}" BorderThickness="10" Opacity="0.65" Height="200" Width="200" Margin="10 0" MouseEnter="Border_MouseEnter" MouseLeave="Border_MouseLeave" MouseLeftButtonUp="CalenderApp_Click" ToolTip="Calender App">
+                    <Image Cursor="Hand"  ToolTip="Calender App" Source="\Assets\CalenderIcon.png" Style="{StaticResource GamesIcons}"  Height="150"/>
                 </Border>
                 <Border CornerRadius="50"  Background="{StaticResource IconsBackground}" BorderThickness="10" Opacity="0.65" Height="200" Width="200" Margin="10 0" MouseEnter="Border_MouseEnter" MouseLeave="Border_MouseLeave" MouseLeftButtonUp="LittleBusinessApp_Click" ToolTip="My Little Business App">
                     <Image Cursor="Hand"  ToolTip="My Little Business App" Source="\Assets\MylittleBusinessIcon.png" Style="{StaticResource GamesIcons}"  Height="150"/>

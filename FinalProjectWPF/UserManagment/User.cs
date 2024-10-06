@@ -29,13 +29,15 @@ namespace FinalProjectWPF.UserManagment
                 OnPropertyChanged();
             }
         }
+
+        // migel
         public int ID
         {
             get
             {
                 return _id;
             }
-            private set
+            set
             {
                 _id = value;
             }

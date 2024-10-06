@@ -408,5 +408,10 @@ namespace FinalProjectWPF.Projects.TicTacToe
                 }
             }
         }
+
+        private void GoBackButton_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new TicTacToePreviewPage());
+        }
     }
 }
