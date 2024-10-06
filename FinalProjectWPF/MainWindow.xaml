@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FinalProjectWPF"
         mc:Ignorable="d"
-        Title="Moshe Game Center" Height="550" Width="1000" ResizeMode="CanResizeWithGrip">
+        Title="Moshe Game Center" Height="550" Width="1000" ResizeMode="CanResizeWithGrip"
+        WindowState="Maximized" WindowStyle="None">
     <Frame x:Name="MainFrame" NavigationUIVisibility="Hidden" />
     
 </Window>

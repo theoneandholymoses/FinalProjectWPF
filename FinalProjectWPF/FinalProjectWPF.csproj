@@ -18,6 +18,7 @@
     <None Remove="Assets\dotnet.png" />
     <None Remove="Assets\DropTheMillionIcon.png" />
     <None Remove="Assets\editIcon.png" />
+    <None Remove="Assets\ExitIcon.png" />
     <None Remove="Assets\GameCenterBackground.mp4" />
     <None Remove="Assets\GameCenterIcon.ico" />
     <None Remove="Assets\InfoIcon.png" />
@@ -45,8 +46,12 @@
     <None Remove="Projects\CatchTheEgg\Assets\Poop.png" />
     <None Remove="Projects\CatchTheEgg\Assets\TempCTEbackground.mp4" />
     <None Remove="Projects\DontDropTheMillion\Assets\Background.jpg" />
+    <None Remove="Projects\DontDropTheMillion\Assets\CorrectIcon.png" />
+    <None Remove="Projects\DontDropTheMillion\Assets\Decrease.png" />
     <None Remove="Projects\DontDropTheMillion\Assets\ExitIcon.png" />
+    <None Remove="Projects\DontDropTheMillion\Assets\Increase.png" />
     <None Remove="Projects\DontDropTheMillion\Assets\QuestionBlock.png" />
+    <None Remove="Projects\DontDropTheMillion\Assets\WrongIcon.png" />
     <None Remove="Projects\MyCalendar\Assets\AddTaskIcon.png" />
     <None Remove="Projects\MyCalendar\Assets\ArrowBackIcon.png" />
     <None Remove="Projects\MyCalendar\Assets\ArrowNextIcon.png" />
@@ -117,6 +122,7 @@
     <Content Include="Assets\GameCenterBackground.mp4">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Resource Include="Assets\ExitIcon.png" />
     <Resource Include="Assets\GameCenterIcon.ico" />
     <Resource Include="Assets\InfoIcon.png" />
     <Resource Include="Assets\MyLittleBusinessIcon.png" />
@@ -143,8 +149,12 @@
     <Resource Include="Projects\CatchTheEgg\Assets\Poop.png" />
     <Resource Include="Projects\CatchTheEgg\Assets\TempCTEbackground.mp4" />
     <Resource Include="Projects\DontDropTheMillion\Assets\Background.jpg" />
+    <Resource Include="Projects\DontDropTheMillion\Assets\CorrectIcon.png" />
+    <Resource Include="Projects\DontDropTheMillion\Assets\Decrease.png" />
     <Resource Include="Projects\DontDropTheMillion\Assets\ExitIcon.png" />
+    <Resource Include="Projects\DontDropTheMillion\Assets\Increase.png" />
     <Resource Include="Projects\DontDropTheMillion\Assets\QuestionBlock.png" />
+    <Resource Include="Projects\DontDropTheMillion\Assets\WrongIcon.png" />
     <Resource Include="Projects\MyCalendar\Assets\AddTaskIcon.png" />
     <Resource Include="Projects\MyCalendar\Assets\ArrowBackIcon.png" />
     <Resource Include="Projects\MyCalendar\Assets\ArrowNextIcon.png" />

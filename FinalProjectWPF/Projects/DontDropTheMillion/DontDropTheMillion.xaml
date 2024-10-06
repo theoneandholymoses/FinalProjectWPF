@@ -29,11 +29,11 @@
             <ColumnDefinition Width="85*"/>
         </Grid.ColumnDefinitions>
 
-        <Button x:Name="GoBack" Grid.Column="6" Grid.Row="0" Height="NaN"  Width="60" Click="GoBack_Click" Focusable="False" Margin="0,15,0,14" Style="{StaticResource WideButton}" HorizontalAlignment="Center">
+        <Button x:Name="GoBack" Grid.Column="6" Grid.Row="0" Background="#da41e8" Height="35"  Width="60" Click="GoBack_Click" Focusable="False" Margin="0,15,0,14" Style="{StaticResource WideButton}" HorizontalAlignment="Center">
             <Image Source="Assets\ExitIcon.png" Style="{StaticResource MenuButtonIcon}"/>
         </Button>
 
-        <Grid Grid.Column="3" Grid.Row="1">
+        <Grid x:Name="LevelGrids" Grid.Column="3" Grid.Row="1">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
@@ -52,36 +52,36 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             <Grid Grid.Row="0" Grid.Column="0" Width="120">
-                <TextBlock Foreground="White" Text="LVL :" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                <TextBlock Text="LVL :" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="15" Style="{StaticResource TextBlockTitleStyle}"/>
             </Grid>
-            <Grid Grid.Row="0" Grid.Column="1" Height="10" Background="Cyan" Margin="2"/>
-            <Grid Grid.Row="0" Grid.Column="2" Height="10" Background="Cyan" Margin="2"/>
-            <Grid Grid.Row="0" Grid.Column="3" Height="10" Background="Cyan" Margin="2"/>
-            <Grid Grid.Row="0" Grid.Column="4" Height="10" Background="Cyan" Margin="2"/>
-            <Grid Grid.Row="0" Grid.Column="5" Height="10" Background="Cyan" Margin="2"/>
-            <Grid Grid.Row="0" Grid.Column="6" Height="10" Background="Cyan" Margin="2"/>
-            <Grid Grid.Row="0" Grid.Column="7" Height="10" Background="Cyan" Margin="2"/>
-            <Grid Grid.Row="0" Grid.Column="8" Height="10" Background="Cyan" Margin="2"/>
-            <Grid Grid.Row="0" Grid.Column="9" Height="10" Background="Cyan" Margin="2"/>
-            <Grid Grid.Row="0" Grid.Column="10" Height="10" Background="Cyan" Margin="2"/>
+            <Grid Tag="LevelGrid" Grid.Row="0" Grid.Column="1" Height="10" Margin="2"/>
+            <Grid Tag="LevelGrid" Grid.Row="0" Grid.Column="2" Height="10" Margin="2"/>
+            <Grid Tag="LevelGrid" Grid.Row="0" Grid.Column="3" Height="10" Margin="2"/>
+            <Grid Tag="LevelGrid" Grid.Row="0" Grid.Column="4" Height="10" Margin="2"/>
+            <Grid Tag="LevelGrid" Grid.Row="0" Grid.Column="5" Height="10" Margin="2"/>
+            <Grid Tag="LevelGrid" Grid.Row="0" Grid.Column="6" Height="10" Margin="2"/>
+            <Grid Tag="LevelGrid" Grid.Row="0" Grid.Column="7" Height="10" Margin="2"/>
+            <Grid Tag="LevelGrid" Grid.Row="0" Grid.Column="8" Height="10" Margin="2"/>
+            <Grid Tag="LevelGrid" Grid.Row="0" Grid.Column="9" Height="10" Margin="2"/>
+            <Grid Tag="LevelGrid" Grid.Row="0" Grid.Column="10" Height="10" Margin="2"/>
 
-            <StackPanel Grid.Column="0" Grid.ColumnSpan="10" Grid.Row="1" Orientation="Horizontal" VerticalAlignment="Center" Height="26">
-                <Label Content="Question:" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White"/>
-                <Label x:Name="QuestionNum" Content="" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White"/>
+            <StackPanel Grid.Column="0" Grid.ColumnSpan="10" Grid.Row="1" Orientation="Horizontal" VerticalAlignment="Top" Height="100">
+                <Label Content="Question:" HorizontalAlignment="Left" VerticalAlignment="Top" Style="{StaticResource TitleLabelStyle}"/>
+                <Label x:Name="QuestionNum" Content="" HorizontalAlignment="Left" VerticalAlignment="Top" Style="{StaticResource TitleLabelStyle}"/>
             </StackPanel>
         </Grid>
 
-        <StackPanel Grid.Column="3" Orientation="Horizontal" Margin="0,0,0,1" Grid.Row="1" >
-            <Label x:Name="Timer" Content="60" HorizontalAlignment="Left" VerticalAlignment="Top" Visibility="Hidden" Foreground="White"/>
-            <Label x:Name="TimerText" Content="Time Left:" HorizontalAlignment="Left" VerticalAlignment="Top" Visibility="Hidden" Foreground="White"/>
+        <StackPanel Grid.Column="1" Orientation="Horizontal" Margin="0 0 0 1" Grid.Row="1" >
+            <Label x:Name="TimerText" Content="Time Left:" FontSize="40" HorizontalAlignment="Left" VerticalAlignment="Top" Visibility="Hidden" Style="{StaticResource TitleLabelStyle}"/>
+            <Label x:Name="Timer" Content="60" FontSize="40" HorizontalAlignment="Left" VerticalAlignment="Top" Visibility="Hidden" Style="{StaticResource TitleLabelStyle}"/>
         </StackPanel>
 
 
 
-        <Button x:Name="Catagory1" Grid.Column="2" Grid.Row="1" Click="Catagory1_Click" Content="catagory1" HorizontalAlignment="Center"  VerticalAlignment="Top" Height="40" Style="{StaticResource WideButton}" Margin="0,22,0,0" Width="150"/>
-        <Button x:Name="Catagory2" Grid.Column="4" Grid.Row="1" Click="Catagory2_Click" Content="catagory2" HorizontalAlignment="Center"  VerticalAlignment="Top" Height="40" Style="{StaticResource WideButton}" Margin="0,22,0,0" Width="150"/>
-        <Label x:Name="QuestionLabel" Grid.Column="2" Grid.ColumnSpan="3" Grid.Row="2" Visibility="Visible" Content="" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White" Height="50"/>
-        <Label x:Name="TheRightAnswer" Grid.Column="2" Grid.Row="2" Content="" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White" Height="50" Margin="0,20,0,0"/>
+        <Button x:Name="Catagory1" Grid.Column="2" Grid.Row="1" Background="#da41e8" Click="Catagory1_Click" Content="catagory1" HorizontalAlignment="Center"  VerticalAlignment="Top" Height="40" Style="{StaticResource WideButton}" Margin="0,22,0,0" Width="150"/>
+        <Button x:Name="Catagory2" Grid.Column="4" Grid.Row="1" Background="#da41e8" Click="Catagory2_Click" Content="catagory2" HorizontalAlignment="Center"  VerticalAlignment="Top" Height="40" Style="{StaticResource WideButton}" Margin="0,22,0,0" Width="150"/>
+        <TextBlock x:Name="QuestionLabel" TextWrapping="Wrap" Grid.Column="2" Grid.Row="2" Grid.ColumnSpan="10" Visibility="Visible" HorizontalAlignment="Left" VerticalAlignment="Center" Width="1100" Height="120" Style="{StaticResource TextBlockTitleStyle}"/>
+
 
         <Grid x:Name="A0MainGrid" Grid.Column="1" Grid.Row="3" Margin="0,6,0,5">
             <Grid.Background>
@@ -103,11 +103,17 @@
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="0.4*"/>
                 </Grid.ColumnDefinitions>
-                <Image x:Name="A0Img" Source="Assets/ExitIcon.png" Grid.Row="0" Grid.Column="0" Grid.RowSpan="4" Grid.ColumnSpan="4" Visibility="Hidden"/>
-                <TextBlock x:Name="Answer0" Grid.RowSpan="2" Grid.Column="1" Grid.ColumnSpan="3" Visibility="Visible" Text="Answer 1" VerticalAlignment="Bottom"  Foreground="White" TextWrapping="Wrap" HorizontalAlignment="Center" MaxHeight="50" />
-                <Label x:Name="Answer1Bet" Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="3" Visibility="Visible" Content="0" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White"/>
-                <Button MouseEnter="A1Down_MouseDown" MouseLeave="A1Down_MouseUp"  x:Name="A1Down" Grid.Row="3" Grid.Column="1" Visibility="Hidden" Content=" - " HorizontalAlignment="Left" VerticalAlignment="Center" Style="{StaticResource TopButton}"/>
-                <Button MouseEnter="A1Up_MouseDown" MouseLeave="A1Up_MouseUp"  x:Name="A1Up" Grid.Row="3" Grid.Column="3" Visibility="Hidden" Content=" + " HorizontalAlignment="Right" VerticalAlignment="Center" Style="{StaticResource TopButton}"/>
+
+                <Image x:Name="A0WrongImg" Source="Assets/WrongIcon.png" Grid.Row="0" Grid.Column="0" Grid.RowSpan="4" Grid.ColumnSpan="4" Visibility="Hidden"/>
+                <Image x:Name="A0CorrectImg" Source="Assets/CorrectIcon.png" Grid.Row="0" Grid.Column="0" Grid.RowSpan="4" Grid.ColumnSpan="4" Visibility="Hidden"/>
+                <TextBlock x:Name="Answer0" Grid.RowSpan="2" Grid.Column="1" Grid.ColumnSpan="3" Visibility="Visible" Text="Answer 1" VerticalAlignment="Bottom" TextWrapping="Wrap" HorizontalAlignment="Center" MaxHeight="50" FontSize="20" Style="{StaticResource TextBlockTitleStyle}"/>
+                <Label x:Name="Answer1Bet" Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="3" Visibility="Visible" Content="0" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="20" Style="{StaticResource TitleLabelStyle}"/>
+                <Button MouseEnter="A1Down_MouseDown" MouseLeave="A1Down_MouseUp"  x:Name="A1Down" Background="#da41e8" Width="40" Height="40" Grid.Row="3" Grid.Column="1" Visibility="Hidden" HorizontalAlignment="Left" VerticalAlignment="Center" Style="{StaticResource TopButton}">
+                    <Image Source="Assets\Decrease.png" Width="20" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                </Button>
+                <Button MouseEnter="A1Up_MouseDown" MouseLeave="A1Up_MouseUp"  x:Name="A1Up" Background="#da41e8" Width="40" Height="40" Grid.Row="3" Grid.Column="3" Visibility="Hidden" HorizontalAlignment="Right" VerticalAlignment="Center" Style="{StaticResource TopButton}">
+                    <Image Source="Assets\Increase.png" Width="20" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                </Button>
             </Grid>
         </Grid>
 
@@ -131,12 +137,17 @@
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="0.4*"/>
                 </Grid.ColumnDefinitions>
-                <Image x:Name="A1Img" Source="Assets/ExitIcon.png" Grid.Row="0" Grid.Column="0" Grid.RowSpan="4" Grid.ColumnSpan="4" Visibility="Hidden"/>
 
-                <TextBlock x:Name="Answer1"  Grid.RowSpan="2" Grid.Column="1" Grid.ColumnSpan="3" Visibility="Visible" Text="Answer 2" VerticalAlignment="Bottom"  Foreground="White" TextWrapping="Wrap" HorizontalAlignment="Center" MaxHeight="50" />
-                <Label x:Name="Answer2Bet"  Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="3" Visibility="Visible" Content="0" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White"/>
-                <Button MouseEnter="A2Down_MouseDown" MouseLeave="A2Down_MouseUp" x:Name="A2Down" Grid.Row="3" Grid.Column="1" Visibility="Hidden" Content=" - " HorizontalAlignment="Left" VerticalAlignment="Center" Style="{StaticResource TopButton}"/>
-                <Button MouseEnter="A2Up_MouseDown" MouseLeave="A2Up_MouseUp" x:Name="A2Up" Grid.Row="3" Grid.Column="3" Visibility="Hidden" Content=" + " HorizontalAlignment="Right" VerticalAlignment="Center" Style="{StaticResource TopButton}"/>
+                <Image x:Name="A1WrongImg" Source="Assets/WrongIcon.png" Grid.Row="0" Grid.Column="0" Grid.RowSpan="4" Grid.ColumnSpan="4" Visibility="Hidden"/>
+                <Image x:Name="A1CorrectImg" Source="Assets/CorrectIcon.png" Grid.Row="0" Grid.Column="0" Grid.RowSpan="4" Grid.ColumnSpan="4" Visibility="Hidden"/>
+                <TextBlock x:Name="Answer1"  Grid.RowSpan="2" Grid.Column="1" Grid.ColumnSpan="3" Visibility="Visible" Text="Answer 2" VerticalAlignment="Bottom" TextWrapping="Wrap" HorizontalAlignment="Center" MaxHeight="50" FontSize="20" Style="{StaticResource TextBlockTitleStyle}"/>
+                <Label x:Name="Answer2Bet"  Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="3" Visibility="Visible" Content="0" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="20" Style="{StaticResource TitleLabelStyle}"/>
+                <Button MouseEnter="A2Down_MouseDown" MouseLeave="A2Down_MouseUp"  x:Name="A2Down" Background="#da41e8" Width="40" Height="40" Grid.Row="3" Grid.Column="1" Visibility="Hidden" HorizontalAlignment="Left" VerticalAlignment="Center" Style="{StaticResource TopButton}">
+                    <Image Source="Assets\Decrease.png" Width="20" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                </Button>
+                <Button MouseEnter="A2Up_MouseDown" MouseLeave="A2Up_MouseUp" x:Name="A2Up" Background="#da41e8" Width="40" Height="40" Grid.Row="3" Grid.Column="3" Visibility="Hidden" HorizontalAlignment="Right" VerticalAlignment="Center" Style="{StaticResource TopButton}">
+                    <Image Source="Assets\Increase.png" Width="20" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                </Button>
             </Grid>
         </Grid>
 
@@ -160,12 +171,17 @@
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="0.4*"/>
                 </Grid.ColumnDefinitions>
-                <Image x:Name="A2Img" Source="Assets/ExitIcon.png" Grid.Row="0" Grid.Column="0" Grid.RowSpan="4" Grid.ColumnSpan="4" Visibility="Hidden"/>
 
-                <TextBlock x:Name="Answer2"  Grid.RowSpan="2" Grid.Column="1" Grid.ColumnSpan="3" Visibility="Visible" Text="Answer 3" VerticalAlignment="Bottom"  Foreground="White" TextWrapping="Wrap" HorizontalAlignment="Center" MaxHeight="50" />
-                <Label x:Name="Answer3Bet" Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="3" Visibility="Visible" Content="0" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White"/>
-                <Button MouseEnter="A3Down_MouseDown" MouseLeave="A3Down_MouseUp"  x:Name="A3Down" Grid.Row="3" Grid.Column="1" Visibility="Hidden" Content=" - " HorizontalAlignment="Left" VerticalAlignment="Center" Style="{StaticResource TopButton}"/>
-                <Button MouseEnter="A3Up_MouseDown" MouseLeave="A3Up_MouseUp" x:Name="A3Up" Grid.Row="3" Grid.Column="3" Visibility="Hidden" Content=" + " HorizontalAlignment="Right" VerticalAlignment="Center" Style="{StaticResource TopButton}"/>
+                <Image x:Name="A2WrongImg" Source="Assets/WrongIcon.png" Grid.Row="0" Grid.Column="0" Grid.RowSpan="4" Grid.ColumnSpan="4" Visibility="Hidden"/>
+                <Image x:Name="A2CorrectImg" Source="Assets/CorrectIcon.png" Grid.Row="0" Grid.Column="0" Grid.RowSpan="4" Grid.ColumnSpan="4" Visibility="Hidden"/>
+                <TextBlock x:Name="Answer2"  Grid.RowSpan="2" Grid.Column="1" Grid.ColumnSpan="3" Visibility="Visible" Text="Answer 3" VerticalAlignment="Bottom" TextWrapping="Wrap" HorizontalAlignment="Center" MaxHeight="50" FontSize="20" Style="{StaticResource TextBlockTitleStyle}"/>
+                <Label x:Name="Answer3Bet" Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="3" Visibility="Visible" Content="0" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="20" Style="{StaticResource TitleLabelStyle}"/>
+                <Button MouseEnter="A3Down_MouseDown" MouseLeave="A3Down_MouseUp"  x:Name="A3Down" Background="#da41e8" Width="40" Height="40" Grid.Row="3" Grid.Column="1" Visibility="Hidden" HorizontalAlignment="Left" VerticalAlignment="Center" Style="{StaticResource TopButton}">
+                    <Image Source="Assets\Decrease.png" Width="20" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                </Button>
+                <Button MouseEnter="A3Up_MouseDown" MouseLeave="A3Up_MouseUp" x:Name="A3Up" Background="#da41e8" Width="40" Height="40" Grid.Row="3" Grid.Column="3" Visibility="Hidden" HorizontalAlignment="Right" VerticalAlignment="Center" Style="{StaticResource TopButton}">
+                    <Image Source="Assets\Increase.png" Width="20" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                </Button>
             </Grid>
         </Grid>
 
@@ -190,18 +206,22 @@
                     <ColumnDefinition Width="0.4*"/>
                 </Grid.ColumnDefinitions>
 
-                <Image x:Name="A3Img" Source="Assets/ExitIcon.png" Grid.Row="0" Grid.Column="0" Grid.RowSpan="4" Grid.ColumnSpan="4" Visibility="Hidden"/>
-
-                <TextBlock x:Name="Answer3"  Grid.RowSpan="2" Grid.Column="1" Grid.ColumnSpan="3" Visibility="Visible" Text="Answer 4" VerticalAlignment="Bottom"  Foreground="White" TextWrapping="Wrap" HorizontalAlignment="Center" MaxHeight="50" />
-                <Label x:Name="Answer4Bet" Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="3" Visibility="Visible" Content="0" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White"/>
-                <Button MouseEnter="A4Down_MouseDown" MouseLeave="A4Down_MouseUp" x:Name="A4Down" Grid.Row="3" Grid.Column="1" Visibility="Hidden" Content=" - " HorizontalAlignment="Left" VerticalAlignment="Center" Style="{StaticResource TopButton}"/>
-                <Button MouseEnter="A4Up_MouseDown" MouseLeave="A4Up_MouseUp" x:Name="A4Up" Grid.Row="3" Grid.Column="3" Visibility="Hidden" Content=" + " HorizontalAlignment="Right" VerticalAlignment="Center" Style="{StaticResource TopButton}"/>
+                <Image x:Name="A3WrongImg" Source="Assets/WrongIcon.png" Grid.Row="0" Grid.Column="0" Grid.RowSpan="4" Grid.ColumnSpan="4" Visibility="Hidden"/>
+                <Image x:Name="A3CorrectImg" Source="Assets/CorrectIcon.png" Grid.Row="0" Grid.Column="0" Grid.RowSpan="4" Grid.ColumnSpan="4" Visibility="Hidden"/>
+                <TextBlock x:Name="Answer3"  Grid.RowSpan="2" Grid.Column="1" Grid.ColumnSpan="3" Visibility="Visible" Text="Answer 4" VerticalAlignment="Bottom" TextWrapping="Wrap" HorizontalAlignment="Center" MaxHeight="50" FontSize="20" Style="{StaticResource TextBlockTitleStyle}"/>
+                <Label x:Name="Answer4Bet" Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="3" Visibility="Visible" Content="0" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="20" Style="{StaticResource TitleLabelStyle}"/>
+                <Button MouseEnter="A4Down_MouseDown" MouseLeave="A4Down_MouseUp" x:Name="A4Down" Background="#da41e8" Width="40" Height="40" Grid.Row="3" Grid.Column="1" Visibility="Hidden" HorizontalAlignment="Left" VerticalAlignment="Center" Style="{StaticResource TopButton}">
+                    <Image Source="Assets\Decrease.png" Width="20" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                </Button>
+                <Button MouseEnter="A4Up_MouseDown" MouseLeave="A4Up_MouseUp" x:Name="A4Up" Background="#da41e8" Width="40" Height="40" Grid.Row="3" Grid.Column="3" Visibility="Hidden" HorizontalAlignment="Right" VerticalAlignment="Center" Style="{StaticResource TopButton}">
+                    <Image Source="Assets\Increase.png" Width="20" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                </Button>
             </Grid>
         </Grid>
 
 
-        <Label x:Name="UserMoney" Grid.Column="3" Grid.Row="3" Content="1000000" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" Height="30" Width="60"/>
-        <Button x:Name="SubmitQuestion" Grid.Column="3" Grid.Row="3" Visibility="Hidden" Content="Submit" HorizontalAlignment="Center" VerticalAlignment="Top" Click="SubmitAnswer" Height="30" Width="54" Margin="0,95,0,0" Style="{StaticResource WideButton}"/>
-        <Button x:Name="ResetGameButton" Grid.Column="3" Grid.Row="3" Visibility="Hidden" Content="Reset" HorizontalAlignment="Center" VerticalAlignment="Top" Click="ResetGame" Height="30" Width="54" Margin="0,95,0,0" Style="{StaticResource WideButton}"/>
+        <Label x:Name="UserMoney" Grid.Column="3" Grid.Row="3" Content="1000000" HorizontalAlignment="Center" VerticalAlignment="Center" Height="80" Width="130" FontSize="30" Style="{StaticResource TitleLabelStyle}"/>
+        <Button x:Name="SubmitQuestion" Grid.Column="3" Grid.Row="3" Visibility="Hidden" Background="#da41e8" Content="Submit" HorizontalAlignment="Center" VerticalAlignment="Top" Click="SubmitAnswer" Height="30" Width="54" Margin="0,95,0,0" Style="{StaticResource WideButton}"/>
+        <Button x:Name="ResetGameButton" Grid.Column="3" Grid.Row="3" Visibility="Hidden" Background="#da41e8" Content="Reset" HorizontalAlignment="Center" VerticalAlignment="Top" Click="ResetGame" Height="30" Width="54" Margin="0,95,0,0" Style="{StaticResource WideButton}"/>
     </Grid>
 </Page>

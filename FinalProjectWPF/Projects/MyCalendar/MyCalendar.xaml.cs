@@ -51,7 +51,7 @@ namespace FinalProjectWPF.Projects.MyCalendar
                     count++;
                     DateTime taskStartTime = task.TaskStartTime;
                     DateTime taskEndTime = task.TaskEndTime;
-                    string taskTime = taskStartTime.ToString() + " " + taskEndTime.ToString();
+                    string taskTime ="From: "+ taskStartTime.ToShortTimeString()+ " - " + "Till: "+ taskEndTime.ToShortTimeString();
                     var taskControl = new Item
                     {
                         Title = task.Title,
@@ -343,6 +343,11 @@ namespace FinalProjectWPF.Projects.MyCalendar
             else
             {
             }
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new CalendarPreviewPage());
         }
 
     }

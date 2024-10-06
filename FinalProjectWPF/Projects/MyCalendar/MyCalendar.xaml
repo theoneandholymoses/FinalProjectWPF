@@ -25,7 +25,12 @@
                     <ColumnDefinition Width="1.2*"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-
+                <Button Grid.Column="0" Width="100" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="15,10,0,0" Background="#f69669" Style="{StaticResource GridDownloadButton}" Click="Button_Click">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="Assets\ExitIcon.png" Margin="0 0 5 0" Style="{StaticResource MenuButtonIcon}"/>
+                        <TextBlock Text="Exit App"/>
+                    </StackPanel>
+                </Button>
                 <StackPanel>
                     <!--years bar-->
                     <StackPanel x:Name="YearBar" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 50 0 30">
@@ -138,10 +143,11 @@
                     </Grid>
 
                     <!--Notes-->
-                    <StackPanel x:Name="TaskTable" Grid.Row="2">
-                        <!--<uc:Item Title="hi" Time="09:45 - 10:30" Color="#FBC9B1" Icon="Assets\ItemTaskIcon.png" DurationIcon="Assets\ClockIcon.png"/>
-                        <uc:Item Title="lalal" Time="13:15 - 20:25" Color="#FBC9B1" Icon="Assets\ItemTaskIcon.png" DurationIcon="Assets\ClockIcon.png"/>-->
-                    </StackPanel>
+                    <ScrollViewer VerticalScrollBarVisibility="Hidden"  Grid.Row="2" MaxHeight="250">
+                        <StackPanel x:Name="TaskTable">
+
+                        </StackPanel>
+                    </ScrollViewer>
                     <Popup x:Name="TaskPopup" StaysOpen="False" IsOpen="False" PlacementTarget="{Binding ElementName=MainWindow}" Placement="Left" HorizontalAlignment="Center" VerticalAlignment="Center" AllowsTransparency="True">
                         <Border Background="White" BorderBrush="Gray" BorderThickness="2" Padding="20" CornerRadius="10">
                             <StackPanel>

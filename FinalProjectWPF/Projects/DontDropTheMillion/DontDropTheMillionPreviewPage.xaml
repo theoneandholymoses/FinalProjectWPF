@@ -7,7 +7,6 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="DontDropTheMillionPreviewPage">
-
     <Grid Background="White">
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
@@ -30,24 +29,25 @@
               IsHitTestVisible="False"
               Grid.ColumnSpan="1" Grid.RowSpan="5"/>
 
-        <Label x:Name="TitleLabel" Content="Catch the Egg" Grid.Row="0" HorizontalAlignment="Center" Style="{StaticResource TitleLabelStyle}" />
+        <Label x:Name="TitleLabel" Content="Don't Drop The Million" Grid.Row="0" HorizontalAlignment="Center" Style="{StaticResource TitleLabelStyle}" />
 
         <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 0 0 10">
             <TextBlock Text="About the game" Foreground="#FFCEC9C9" VerticalAlignment="Center" FontSize="30" Width="230"/>
-            <Button ToolTip="About the game" Style="{StaticResource TopButton}" Height="30" Background="CadetBlue" Click="Button_ClickGameInfo">
+            <Button ToolTip="About the game" Style="{StaticResource TopButton}" Height="30" Background="#da41e8" Click="Button_ClickGameInfo">
                 <Image Source="\Assets\InfoIcon.png" Width="15" Height="15" />
             </Button>
         </StackPanel>
 
-        <Border >
-            <StackPanel x:Name="ScoreBoardPanel" Orientation="Vertical" Background="CadetBlue" Height="1000">
+        <Border CornerRadius="30" BorderThickness="2"  Grid.Row="2" Width="500" BorderBrush="#da41e8" ClipToBounds="True" Padding="10" Background="#da41e8" Opacity="0.8">
+            <StackPanel x:Name="ScoreBoardPanel" Orientation="Vertical" Background="#da41e8" Height="200">
                 <TextBlock Text="Scoreboard :" HorizontalAlignment="Center" Margin="0 5 0 5" FontSize="20" FontWeight="Bold" Style="{StaticResource TextBlockStyle}"/>
                 <Grid>
-                    <DataGrid x:Name="ScoreBoard" Height="1000">
+                    <DataGrid x:Name="ScoreBoard" Height="200" Style="{DynamicResource DataGridStyle1}" CellStyle="{DynamicResource DataGridCellStyle1}"
+                  ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" RowStyle="{DynamicResource DataGridRowStyle1}" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.CanContentScroll="True">
                         <DataGrid.Columns>
 
-                            <DataGridTextColumn Header="Player Name" IsReadOnly="True" CanUserResize="False" Width="*" Binding="{Binding Name}"/>
-                            <DataGridTextColumn Header="score" IsReadOnly="True" Width="*" Binding="{Binding Score}"/>
+                            <DataGridTextColumn Header="Player Name" IsReadOnly="True" CanUserResize="False" Width="*" Binding="{Binding LoggedInUser}"/>
+                            <DataGridTextColumn Header="score" IsReadOnly="True" Width="*" Binding="{Binding GameScoreData}"/>
 
                         </DataGrid.Columns>
                     </DataGrid>
@@ -56,13 +56,13 @@
         </Border>
 
         <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Center">
-            <Button x:Name="GoBack" Content="Go back" Height="30" Margin="0 0 10 0" Background="CadetBlue" Style="{StaticResource CalenderWideButton}" Click="GoBack_Click"/>
-            <Button x:Name="OpenApp" Content="Open App" Height="30" Margin="10 0 0 0" Background="CadetBlue" Style="{StaticResource CalenderWideButton}" Click="OpenApp_Click"/>
+            <Button x:Name="GoBack" Content="Go back" Height="30" Margin="0 0 10 0" Background="#da41e8" Style="{StaticResource CalenderWideButton}" Click="GoBack_Click"/>
+            <Button x:Name="OpenApp" Content="Open App" Height="30" Margin="10 0 0 0" Background="#da41e8" Style="{StaticResource CalenderWideButton}" Click="OpenApp_Click"/>
         </StackPanel>
 
         <Popup x:Name="PopUpWindow" StaysOpen="False" IsOpen="False" PlacementTarget="{Binding ElementName=MainWindow}" 
                    Placement="Center" HorizontalAlignment="Center" VerticalAlignment="Center" AllowsTransparency="True">
-            <Border CornerRadius="30" BorderThickness="2" BorderBrush="CadetBlue" ClipToBounds="True" Padding="10" Background="White">
+            <Border CornerRadius="30" BorderThickness="2" BorderBrush="#da41e8" ClipToBounds="True" Padding="10" Background="White">
                 <Grid>
 
 

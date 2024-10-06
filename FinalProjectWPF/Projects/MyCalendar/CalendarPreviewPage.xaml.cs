@@ -32,7 +32,7 @@ namespace FinalProjectWPF.Projects.MyCalendar
         }
         private void GoBack_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.GoBack();
+            NavigationService.Navigate(new GameCenterPage());
         }
 
         private void OpenApp_Click(object sender, RoutedEventArgs e)

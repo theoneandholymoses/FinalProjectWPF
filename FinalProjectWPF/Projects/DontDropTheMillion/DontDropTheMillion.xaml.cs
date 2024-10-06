@@ -16,6 +16,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Threading;
 
+
 namespace FinalProjectWPF.Projects.DontDropTheMillion
 {
     /// <summary>
@@ -53,6 +54,11 @@ namespace FinalProjectWPF.Projects.DontDropTheMillion
         public void LoadCatagories()
         {
             CountOfQuestions++;
+            var levelGrids = LevelGrids.Children.OfType<Grid>().Where(g => g.Tag?.ToString() == "LevelGrid").ToList();
+            if (CountOfQuestions - 1 >= 0 && CountOfQuestions - 1 < levelGrids.Count)
+            {
+                levelGrids[CountOfQuestions - 1].Background = new SolidColorBrush(Colors.Cyan);
+            }
             QuestionNum.Content = CountOfQuestions;
             Timer.Visibility = Visibility.Hidden;
             TimerText.Visibility = Visibility.Hidden;
@@ -92,7 +98,7 @@ namespace FinalProjectWPF.Projects.DontDropTheMillion
             A4Up.Visibility = Visibility.Visible;
 
             _currentQuestion = await _questionManager.GetQuestionsAsync(GetGameLevel(), catagory);
-            QuestionLabel.Content = _currentQuestion.QuestionText;
+            QuestionLabel.Text = _currentQuestion.QuestionText;
 
             Answer0.Text = _currentQuestion.AllAnswers[0];
             Answer1.Text = _currentQuestion.AllAnswers[1];
@@ -100,7 +106,6 @@ namespace FinalProjectWPF.Projects.DontDropTheMillion
             Answer3.Text = _currentQuestion.AllAnswers[3];
 
             StartTimer();
-            TheRightAnswer.Content = _currentQuestion.CorrectAnswer;
         }
 
         public void IncreaseBetAmount(string answerKey)
@@ -108,7 +113,7 @@ namespace FinalProjectWPF.Projects.DontDropTheMillion
             double availableMoney = _gameManager.TotalMoney - _currentBets.Values.Sum();
             if (availableMoney > 0)
             {
-                _currentBets[answerKey] += 20000; 
+                _currentBets[answerKey] += 20000;
                 UpdateUIForBets();
             }
             if (_currentBets.Values.Sum() >= _gameManager.TotalMoney)
@@ -121,7 +126,7 @@ namespace FinalProjectWPF.Projects.DontDropTheMillion
         {
             if (_currentBets[answerKey] > 0)
             {
-                _currentBets[answerKey] -= 20000; 
+                _currentBets[answerKey] -= 20000;
                 UpdateUIForBets();
             }
             if (_currentBets.Values.Sum() < _gameManager.TotalMoney)
@@ -143,7 +148,7 @@ namespace FinalProjectWPF.Projects.DontDropTheMillion
                 else
                 {
                     await Task.Delay(500);
-                    string imgName = $"A{i}Img";
+                    string imgName = $"A{i}WrongImg";
                     string gridName = $"A{i}Grid";
                     string mainGridName = $"A{i}MainGrid";
                     Grid? mg = mainGrid.Children.OfType<Grid>().Where(r => r.Name == mainGridName).FirstOrDefault();
@@ -159,24 +164,29 @@ namespace FinalProjectWPF.Projects.DontDropTheMillion
             switch (CorrectIndex)
             {
                 case 0:
-                    Answer0.Text = "correct answer";
+                    A0CorrectImg.Visibility = Visibility.Visible;
                     break;
                 case 1:
-                    Answer1.Text = "correct answer";
+                    A1CorrectImg.Visibility = Visibility.Visible;
                     break;
                 case 2:
-                    Answer2.Text = "correct answer";
+                    A2CorrectImg.Visibility = Visibility.Visible;
                     break;
                 case 3:
-                    Answer3.Text = "correct answer";
+                    A3CorrectImg.Visibility = Visibility.Visible;
                     break;
             }
 
             await Task.Delay(2000);
-            A0Img.Visibility = Visibility.Hidden;
-            A1Img.Visibility = Visibility.Hidden;
-            A2Img.Visibility = Visibility.Hidden;
-            A3Img.Visibility = Visibility.Hidden;
+            A0WrongImg.Visibility = Visibility.Hidden;
+            A1WrongImg.Visibility = Visibility.Hidden;
+            A2WrongImg.Visibility = Visibility.Hidden;
+            A3WrongImg.Visibility = Visibility.Hidden;
+            A0CorrectImg.Visibility = Visibility.Hidden;
+            A1CorrectImg.Visibility = Visibility.Hidden;
+            A2CorrectImg.Visibility = Visibility.Hidden;
+            A3CorrectImg.Visibility = Visibility.Hidden;
+
 
         }
 
@@ -206,7 +216,7 @@ namespace FinalProjectWPF.Projects.DontDropTheMillion
                 MessageBox.Show("Game Over! You lost all the money.");
                 ResetGameButton.Visibility = Visibility.Visible;
             }
-            else if (_currentQuestionIndex >= 10) 
+            else if (_currentQuestionIndex >= 10)
             {
                 MessageBox.Show("Congratulations! You won the game.");
                 ((App)Application.Current).LastGameScore = (remainingMoney, GameType.DontDropTheMillion);
@@ -245,7 +255,7 @@ namespace FinalProjectWPF.Projects.DontDropTheMillion
 
         private void StartTimer()
         {
-            _timeRemaining = 60; // 60 seconds
+            _timeRemaining = 15; // 60 seconds
             Timer.Content = _timeRemaining.ToString();
             Timer.Visibility = Visibility.Visible;
             _timer.Start();
@@ -264,12 +274,12 @@ namespace FinalProjectWPF.Projects.DontDropTheMillion
                 {
                     MessageBox.Show("Time's up! money will be spread radomally between answers");
                     int j = _gameManager.TotalMoney;
-                    for (int i=0; i <= j; i += 20000)
+                    for (int i = 0; i <= j; i += 20000)
                     {
-                        IncreaseBetAmount("Answer"+_random.Next(0,3));
+                        IncreaseBetAmount("Answer" + _random.Next(0, 3));
                     }
                 }
-                await SubmitAnswers(); 
+                await SubmitAnswers();
             }
         }
 
@@ -277,7 +287,7 @@ namespace FinalProjectWPF.Projects.DontDropTheMillion
         {
             _betTimer = new DispatcherTimer();
             _betTimer.Interval = TimeSpan.FromMilliseconds(50); // Example interval
-            _betTimer.Tick += BetTimer_Tick; 
+            _betTimer.Tick += BetTimer_Tick;
         }
 
         private void BetTimer_Tick(object sender, EventArgs e)
@@ -363,7 +373,6 @@ namespace FinalProjectWPF.Projects.DontDropTheMillion
             _isBettingDown = false;
             _betTimer.Stop();
         }
-
         private void A1Up_MouseDown(object sender, RoutedEventArgs e) => HandleBetMouseDown(0, true);
         private void A1Up_MouseUp(object sender, RoutedEventArgs e) => HandleBetMouseUp();
         private void A1Down_MouseDown(object sender, RoutedEventArgs e) => HandleBetMouseDown(0, false);
@@ -383,7 +392,6 @@ namespace FinalProjectWPF.Projects.DontDropTheMillion
         private void A4Up_MouseUp(object sender, RoutedEventArgs e) => HandleBetMouseUp();
         private void A4Down_MouseDown(object sender, RoutedEventArgs e) => HandleBetMouseDown(3, false);
         private void A4Down_MouseUp(object sender, RoutedEventArgs e) => HandleBetMouseUp();
-
         private async void SubmitAnswer(object sender, RoutedEventArgs e)
         {
             await SubmitAnswers();
