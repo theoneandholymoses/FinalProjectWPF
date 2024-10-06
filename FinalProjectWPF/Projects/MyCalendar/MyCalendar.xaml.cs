@@ -252,8 +252,11 @@ namespace FinalProjectWPF.Projects.MyCalendar
                 }
             }
 
-            // Set the selected end time
             string endHour = task.TaskEndTime.ToString("HH:mm");
+            if(endHour == "23:59")
+            {
+                endHour = "23:00";
+            }
             foreach (ComboBoxItem item in TaskEndTimeComboBox.Items)
             {
                 if (item.Tag.ToString() == endHour)

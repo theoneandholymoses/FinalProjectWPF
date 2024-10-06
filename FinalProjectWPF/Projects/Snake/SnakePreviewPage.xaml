@@ -12,7 +12,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="3*"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
@@ -40,10 +40,10 @@
         </StackPanel>
 
         <Border CornerRadius="30" BorderThickness="2"  Grid.Row="2" Width="500" BorderBrush="#56e9a5" ClipToBounds="True" Padding="10" Background="#56e9a5" Opacity="0.8">
-            <StackPanel x:Name="ScoreBoardPanel" Orientation="Vertical" Background="#56e9a5" Height="200">
+            <StackPanel x:Name="ScoreBoardPanel" Orientation="Vertical" Background="#56e9a5" Height="500">
                 <TextBlock Text="Scoreboard :" HorizontalAlignment="Center" Margin="0 5 0 5" FontSize="20" FontWeight="Bold" Style="{StaticResource TextBlockStyle}"/>
                 <Grid>
-                    <DataGrid x:Name="ScoreBoard" Height="200" Style="{DynamicResource DataGridStyle1}" CellStyle="{DynamicResource DataGridCellStyle1}"
+                    <DataGrid x:Name="ScoreBoard" Height="380" Style="{DynamicResource DataGridStyle1}" CellStyle="{DynamicResource DataGridCellStyle1}"
                         ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" RowStyle="{DynamicResource DataGridRowStyle1}" ScrollViewer.VerticalScrollBarVisibility="Hidden" ScrollViewer.CanContentScroll="True">
                         <DataGrid.Columns>
 

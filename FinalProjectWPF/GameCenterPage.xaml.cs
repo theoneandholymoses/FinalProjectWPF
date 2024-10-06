@@ -302,7 +302,10 @@ namespace FinalProjectWPF
             DataContext = CurrentUser;
             fm.LoginUser(CurrentUser.ID);
             SelectionList.SelectedItem = null;
+            LoggedInUser = CurrentUser.ID;
+            UpdateCurrentPlayerScores();
             CloseMenu();
+
         }
 
         private void NewUserPanel_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
@@ -334,7 +337,7 @@ namespace FinalProjectWPF
             CloseMenu();
         }
 
-
+        // migel modify
         private User CreateNewUser(string name)
         {
             if (name != "")
@@ -348,6 +351,8 @@ namespace FinalProjectWPF
                     SelectionList.Items.Add(c);
                 }
                 ((App)Application.Current).LoggedInUserID = newUser.ID;
+                LoggedInUser = newUser.ID;
+                UpdateCurrentPlayerScores();
                 return newUser;
             }
             User CurrentUser = fm.CheckLastLoginUser();

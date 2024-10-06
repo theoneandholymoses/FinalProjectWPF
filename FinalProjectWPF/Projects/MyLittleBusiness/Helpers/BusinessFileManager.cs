@@ -229,7 +229,7 @@ namespace FinalProjectWPF.Projects.MyLittleBusiness.Helpers
             }
             if (!File.Exists(ItemsFilePath))
             {
-                string ItemsInitialData = "{\r\n  \"ItemId\": 0,\r\n  \"Name\": \"General Item\",\r\n  \"Price\": 0\r\n}";
+                string ItemsInitialData = "[{\"ItemId\":0,\"Name\": \"General Item\",\"Price\":0}]";
                 File.WriteAllText(ItemsFilePath, ItemsInitialData);
             }
             if (!File.Exists(CustomersFilePath))
