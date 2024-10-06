@@ -14,12 +14,11 @@
         </Grid.Background>
 
         <Canvas Name="MyCanvas" Background="LightBlue" Focusable="True" MouseMove="Canvas_MouseMove">
-            <Button Canvas.Left="15" Canvas.Top="10" x:Name="GoBack" Height="NaN"  Width="60" Focusable="False" Style="{StaticResource WideButton}" HorizontalAlignment="Center" Click="GoBack_Click">
+            <Button Canvas.Left="25" Canvas.Top="30" x:Name="GoBack" Height="40"  Width="65" Background="#56E9A5" Focusable="False" Style="{StaticResource WideButton}" HorizontalAlignment="Center" Click="GoBack_Click">
                 <Image Source="Assets\ExitIcon.png" Style="{StaticResource MenuButtonIcon}"/>
             </Button>
-            <Label Name="ScoreText" FontSize="20" Canvas.Left="80" Canvas.Top="20">Score: 0</Label>
-            <Label Name="Hearts" FontSize="20" Canvas.Left="537" Canvas.Top="20" HorizontalAlignment="Left" VerticalAlignment="Center">Hearts: 5</Label>
-
+            <Label Name="ScoreText" FontSize="30" Canvas.Left="105" Canvas.Top="45" Foreground="AliceBlue" Style="{StaticResource TitleLabelStyle}">Score: 0</Label>
+            <Label Name="Hearts" FontSize="30" Canvas.Left="600" Canvas.Top="45" HorizontalAlignment="Left" VerticalAlignment="Center"  Foreground="AliceBlue" Style="{StaticResource TitleLabelStyle}">Hearts: 5</Label>
             <Rectangle Name="Basket" Width="{Binding Size}" Height="80" Fill="Orange" Canvas.Left="295" HorizontalAlignment="Center" VerticalAlignment="Top"/>
         </Canvas>
     </Grid>

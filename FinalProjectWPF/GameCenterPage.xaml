@@ -42,7 +42,6 @@
         <Viewbox HorizontalAlignment="Center" Margin="0 15" Grid.Column="1" Grid.Row="1">
             <StackPanel >
                 <TextBlock Text="Welcome to App center!" Foreground="#FFCEC9C9" FontSize="30" Width="340"/>
-                <TextBlock x:Name="PlayerHighScores" Text="" Foreground="#FFCEC9C9" FontSize="30" Width="700" HorizontalAlignment="Center"/>
             </StackPanel>
 
         </Viewbox>
@@ -54,11 +53,11 @@
         </Viewbox>
 
         <Viewbox x:Name="UserPanel" VerticalAlignment="Top" Grid.Column="0" Margin="11,9,84,0" Grid.RowSpan="2">
-            <WrapPanel HorizontalAlignment="Left" Width="350">
+            <WrapPanel HorizontalAlignment="Left" Width="450">
                 <Image Cursor="Hand" ToolTip="{Binding FullName}" Source="/Assets/3177440.png" Height="99" Width="64" MouseEnter="Image_MouseEnter" MouseLeave="Image_MouseLeave" MouseLeftButtonUp="Image_MouseLeftButtonUp" />
                 <TextBox x:Name="EditUserInput" Visibility="Hidden" Width="0" Margin="0" FontSize="10" Style="{StaticResource TextBoxFilterBar}"/>
                 <Image x:Name="SaveNewName" Visibility="Hidden" Cursor="Hand" ToolTip="Save" Source="/Assets/saveIcon.png" Height="0" Width="0" MouseEnter="Image_MouseEnter" MouseLeave="Image_MouseLeave" MouseLeftButtonUp="EditUserName" />
-                <Label x:Name="UserName" Content="{Binding FullName}" Style="{StaticResource TitleLabelStyle}" Margin="0,15,0,0"/>
+                <Label x:Name="UserName" Content="{Binding FullName}" Style="{StaticResource TitleLabelStyle}" Margin="0,15,0,0" />
                 <Label x:Name="Subtitle" Content="" Visibility="Hidden" Width="0" Height="0" Style="{StaticResource TitleLabelStyle}" Margin="0,15,0,0"/>
 
                 <Viewbox x:Name="UserOptions" VerticalAlignment="Center" Grid.Column="0" Grid.Row="1" Visibility="Hidden">
@@ -77,13 +76,22 @@
         <Viewbox Grid.Row="2" Grid.Column="1">
             <WrapPanel Width="700" Height="500">
                 <Border CornerRadius="50" Background="{StaticResource IconsBackground}" BorderThickness="10" Opacity="0.65" Height="200" Width="200" Margin="10 0" MouseEnter="Border_MouseEnter" MouseLeave="Border_MouseLeave" MouseLeftButtonUp="SnakeApp_Click" ToolTip="Snake Game">
-                    <Image Cursor="Hand"  ToolTip="Snake Game" Source="\Assets\SnakeIcon.png" Style="{StaticResource GamesIcons}"  Height="150"/>
+                    <StackPanel>
+                        <Image Cursor="Hand"  ToolTip="Snake Game" Source="\Assets\SnakeIcon.png" Style="{StaticResource GamesIcons}"  Height="150"/>
+                        <TextBlock x:Name="SnakeHighScores" Text="" FontWeight="Bold" Foreground="Black" FontSize="9" Width="90" HorizontalAlignment="Center"/>
+                    </StackPanel>
                 </Border>
                 <Border CornerRadius="50" Background="{StaticResource IconsBackground}" BorderThickness="10" Opacity="0.65" Height="200" Width="200" Margin="10 0" MouseEnter="Border_MouseEnter" MouseLeave="Border_MouseLeave" MouseLeftButtonUp="CatchTheEggApp_Click" ToolTip="Catch The Egg Game">
-                    <Image Cursor="Hand"  ToolTip="Catch The Egg Game" Source="\Assets\CatchTheEggIcon.png" Style="{StaticResource GamesIcons}"  Height="150"/>
+                    <StackPanel>
+                        <Image Cursor="Hand"  ToolTip="Catch The Egg Game" Source="\Assets\CatchTheEggIcon.png" Style="{StaticResource GamesIcons}"  Height="150"/>
+                        <TextBlock x:Name="EggsHighScores" Text="" FontWeight="Bold" Foreground="Black" FontSize="9" Width="90" HorizontalAlignment="Center"/>
+                    </StackPanel>
                 </Border>
                 <Border CornerRadius="50" Background="{StaticResource IconsBackground}" BorderThickness="10" Opacity="0.65" Height="200" Width="200" Margin="10 0" MouseLeave="Border_MouseLeave" MouseEnter="Border_MouseEnter" MouseLeftButtonUp="DontDTMillionApp_Click" ToolTip="Dont Drop The Million Game">
-                    <Image Cursor="Hand"  ToolTip="Dont Drop The Million Game" Source="\Assets\DropTheMillionIcon.png" Style="{StaticResource GamesIcons}" Height="150"/>
+                    <StackPanel>
+                        <Image Cursor="Hand"  ToolTip="Dont Drop The Million Game" Source="\Assets\DropTheMillionIcon.png" Style="{StaticResource GamesIcons}" Height="150"/>
+                        <TextBlock x:Name="MillionHighScores" Text="" FontWeight="Bold" Foreground="Black" FontSize="9" Width="90" HorizontalAlignment="Center"/>
+                    </StackPanel>
                 </Border>
                 <Border CornerRadius="50" Background="{StaticResource IconsBackground}" BorderThickness="10" Opacity="0.65" Height="200" Width="200" Margin="10 0" MouseEnter="Border_MouseEnter" MouseLeave="Border_MouseLeave" MouseLeftButtonUp="CalenderApp_Click" ToolTip="Calender App">
                     <Image Cursor="Hand"  ToolTip="Calender App" Source="\Assets\CalenderIcon.png" Style="{StaticResource GamesIcons}"  Height="150"/>

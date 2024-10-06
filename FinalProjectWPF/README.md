@@ -4,7 +4,7 @@ A collection of six mini-projects developed in WPF using C#. Each game and appli
 
 ## Table of Contents
 
-- [Games](#games)
+- [Games and Applications](#games-and-applications)
 - [File and User Management](#file-and-user-management)
 - [Technologies Used](#technologies-used)
 - [Installation](#installation)
@@ -12,7 +12,7 @@ A collection of six mini-projects developed in WPF using C#. Each game and appli
 - [License](#license)
 - [Contributing](#contributing)
 
-## Games
+## Games and Applications
 
 ### 1. Tic Tac Toe
 This classic Tic Tac Toe game allows two players to compete on a 3x3 grid. Players can choose between two modes: a two-player mode where they take turns placing X's and O's, and a single-player mode against a computer opponent. The computer offers two difficulty levels—Easy, which makes random moves, and Hard, which employs strategic calculations to determine the best move. The game features visual indicators for the current player's turn, checks for win conditions, and provides the option to reset the board for a new game. This project emphasizes strategic thinking and provides a straightforward yet engaging interface.
@@ -28,6 +28,9 @@ This comprehensive business management application provides functionalities to h
 
 ### 5. Don't Drop the Million
 Don't Drop the Million is a trivia game that leverages the Open Trivia Database API to provide players with an exciting quiz experience. The game features multiple-choice questions across various categories, challenging players' knowledge and quick thinking. Players aim to answer as many questions correctly as possible while competing against a timer or other players. Additionally, this game requires API keys that should be added to the project from CardCom company for seamless functionality. The design encourages engagement and learning, making it both entertaining and educational.
+
+### 6. MyCalendar
+MyCalendar is a calendar-based application that allows users to organize events, appointments, and tasks. The intuitive interface enables users to navigate through different months and view their schedules at a glance. Users can create, update, and delete events, providing a comprehensive CRUD (Create, Read, Update, Delete) experience. This application emphasizes productivity, offering a user-friendly way to manage personal and professional events efficiently.
 
 ## File and User Management
 

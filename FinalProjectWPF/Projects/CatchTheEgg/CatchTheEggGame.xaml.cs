@@ -65,7 +65,7 @@ namespace FinalProjectWPF.Projects.CatchTheEgg
             Canvas.SetTop(Basket, basketPositionPoint);
 
             double windowWidth = MyCanvas.ActualWidth;
-            double heartsposition = windowWidth - 113;
+            double heartsposition = windowWidth - 200;
             int heartspositionPoint = (int)heartsposition;
             Canvas.SetLeft(Hearts, heartspositionPoint);
             gameManager.UpdateGame();

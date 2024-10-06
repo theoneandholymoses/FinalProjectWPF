@@ -231,7 +231,7 @@ namespace FinalProjectWPF.Projects.MyLittleBusiness
                 }
             }
 
-            MessageBox.Show("successfully finish invoice send: " + responseValues["InvoiceID"]);
+            MessageBox.Show("successfully finish invoice send. New Invoice number " + responseValues["InvoiceID"]);
             UpdateCollection();
             CleanAllForms();
             CreateInvoiceButton.Content = "Create Invoice";

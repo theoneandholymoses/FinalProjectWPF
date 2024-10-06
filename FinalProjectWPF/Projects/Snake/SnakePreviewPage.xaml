@@ -22,7 +22,7 @@
         </Grid.ColumnDefinitions>
 
         <MediaElement Name="GifBackground"
-              Source="Accets\TempCTEbackground.mp4"
+              Source="Projects\Snake\Assets\SnakeGameVideo.mp4"
               LoadedBehavior="Play"
               UnloadedBehavior="Manual"
               MediaEnded="BackgroundMedia_MediaEnded"

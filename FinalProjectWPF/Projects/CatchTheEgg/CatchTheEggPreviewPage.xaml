@@ -23,12 +23,10 @@
 
         <MediaElement Name="Gif1Background"
               
-              Source="/Assets/TempCTEbackground.mp4"
+              Source="Projects\CatchTheEgg\Assets\TempCTEbackground.mp4"
               LoadedBehavior="Play"
               UnloadedBehavior="Manual"
               MediaEnded="BackgroundMedia_MediaEnded"
-              MediaFailed="MediaElement_MediaFailed"
-              MediaOpened="MediaElement_MediaOpened"
               Stretch="Fill"
               IsHitTestVisible="False"
               Grid.ColumnSpan="10" Grid.RowSpan="10"/>

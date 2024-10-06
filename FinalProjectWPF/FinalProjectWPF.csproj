@@ -48,6 +48,7 @@
     <None Remove="Projects\DontDropTheMillion\Assets\Background.jpg" />
     <None Remove="Projects\DontDropTheMillion\Assets\CorrectIcon.png" />
     <None Remove="Projects\DontDropTheMillion\Assets\Decrease.png" />
+    <None Remove="Projects\DontDropTheMillion\Assets\DropTheMillionVideo.mp4" />
     <None Remove="Projects\DontDropTheMillion\Assets\ExitIcon.png" />
     <None Remove="Projects\DontDropTheMillion\Assets\Increase.png" />
     <None Remove="Projects\DontDropTheMillion\Assets\QuestionBlock.png" />
@@ -60,10 +61,12 @@
     <None Remove="Projects\MyCalendar\Assets\ExitIcon.png" />
     <None Remove="Projects\MyCalendar\Assets\Info_icon.svg.png" />
     <None Remove="Projects\MyCalendar\Assets\ItemTaskIcon.png" />
+    <None Remove="Projects\MyCalendar\Assets\MyCalendarVideo.mp4" />
     <None Remove="Projects\MyCalendar\Assets\TasksIcon.png" />
     <None Remove="Projects\MyLittleBusiness\Assets\AddLineIcon.png" />
     <None Remove="Projects\MyLittleBusiness\Assets\american_express.gif" />
     <None Remove="Projects\MyLittleBusiness\Assets\APPLEpay.gif" />
+    <None Remove="Projects\MyLittleBusiness\Assets\backgroundPreview.png" />
     <None Remove="Projects\MyLittleBusiness\Assets\billing1.png" />
     <None Remove="Projects\MyLittleBusiness\Assets\CartIcon.png" />
     <None Remove="Projects\MyLittleBusiness\Assets\CreditCardIcon.png" />
@@ -79,6 +82,7 @@
     <None Remove="Projects\MyLittleBusiness\Assets\InvoiceIcon.png" />
     <None Remove="Projects\MyLittleBusiness\Assets\isracard.gif" />
     <None Remove="Projects\MyLittleBusiness\Assets\mastercard.gif" />
+    <None Remove="Projects\MyLittleBusiness\Assets\MyLittleBusinessVideo.mp4" />
     <None Remove="Projects\MyLittleBusiness\Assets\PCI DSS.png" />
     <None Remove="Projects\MyLittleBusiness\Assets\pciLogo.png" />
     <None Remove="Projects\MyLittleBusiness\Assets\PurpleLogoSmall.png" />
@@ -91,12 +95,14 @@
     <None Remove="Projects\Snake\Assets\background.png" />
     <None Remove="Projects\Snake\Assets\body.png" />
     <None Remove="Projects\Snake\Assets\ExitIcon.png" />
+    <None Remove="Projects\Snake\Assets\SnakeGameVideo.mp4" />
     <None Remove="Projects\Snake\Assets\snake_head_down.png" />
     <None Remove="Projects\Snake\Assets\snake_head_left.png" />
     <None Remove="Projects\Snake\Assets\snake_head_right.png" />
     <None Remove="Projects\Snake\Assets\snake_head_up.png" />
     <None Remove="Projects\TicTacToe\Assets\Background.jpg" />
     <None Remove="Projects\TicTacToe\Assets\ExitIcon.png" />
+    <None Remove="Projects\TicTacToe\Assets\TicTacToeVideo.mp4" />
   </ItemGroup>
 
   <ItemGroup>
@@ -121,6 +127,24 @@
     <Resource Include="Assets\DropTheMillionIcon.png" />
     <Resource Include="Assets\editIcon.png" />
     <Content Include="Assets\GameCenterBackground.mp4">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Projects\CatchTheEgg\Assets\TempCTEbackground.mp4">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Projects\DontDropTheMillion\Assets\DropTheMillionVideo.mp4">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Projects\MyCalendar\Assets\MyCalendarVideo.mp4">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Projects\MyLittleBusiness\Assets\MyLittleBusinessVideo.mp4">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Projects\Snake\Assets\SnakeGameVideo.mp4">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Projects\TicTacToe\Assets\TicTacToeVideo.mp4">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Resource Include="Assets\ExitIcon.png" />
@@ -148,9 +172,6 @@
     <Resource Include="Projects\CatchTheEgg\Assets\heartsImg\3.0.png" />
     <Resource Include="Projects\CatchTheEgg\Assets\MultiplePointsEgg.png" />
     <Resource Include="Projects\CatchTheEgg\Assets\Poop.png" />
-    <Content Include="Projects\CatchTheEgg\Assets\TempCTEbackground.mp4">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
     <Resource Include="Projects\DontDropTheMillion\Assets\Background.jpg" />
     <Resource Include="Projects\DontDropTheMillion\Assets\CorrectIcon.png" />
     <Resource Include="Projects\DontDropTheMillion\Assets\Decrease.png" />
@@ -170,6 +191,7 @@
     <Resource Include="Projects\MyLittleBusiness\Assets\AddLineIcon.png" />
     <Resource Include="Projects\MyLittleBusiness\Assets\american_express.gif" />
     <Resource Include="Projects\MyLittleBusiness\Assets\APPLEpay.gif" />
+    <Resource Include="Projects\MyLittleBusiness\Assets\backgroundPreview.png" />
     <Resource Include="Projects\MyLittleBusiness\Assets\billing1.png" />
     <Resource Include="Projects\MyLittleBusiness\Assets\CartIcon.png" />
     <Resource Include="Projects\MyLittleBusiness\Assets\CreditCardIcon.png" />

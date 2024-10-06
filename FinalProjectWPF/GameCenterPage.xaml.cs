@@ -96,7 +96,9 @@ namespace FinalProjectWPF
             }
 
             // Update the PlayerHighScores text
-            PlayerHighScores.Text = $"Highscore: {snakeScore}         Highscore: {catchTheEggScore}         Highscore: {DontDropTheMillionScore} ";
+            SnakeHighScores.Text = $"Highscore: {snakeScore}";
+            EggsHighScores.Text = $"Highscore: {catchTheEggScore}";
+            MillionHighScores.Text = $"Highscore: {DontDropTheMillionScore}";
         }
 
 

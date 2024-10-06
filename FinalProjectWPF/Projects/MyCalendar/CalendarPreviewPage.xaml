@@ -22,7 +22,7 @@
         </Grid.ColumnDefinitions>
 
         <MediaElement Name="GifBackground"
-              Source="Accets\TempCTEbackground.mp4"
+              Source="Projects\MyCalendar\Assets\MyCalendarVideo.mp4"
               LoadedBehavior="Play"
               UnloadedBehavior="Manual"
               MediaEnded="BackgroundMedia_MediaEnded"
@@ -30,23 +30,23 @@
               IsHitTestVisible="False"
               Grid.ColumnSpan="1" Grid.RowSpan="5"/>
 
-        <Label x:Name="TitleLabel" Content="My Calendar" Grid.Row="0" Margin="0 50 0 0" HorizontalAlignment="Center" Style="{StaticResource TitleLabelStyle}" />
+        <Label x:Name="TitleLabel" Content="My Calendar" Foreground="#65B8EA" Grid.Row="0" Margin="0 50 0 0" HorizontalAlignment="Center" Style="{StaticResource TitleLabelStyle}" />
 
         <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 0 0 10">
-            <TextBlock Text="About the App" Foreground="#FFCEC9C9" VerticalAlignment="Center" FontSize="30" Width="230"/>
-            <Button ToolTip="About the App" Style="{StaticResource TopButton}" Height="30" Background="#f69669" Click="Button_ClickGameInfo">
+            <TextBlock Text="About the App" Foreground="#65B8EA" VerticalAlignment="Center" FontSize="30" Width="230"/>
+            <Button ToolTip="About the App" Style="{StaticResource TopButton}" Height="30" Background="#65B8EA" Click="Button_ClickGameInfo">
                 <Image Source="\Assets\InfoIcon.png" Width="15" Height="15" />
             </Button>
         </StackPanel>
 
         <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center">
-            <Button x:Name="GoBack" Content="Go back" Height="30" Margin="0 0 10 0" Background="#f69669" Style="{StaticResource CalenderWideButton}" Click="GoBack_Click"/>
-            <Button x:Name="OpenApp" Content="Open App" Height="30" Margin="10 0 0 0" Background="#f69669" Style="{StaticResource CalenderWideButton}" Click="OpenApp_Click"/>
+            <Button x:Name="GoBack" Content="Go back" Height="30" Margin="0 0 10 0" Background="#65B8EA" Style="{StaticResource CalenderWideButton}" Click="GoBack_Click"/>
+            <Button x:Name="OpenApp" Content="Open App" Height="30" Margin="10 0 0 0" Background="#65B8EA" Style="{StaticResource CalenderWideButton}" Click="OpenApp_Click"/>
         </StackPanel>
 
         <Popup x:Name="PopUpWindow" StaysOpen="False" IsOpen="False" PlacementTarget="{Binding ElementName=MainWindow}" 
                    Placement="Center" HorizontalAlignment="Center" VerticalAlignment="Center" AllowsTransparency="True">
-            <Border CornerRadius="30" BorderThickness="2" BorderBrush="#f69669" ClipToBounds="True" Padding="10" Background="White">
+            <Border CornerRadius="30" BorderThickness="2" BorderBrush="#65B8EA" ClipToBounds="True" Padding="10" Background="White">
                 <Grid>
 
 

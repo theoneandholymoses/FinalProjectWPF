@@ -80,7 +80,7 @@
 
         <Button x:Name="Catagory1" Grid.Column="2" Grid.Row="1" Background="#da41e8" Click="Catagory1_Click" Content="catagory1" HorizontalAlignment="Center"  VerticalAlignment="Top" Height="40" Style="{StaticResource WideButton}" Margin="0,22,0,0" Width="150"/>
         <Button x:Name="Catagory2" Grid.Column="4" Grid.Row="1" Background="#da41e8" Click="Catagory2_Click" Content="catagory2" HorizontalAlignment="Center"  VerticalAlignment="Top" Height="40" Style="{StaticResource WideButton}" Margin="0,22,0,0" Width="150"/>
-        <TextBlock x:Name="QuestionLabel" TextWrapping="Wrap" Grid.Column="2" Grid.Row="2" Grid.ColumnSpan="10" Visibility="Visible" HorizontalAlignment="Left" VerticalAlignment="Center" Width="1100" Height="120" Style="{StaticResource TextBlockTitleStyle}"/>
+        <TextBlock x:Name="QuestionLabel" TextWrapping="Wrap" Grid.Column="2" Grid.Row="2" Grid.ColumnSpan="10" Visibility="Visible" HorizontalAlignment="Left" VerticalAlignment="Center" Width="900" Height="140" Style="{StaticResource TextBlockTitleStyle}"/>
 
 
         <Grid x:Name="A0MainGrid" Grid.Column="1" Grid.Row="3" Margin="0,6,0,5">
