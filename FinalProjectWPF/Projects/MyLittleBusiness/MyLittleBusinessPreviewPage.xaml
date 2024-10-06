@@ -51,10 +51,10 @@
 
 
                     <StackPanel x:Name="About" Grid.Row="0" Orientation="Vertical" Width="500" Height="300" Background="White">
-                        <TextBlock Text="Game rules and tech" HorizontalAlignment="Center" Margin="0 5 0 5" FontSize="20" FontWeight="Bold" Style="{StaticResource TextBlockStyle}"/>
+                        <TextBlock Text="App rules and tech" HorizontalAlignment="Center" Margin="0 5 0 5" FontSize="20" FontWeight="Bold" Style="{StaticResource TextBlockStyle}"/>
                         <Separator Height="1" Background="#dae2ea" Margin="0 3 0 10"/>
-                        <TextBlock VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10 5 5 5" FontSize="13" FontWeight="SemiBold" Style="{StaticResource TextBlockStyle}">
-                            lorem ipsum fndsujofjdnfjdnsfjndsjkfnkdjshflkjdsjkflnhoifhjaioj
+                        <TextBlock TextWrapping="Wrap" TextAlignment="Center"  VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10 5 5 5" FontSize="13" FontWeight="SemiBold" Style="{StaticResource TextBlockStyle}">
+                            This WPF page simulates business management, handling items, customers, invoices, orders, and refunds. The user can create, view, and manage these elements. The interface allows for adding new products, processing orders, issuing invoices, managing customer data, and handling refunds when necessary.
                         </TextBlock>
                     </StackPanel>
 

@@ -148,7 +148,9 @@
     <Resource Include="Projects\CatchTheEgg\Assets\heartsImg\3.0.png" />
     <Resource Include="Projects\CatchTheEgg\Assets\MultiplePointsEgg.png" />
     <Resource Include="Projects\CatchTheEgg\Assets\Poop.png" />
-    <Resource Include="Projects\CatchTheEgg\Assets\TempCTEbackground.mp4" />
+    <Content Include="Projects\CatchTheEgg\Assets\TempCTEbackground.mp4">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Resource Include="Projects\DontDropTheMillion\Assets\Background.jpg" />
     <Resource Include="Projects\DontDropTheMillion\Assets\CorrectIcon.png" />
     <Resource Include="Projects\DontDropTheMillion\Assets\Decrease.png" />

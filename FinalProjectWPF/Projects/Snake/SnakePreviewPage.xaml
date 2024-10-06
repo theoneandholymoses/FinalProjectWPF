@@ -30,7 +30,7 @@
               IsHitTestVisible="False"
               Grid.ColumnSpan="1" Grid.RowSpan="5"/>
 
-        <Label x:Name="TitleLabel" Content="Classic Snake" Grid.Row="0" HorizontalAlignment="Center" Style="{StaticResource TitleLabelStyle}" />
+        <Label x:Name="TitleLabel" Content="Classic Snake" Margin="0 50 0 0" Grid.Row="0" HorizontalAlignment="Center" Style="{StaticResource TitleLabelStyle}" />
 
         <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 0 0 10">
             <TextBlock Text="About the game" Foreground="#FFCEC9C9" VerticalAlignment="Center" FontSize="30" Width="230"/>
@@ -70,8 +70,8 @@
                     <StackPanel x:Name="About" Grid.Row="0" Orientation="Vertical" Width="500" Height="300" Background="White">
                         <TextBlock Text="Game rules and tech" HorizontalAlignment="Center" Margin="0 5 0 5" FontSize="20" FontWeight="Bold" Style="{StaticResource TextBlockStyle}"/>
                         <Separator Height="1" Background="#dae2ea" Margin="0 3 0 10"/>
-                        <TextBlock VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10 5 5 5" FontSize="13" FontWeight="SemiBold" Style="{StaticResource TextBlockStyle}">
-                            lorem ipsum fndsujofjdnfjdnsfjndsjkfnkdjshflkjdsjkflnhoifhjaioj
+                        <TextBlock TextWrapping="Wrap" TextAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10 5 5 5" FontSize="13" FontWeight="SemiBold" Style="{StaticResource TextBlockStyle}">
+                This WPF Snake game features a moving snake controlled by the player, with images used for the snake's head and body. The goal is to eat apples, which makes the snake grow, while avoiding collisions with the snake’s own body or the walls.
                         </TextBlock>
                     </StackPanel>
 
@@ -81,76 +81,5 @@
 
     </Grid>
 
-    <!--<Grid Background="White">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
-
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions>
-
-        <MediaElement Name="GifBackground"
-              Source="Accets\TempCTEbackground.mp4"
-              LoadedBehavior="Play"
-              UnloadedBehavior="Manual"
-              MediaEnded="BackgroundMedia_MediaEnded"
-              Stretch="Fill"
-              IsHitTestVisible="False"
-              Grid.ColumnSpan="1" Grid.RowSpan="5"/>
-
-        <Label x:Name="TitleLabel" Content="Catch the Egg" Grid.Row="0" HorizontalAlignment="Center" Style="{StaticResource TitleLabelStyle}" />
-
-        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 0 0 10">
-            <TextBlock Text="About the game" Foreground="#FFCEC9C9" VerticalAlignment="Center" FontSize="30" Width="230"/>
-            <Button ToolTip="About the game" Style="{StaticResource TopButton}" Height="30" Background="CadetBlue" Click="Button_ClickGameInfo">
-                <Image Source="\Assets\InfoIcon.png" Width="15" Height="15" />
-            </Button>
-        </StackPanel>
-
-        <Border CornerRadius="30" BorderThickness="2"  Grid.Row="2" Width="500" BorderBrush="CadetBlue" ClipToBounds="True" Padding="10" Background="CadetBlue" Opacity="0.8">
-            <StackPanel x:Name="ScoreBoardPanel" Orientation="Vertical" Background="CadetBlue" Height="200">
-                <TextBlock Text="Scoreboard :" HorizontalAlignment="Center" Margin="0 5 0 5" FontSize="20" FontWeight="Bold" Style="{StaticResource TextBlockStyle}"/>
-                <Grid>
-                    <DataGrid x:Name="ScoreBoard" Height="200" Style="{DynamicResource DataGridStyle1}" CellStyle="{DynamicResource DataGridCellStyle1}"
-                  ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" RowStyle="{DynamicResource DataGridRowStyle1}" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.CanContentScroll="True">
-                        <DataGrid.Columns>
-
-                            <DataGridTextColumn Header="Player Name" IsReadOnly="True" CanUserResize="False" Width="*" Binding="{Binding LoggedInUser}"/>
-                            <DataGridTextColumn Header="score" IsReadOnly="True" Width="*" Binding="{Binding GameScoreData}"/>
-
-                        </DataGrid.Columns>
-                    </DataGrid>
-                </Grid>
-            </StackPanel>
-        </Border>
-
-        <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Center">
-            <Button x:Name="GoBack" Content="Go back" Height="30" Margin="0 0 10 0" Background="CadetBlue" Style="{StaticResource CalenderWideButton}" Click="GoBack_Click"/>
-            <Button x:Name="OpenApp" Content="Open App" Height="30" Margin="10 0 0 0" Background="CadetBlue" Style="{StaticResource CalenderWideButton}" Click="OpenApp_Click"/>
-        </StackPanel>
-
-        <Popup x:Name="PopUpWindow" StaysOpen="False" IsOpen="False" PlacementTarget="{Binding ElementName=MainWindow}" 
-                   Placement="Center" HorizontalAlignment="Center" VerticalAlignment="Center" AllowsTransparency="True">
-            <Border CornerRadius="30" BorderThickness="2" BorderBrush="CadetBlue" ClipToBounds="True" Padding="10" Background="White">
-                <Grid>
-
-
-                    <StackPanel x:Name="About" Grid.Row="0" Orientation="Vertical" Width="500" Height="300" Background="White">
-                        <TextBlock Text="Game rules and tech" HorizontalAlignment="Center" Margin="0 5 0 5" FontSize="20" FontWeight="Bold" Style="{StaticResource TextBlockStyle}"/>
-                        <Separator Height="1" Background="#dae2ea" Margin="0 3 0 10"/>
-                        <TextBlock VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10 5 5 5" FontSize="13" FontWeight="SemiBold" Style="{StaticResource TextBlockStyle}">
-                            lorem ipsum fndsujofjdnfjdnsfjndsjkfnkdjshflkjdsjkflnhoifhjaioj
-                        </TextBlock>
-                    </StackPanel>
-
-                </Grid>
-            </Border>
-        </Popup>
-
-    </Grid>-->
+   
 </Page>

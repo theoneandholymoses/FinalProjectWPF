@@ -69,8 +69,8 @@
                     <StackPanel x:Name="About" Grid.Row="0" Orientation="Vertical" Width="500" Height="300" Background="White">
                         <TextBlock Text="Game rules and tech" HorizontalAlignment="Center" Margin="0 5 0 5" FontSize="20" FontWeight="Bold" Style="{StaticResource TextBlockStyle}"/>
                         <Separator Height="1" Background="#dae2ea" Margin="0 3 0 10"/>
-                        <TextBlock VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10 5 5 5" FontSize="13" FontWeight="SemiBold" Style="{StaticResource TextBlockStyle}">
-                            lorem ipsum fndsujofjdnfjdnsfjndsjkfnkdjshflkjdsjkflnhoifhjaioj
+                        <TextBlock TextWrapping="Wrap" TextAlignment="Center"  VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10 5 5 5" FontSize="13" FontWeight="SemiBold" Style="{StaticResource TextBlockStyle}">
+                        This WPF trivia game uses the Open Trivia Database API to pull random trivia questions. The player answers 10 questions, and with each correct answer, they keep their money. Wrong answers progressively reduce their winnings, with the goal being to finish with as much money as possible by the end.  
                         </TextBlock>
                     </StackPanel>
 

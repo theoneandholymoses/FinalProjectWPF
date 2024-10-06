@@ -22,11 +22,12 @@
         </Grid.ColumnDefinitions>
 
         <MediaElement Name="Gif1Background"
-              Source="Accets/GamebbbCenterBackground.mp4"
+              
+              Source="/Assets/TempCTEbackground.mp4"
               LoadedBehavior="Play"
               UnloadedBehavior="Manual"
               MediaEnded="BackgroundMedia_MediaEnded"
-                      MediaFailed="MediaElement_MediaFailed"
+              MediaFailed="MediaElement_MediaFailed"
               MediaOpened="MediaElement_MediaOpened"
               Stretch="Fill"
               IsHitTestVisible="False"
@@ -72,8 +73,8 @@
                     <StackPanel x:Name="About" Grid.Row="0" Orientation="Vertical" Width="500" Height="300" Background="White">
                         <TextBlock Text="Game rules and tech" HorizontalAlignment="Center" Margin="0 5 0 5" FontSize="20" FontWeight="Bold" Style="{StaticResource TextBlockStyle}"/>
                         <Separator Height="1" Background="#dae2ea" Margin="0 3 0 10"/>
-                        <TextBlock VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10 5 5 5" FontSize="13" FontWeight="SemiBold" Style="{StaticResource TextBlockStyle}">
-                            lorem ipsum fndsujofjdnfjdnsfjndsjkfnkdjshflkjdsjkflnhoifhjaioj
+                        <TextBlock TextWrapping="Wrap" TextAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10 5 5 5" FontSize="13" FontWeight="SemiBold" Style="{StaticResource TextBlockStyle}">
+                           In this WPF game, eggs fall from the top, and the player controls a basket to catch them. Special eggs grant abilities, while poop falls as a negative obstacle to avoid. Players must gather points by catching eggs, using special abilities to enhance gameplay, and avoiding penalties from missing or catching poop.
                         </TextBlock>
                     </StackPanel>
 
