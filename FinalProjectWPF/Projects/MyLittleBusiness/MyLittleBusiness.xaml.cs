@@ -25,6 +25,15 @@ namespace FinalProjectWPF.Projects.MyLittleBusiness
             InitializeComponent();
             UpdateCollection();
             SetGlobalApiSecrets.Click += SetGlobalApiSecrets_Click;
+            if (!AM.CheckEnvVar())
+            {
+                PopUpWindow.IsOpen = true;
+                AddItemPop.Visibility = Visibility.Hidden;
+                EditItemPop.Visibility = Visibility.Hidden;
+                GetItemPop.Visibility = Visibility.Hidden;
+                GetCustomerPop.Visibility = Visibility.Hidden;
+                AppSettingsPop.Visibility = Visibility.Visible;
+            }
         }
 
         private void UpdateCollection()

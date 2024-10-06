@@ -16,14 +16,25 @@ namespace FinalProjectWPF.Projects.MyLittleBusiness.Helpers
         private readonly string? username = Environment.GetEnvironmentVariable("UserName", EnvironmentVariableTarget.User);
         private readonly string? password = Environment.GetEnvironmentVariable("UserPassword", EnvironmentVariableTarget.User);
 
+
+        // modify
         public ApiManager()
+        {
+            
+
+        }
+
+        // modify
+        public bool CheckEnvVar()
         {
             if (!CheckUserInformationExist())
             {
                 MessageBox.Show("Please enter API secrets in Environment variables");
+                return false;
             }
-
+            return true;
         }
+        
         // Method to cancel a deal
         public async Task<string> CancelDeal(int internalDealNumber, decimal? partialSum = null)
         {
