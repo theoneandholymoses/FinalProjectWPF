@@ -147,27 +147,6 @@ namespace FinalProjectWPF.FileManagment
             return allHighScores;
         }
 
-        //public ObservableCollection<(GameType game, double score)> GetUserAllHighScores(int userID)
-        //{
-        //    ObservableCollection<(GameType game, double score)> allHighScores = new ObservableCollection<(GameType game, double score)>();
-        //    IEnumerable<GameType> gameTypes = Enum.GetValues(typeof(GameType)).Cast<GameType>();
-
-        //    foreach (GameType game in gameTypes)
-        //    {
-        //        try
-        //        {
-        //            ObservableCollection<double> scores = new ObservableCollection<double>(GetUserHighScoresForGame(userID, game));
-        //            allHighScores.Add((game, scores.Max()));
-        //        }
-        //        catch (Exception)
-        //        {
-        //        }
-        //    }
-
-        //    return allHighScores;
-        //}
-
-
 
         // modify
         public ObservableCollection<PlayerScore> GetAllPlayersHighScores(GameType game)
@@ -209,30 +188,6 @@ namespace FinalProjectWPF.FileManagment
                 return new ObservableCollection<PlayerScore>();
             }
         }
-
-
-
-        //public ObservableCollection<(string name, double score)> GetAllPlayersHighScores(GameType game)
-        //{
-        //    string filePath = GetHighScoreFilePath(game);
-        //    if (!File.Exists(filePath))
-        //    {
-        //        return new ObservableCollection<(string name, double score)>();
-        //    }
-        //    try
-        //    {
-        //        string jsonContent = File.ReadAllText(filePath);
-        //        ObservableCollection<(string name, double score)> finalList = JsonSerializer.Deserialize<ObservableCollection<(string name, double score)>>(jsonContent) ?? new ObservableCollection<(string name, double score)>();
-        //        ObservableCollection<(string name, double score)> filteredFinalList = new ObservableCollection<(
-        //            string name, double score)>(finalList.OrderByDescending(player => player.score).ThenBy(p => p.name).ToList());
-        //        MessageBox.Show(filteredFinalList[0].name);
-        //        return filteredFinalList;
-        //    }
-        //    catch (Exception)
-        //    {
-        //        return new ObservableCollection<(string name, double score)>();
-        //    }
-        //}
 
 
         // modify

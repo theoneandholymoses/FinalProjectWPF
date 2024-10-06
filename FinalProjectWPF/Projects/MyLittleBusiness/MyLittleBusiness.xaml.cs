@@ -444,22 +444,6 @@ namespace FinalProjectWPF.Projects.MyLittleBusiness
                             CustomersTable.Style = HiddenStyle;
                             break;
                         }
-                    case "byCusBUT":
-                        {
-                            HeadTitle.Text = "All Reports";
-                            Subtitle.Text = "Documents By Customer";
-                            ReportsTable.Style = VisibleStyle;
-                            ChargingScreen.Style = HiddenStyle;
-                            OrderCreationScreen.Style = HiddenStyle;
-
-                            // מסנן לפי לקוח
-                            DocumentsTable.Style = VisibleStyle;
-                            DocActionRefund.Visibility = Visibility.Hidden;
-                            DocActionReports.Visibility = Visibility.Visible;
-                            ItemsTable.Style = HiddenStyle;
-                            CustomersTable.Style = HiddenStyle;
-                            break;
-                        }
                     case "allItemsBUT":
                         {
                             if (Subtitle == null) { break; }

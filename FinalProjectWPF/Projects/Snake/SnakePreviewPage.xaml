@@ -39,11 +39,12 @@
             </Button>
         </StackPanel>
 
-        <Border CornerRadius="30" BorderThickness="2"  Grid.RowSpan="4" Width="500" BorderBrush="#049c5c" ClipToBounds="True" Padding="10" Background="#049c5c" Opacity="0.8">
-            <StackPanel x:Name="ScoreBoardPanel" Orientation="Vertical" Background="#049c5c" Height="1000">
+        <Border CornerRadius="30" BorderThickness="2"  Grid.Row="2" Width="500" BorderBrush="#56e9a5" ClipToBounds="True" Padding="10" Background="#56e9a5" Opacity="0.8">
+            <StackPanel x:Name="ScoreBoardPanel" Orientation="Vertical" Background="#56e9a5" Height="200">
                 <TextBlock Text="Scoreboard :" HorizontalAlignment="Center" Margin="0 5 0 5" FontSize="20" FontWeight="Bold" Style="{StaticResource TextBlockStyle}"/>
                 <Grid>
-                    <DataGrid x:Name="ScoreBoard" Height="1000" >
+                    <DataGrid x:Name="ScoreBoard" Height="200" Style="{DynamicResource DataGridStyle1}" CellStyle="{DynamicResource DataGridCellStyle1}"
+                        ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" RowStyle="{DynamicResource DataGridRowStyle1}" ScrollViewer.VerticalScrollBarVisibility="Hidden" ScrollViewer.CanContentScroll="True">
                         <DataGrid.Columns>
 
                             <DataGridTextColumn Header="Player Name" IsReadOnly="True" CanUserResize="False" Width="*" Binding="{Binding Name}"/>

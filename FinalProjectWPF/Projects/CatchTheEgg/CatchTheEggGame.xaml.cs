@@ -107,6 +107,8 @@ namespace FinalProjectWPF.Projects.CatchTheEgg
 
         private void GoBack_Click(object sender, RoutedEventArgs e)
         {
+            ResetGame();
+            GameTimer.Stop();
             NavigationService.Navigate(new CatchTheEggPreviewPage());
         }
     }

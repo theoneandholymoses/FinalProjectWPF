@@ -46,8 +46,8 @@
                   ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" RowStyle="{DynamicResource DataGridRowStyle1}" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.CanContentScroll="True">
                         <DataGrid.Columns>
 
-                            <DataGridTextColumn Header="Player Name" IsReadOnly="True" CanUserResize="False" Width="*" Binding="{Binding LoggedInUser}"/>
-                            <DataGridTextColumn Header="score" IsReadOnly="True" Width="*" Binding="{Binding GameScoreData}"/>
+                            <DataGridTextColumn Header="Player Name" IsReadOnly="True" CanUserResize="False" Width="*" Binding="{Binding Name}"/>
+                            <DataGridTextColumn Header="score" IsReadOnly="True" Width="*" Binding="{Binding Score}"/>
 
                         </DataGrid.Columns>
                     </DataGrid>

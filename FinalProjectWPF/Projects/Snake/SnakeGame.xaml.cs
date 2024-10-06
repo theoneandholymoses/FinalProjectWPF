@@ -124,6 +124,8 @@ namespace FinalProjectWPF.Projects.Snake
 
         private void GoBack_Click(object sender, RoutedEventArgs e)
         {
+            game.ResetGame();
+            gameTimer.Stop();
             NavigationService.Navigate(new SnakePreviewPage());
         }
     }
